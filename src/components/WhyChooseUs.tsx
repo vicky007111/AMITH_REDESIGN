@@ -127,6 +127,61 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
+        {/* Featured Field Inspection Showcase (Option A) */}
+        <div
+          className="rounded-2xl bg-white border border-slate-200 overflow-hidden mb-16 grid lg:grid-cols-12 gap-0"
+          style={{
+            boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(11,30,61,0.05)",
+          }}
+        >
+          {/* Content (60%) */}
+          <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-center gap-6">
+            <div className="inline-flex items-center gap-2 text-blue-600 text-[11px] font-bold tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+              On-Site Precision Diagnostic
+            </div>
+            <h3 className="font-display font-bold text-slate-900 text-xl lg:text-2xl leading-tight">
+              Rigorous Concrete Core Extraction &amp; Quality Assessment
+            </h3>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Our licensed engineers carry out specialized field testing directly at the project site. Using advanced, calibrated NDT core drilling machinery, we extract structural core samples for comprehensive compression and carbonation testing to establish RCC health without compromise.
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-slate-600 text-xs font-semibold">
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+                Core Strength Logging
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+                Non-Destructive Calibration
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+                IS 456 &amp; 13935 Standards
+              </span>
+            </div>
+          </div>
+
+          {/* Image (40%) */}
+          <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-auto overflow-hidden">
+            <img
+              src="/images/core-drilling.png"
+              alt="Structural core drilling operation"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            {/* Tech details badge */}
+            <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-sm border border-white/10 text-white text-[9px] font-mono px-2.5 py-1 rounded">
+              NDT EXTRACTOR #04
+            </div>
+          </div>
+        </div>
+
         {/* Why points grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
           {WHY_POINTS.map((point, i) => (

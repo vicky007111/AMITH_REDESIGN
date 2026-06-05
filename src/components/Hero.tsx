@@ -1,3 +1,7 @@
+// Set to true to display the real project inspection photograph. 
+// Set to false to immediately restore the original blueprint SVG illustration.
+const SHOW_REAL_IMAGE = true;
+
 export default function Hero() {
   return (
     <section
@@ -116,62 +120,107 @@ export default function Hero() {
               border: "1px solid rgba(59,130,246,0.2)",
             }}
           >
-            {/* SVG structural illustration */}
-            <div className="p-8">
-              <svg
-                viewBox="0 0 480 340"
-                className="w-full h-auto"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-label="Structural engineering diagram"
-              >
-                {/* Ground line */}
-                <line x1="20" y1="320" x2="460" y2="320" stroke="rgba(148,163,184,0.3)" strokeWidth="2"/>
+            {SHOW_REAL_IMAGE ? (
+              <div className="relative w-full h-[340px] overflow-hidden group">
+                {/* Real project photo */}
+                <img
+                  src="/images/scaffolding-inspection.png"
+                  alt="On-site structural audit scaffolding inspection"
+                  className="w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.02]"
+                />
 
-                {/* Main building structure */}
-                {/* Columns */}
-                <rect x="80" y="80" width="16" height="240" rx="2" fill="rgba(59,130,246,0.7)"/>
-                <rect x="232" y="80" width="16" height="240" rx="2" fill="rgba(59,130,246,0.7)"/>
-                <rect x="384" y="80" width="16" height="240" rx="2" fill="rgba(59,130,246,0.7)"/>
+                {/* Tech overlay / blueprint grid pattern on top of photo */}
+                <div className="absolute inset-0 blueprint-grid pointer-events-none opacity-20" />
 
-                {/* Beams */}
-                <rect x="80" y="80" width="320" height="12" rx="2" fill="rgba(147,197,253,0.6)"/>
-                <rect x="80" y="160" width="320" height="10" rx="2" fill="rgba(147,197,253,0.4)"/>
-                <rect x="80" y="236" width="320" height="10" rx="2" fill="rgba(147,197,253,0.4)"/>
+                {/* Technical camera focus frame and labels */}
+                <div className="absolute inset-4 border border-white/20 pointer-events-none flex flex-col justify-between p-3">
+                  {/* Top corners */}
+                  <div className="flex justify-between">
+                    <span className="w-3 h-3 border-t border-l border-blue-400" />
+                    <span className="w-3 h-3 border-t border-r border-blue-400" />
+                  </div>
 
-                {/* Foundation */}
-                <rect x="60" y="310" width="360" height="14" rx="3" fill="rgba(26,86,219,0.5)"/>
+                  {/* Technical annotation tags */}
+                  <div className="flex flex-col gap-1.5 self-start bg-slate-950/80 backdrop-blur-sm border border-blue-500/30 px-3 py-2 rounded text-[10px] font-mono text-slate-300">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>LIVE AUDIT DATA</span>
+                    </div>
+                    <div>LOC: VELACHERY, CHENNAI</div>
+                    <div>SYS: CEILING BEAM ASSESSMENT</div>
+                  </div>
 
-                {/* Cross-bracing */}
-                <line x1="96" y1="86" x2="232" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                <line x1="232" y1="86" x2="96" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                <line x1="248" y1="86" x2="384" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                <line x1="384" y1="86" x2="248" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                <line x1="96" y1="166" x2="232" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                <line x1="232" y1="166" x2="96" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                <line x1="248" y1="166" x2="384" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
-                <line x1="384" y1="166" x2="248" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  {/* Bottom corners */}
+                  <div className="flex justify-between">
+                    <span className="w-3 h-3 border-b border-l border-blue-400" />
+                    <span className="w-3 h-3 border-b border-r border-blue-400" />
+                  </div>
+                </div>
 
-                {/* Measurement annotations */}
-                <line x1="40" y1="80" x2="40" y2="320" stroke="rgba(59,130,246,0.4)" strokeWidth="1" markerEnd="url(#arrow)"/>
-                <text x="16" y="205" fill="rgba(147,197,253,0.7)" fontSize="11" fontFamily="monospace" transform="rotate(-90, 28, 200)">H = 18m</text>
+                {/* Bottom measurement overlay banner */}
+                <div className="absolute bottom-0 inset-x-0 bg-slate-950/90 backdrop-blur-sm border-t border-white/10 px-4 py-2 flex justify-between items-center text-[10px] font-mono text-blue-300">
+                  <span>SCALE: NTS (1:1)</span>
+                  <span>IS 13935 COMPLIANT</span>
+                </div>
+              </div>
+            ) : (
+              /* Original SVG Structural Illustration */
+              <div className="p-8">
+                <svg
+                  viewBox="0 0 480 340"
+                  className="w-full h-auto"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Structural engineering diagram"
+                >
+                  {/* Ground line */}
+                  <line x1="20" y1="320" x2="460" y2="320" stroke="rgba(148,163,184,0.3)" strokeWidth="2"/>
 
-                <line x1="80" y1="50" x2="400" y2="50" stroke="rgba(59,130,246,0.4)" strokeWidth="1"/>
-                <text x="220" y="42" fill="rgba(147,197,253,0.7)" fontSize="11" fontFamily="monospace" textAnchor="middle">W = 32m</text>
+                  {/* Main building structure */}
+                  {/* Columns */}
+                  <rect x="80" y="80" width="16" height="240" rx="2" fill="rgba(59,130,246,0.7)"/>
+                  <rect x="232" y="80" width="16" height="240" rx="2" fill="rgba(59,130,246,0.7)"/>
+                  <rect x="384" y="80" width="16" height="240" rx="2" fill="rgba(59,130,246,0.7)"/>
 
-                {/* Inspection markers */}
-                <circle cx="88" cy="160" r="5" fill="rgba(59,130,246,0.8)" stroke="rgba(147,197,253,0.5)" strokeWidth="1.5"/>
-                <circle cx="240" cy="80" r="5" fill="rgba(59,130,246,0.8)" stroke="rgba(147,197,253,0.5)" strokeWidth="1.5"/>
-                <circle cx="392" cy="236" r="5" fill="rgba(234,179,8,0.7)" stroke="rgba(253,224,71,0.4)" strokeWidth="1.5"/>
+                  {/* Beams */}
+                  <rect x="80" y="80" width="320" height="12" rx="2" fill="rgba(147,197,253,0.6)"/>
+                  <rect x="80" y="160" width="320" height="10" rx="2" fill="rgba(147,197,253,0.4)"/>
+                  <rect x="80" y="236" width="320" height="10" rx="2" fill="rgba(147,197,253,0.4)"/>
 
-                {/* Label callout */}
-                <line x1="397" y1="231" x2="425" y2="210" stroke="rgba(253,224,71,0.5)" strokeWidth="1"/>
-                <text x="428" y="207" fill="rgba(253,224,71,0.8)" fontSize="9" fontFamily="monospace">INSPECT</text>
+                  {/* Foundation */}
+                  <rect x="60" y="310" width="360" height="14" rx="3" fill="rgba(26,86,219,0.5)"/>
 
-                {/* Title */}
-                <text x="240" y="22" fill="rgba(147,197,253,0.5)" fontSize="10" fontFamily="monospace" textAnchor="middle" letterSpacing="2">STRUCTURAL ANALYSIS REPORT</text>
-              </svg>
-            </div>
+                  {/* Cross-bracing */}
+                  <line x1="96" y1="86" x2="232" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <line x1="232" y1="86" x2="96" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <line x1="248" y1="86" x2="384" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <line x1="384" y1="86" x2="248" y2="160" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <line x1="96" y1="166" x2="232" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <line x1="232" y1="166" x2="96" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <line x1="248" y1="166" x2="384" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+                  <line x1="384" y1="166" x2="248" y2="236" stroke="rgba(59,130,246,0.3)" strokeWidth="1.5" strokeDasharray="4 3"/>
+
+                  {/* Measurement annotations */}
+                  <line x1="40" y1="80" x2="40" y2="320" stroke="rgba(59,130,246,0.4)" strokeWidth="1" markerEnd="url(#arrow)"/>
+                  <text x="16" y="205" fill="rgba(147,197,253,0.7)" fontSize="11" fontFamily="monospace" transform="rotate(-90, 28, 200)">H = 18m</text>
+
+                  <line x1="80" y1="50" x2="400" y2="50" stroke="rgba(59,130,246,0.4)" strokeWidth="1"/>
+                  <text x="220" y="42" fill="rgba(147,197,253,0.7)" fontSize="11" fontFamily="monospace" textAnchor="middle">W = 32m</text>
+
+                  {/* Inspection markers */}
+                  <circle cx="88" cy="160" r="5" fill="rgba(59,130,246,0.8)" stroke="rgba(147,197,253,0.5)" strokeWidth="1.5"/>
+                  <circle cx="240" cy="80" r="5" fill="rgba(59,130,246,0.8)" stroke="rgba(147,197,253,0.5)" strokeWidth="1.5"/>
+                  <circle cx="392" cy="236" r="5" fill="rgba(234,179,8,0.7)" stroke="rgba(253,224,71,0.4)" strokeWidth="1.5"/>
+
+                  {/* Label callout */}
+                  <line x1="397" y1="231" x2="425" y2="210" stroke="rgba(253,224,71,0.5)" strokeWidth="1"/>
+                  <text x="428" y="207" fill="rgba(253,224,71,0.8)" fontSize="9" fontFamily="monospace">INSPECT</text>
+
+                  {/* Title */}
+                  <text x="240" y="22" fill="rgba(147,197,253,0.5)" fontSize="10" fontFamily="monospace" textAnchor="middle" letterSpacing="2">STRUCTURAL ANALYSIS REPORT</text>
+                </svg>
+              </div>
+            )}
 
             {/* Corner decoration */}
             <div className="absolute top-4 right-4 w-16 h-16 opacity-20"

@@ -134,8 +134,7 @@ export default function Services() {
 
                 {/* Service number */}
                 <span
-                  className="font-display font-extrabold text-2xl leading-none select-none transition-colors duration-250"
-                  style={{ color: "rgba(226,232,240,0.9)" }}
+                  className="font-display font-extrabold text-2xl leading-none select-none text-slate-300 transition-colors duration-250"
                 >
                   {service.number}
                 </span>
