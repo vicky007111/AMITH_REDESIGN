@@ -57,8 +57,8 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 py-1 z-50 w-full bg-transparent transition-all duration-300 ${
-        sticky || navbarOpen ? "shadow-lg bg-white/95 dark:bg-darklight/95 backdrop-blur-md" : "shadow-none"
+      className={`fixed top-0 py-1 z-50 w-full bg-white dark:bg-darklight border-b border-slate-100 dark:border-darkborder transition-all duration-300 ${
+        sticky ? "shadow-md" : "shadow-sm"
       }`}
     >
       <div
@@ -76,19 +76,19 @@ const Header: React.FC = () => {
           <button
             aria-label="Toggle theme"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex items-center justify-center text-slate-500 hover:text-primary dark:text-white bg-transparent rounded-full p-2 outline-none cursor-pointer"
+            className="flex items-center justify-center text-primary hover:text-primary/80 dark:text-white bg-transparent rounded-full p-2 outline-none cursor-pointer transition-colors duration-200"
           >
             <Icon
               icon="solar:sun-2-bold"
-              width="24"
-              height="24"
+              width="22"
+              height="22"
               className="hidden dark:block text-white"
             />
             <Icon
               icon="solar:moon-bold"
-              width="24"
-              height="24"
-              className="dark:hidden block text-slate-800 hover:text-primary"
+              width="22"
+              height="22"
+              className="dark:hidden block"
             />
           </button>
           
@@ -101,12 +101,12 @@ const Header: React.FC = () => {
 
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
-            className="block xl:hidden p-2 rounded-lg"
+            className="block xl:hidden p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-darklight transition-colors duration-200"
             aria-label="Toggle mobile menu"
           >
-            <span className="block w-6 h-0.5 bg-primary dark:bg-primary"></span>
-            <span className="block w-6 h-0.5 bg-primary dark:bg-primary mt-1.5"></span>
-            <span className="block w-6 h-0.5 bg-primary dark:bg-primary mt-1.5"></span>
+            <span className="block w-6 h-0.5 bg-primary"></span>
+            <span className="block w-6 h-0.5 bg-primary mt-1.5"></span>
+            <span className="block w-6 h-0.5 bg-primary mt-1.5"></span>
           </button>
         </div>
       </div>
