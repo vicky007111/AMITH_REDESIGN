@@ -41,7 +41,7 @@ export default function Contact() {
       id="contact"
       className="bg-slate-50 dark:bg-darklight py-20 transition-colors duration-300"
     >
-      <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="grid grid-cols-12 gap-12 items-start">
           {/* Left Column: Info Details */}
           <div className="col-span-12 lg:col-span-5 flex flex-col gap-8">

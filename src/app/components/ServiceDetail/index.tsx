@@ -46,7 +46,7 @@ const ServiceDetail = () => {
                 breadcrumbLinks={breadcrumbLinks}
             />
             <section className="dark:bg-darkmode">
-                <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+                <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
                     <div className="grid lg:grid-cols-2 items-center">
                         <div className="mx-auto">
                             <Image
@@ -68,7 +68,7 @@ const ServiceDetail = () => {
                 </div>
             </section>
             <section className="bg-grey dark:bg-darklight">
-                <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+                <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
                     <h4 className="font-semibold md:text-40 text-32 text-black dark:text-white lg:text-start text-center">
                         Features
                     </h4>

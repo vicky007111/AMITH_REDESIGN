@@ -8,7 +8,7 @@ const projects = [
     scope: "Runway Engineering & Deep Sump Design",
     description: "Vetted and supervised critical airfield runway designs and calculated structural parameters for a 1.5 Million Liter Capacity industrial water sump.",
     tag: "Design Vetting",
-    icon: "solar:airplane-linear"
+    icon: "solar:plain-linear"
   },
   {
     client: "Tamil Nadu Housing Board (TNHB)",

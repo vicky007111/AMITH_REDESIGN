@@ -9,7 +9,7 @@ const Location = () => {
   return (
     <>
       <section className="bg-blue py-24">
-        <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+        <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
           <div className="grid sm:grid-cols-3 grid-cols-1 sm:gap-24 gap-4 border-b border-solid border-white/30 pb-11">
             <div>
               <h2 className="text-white text-4xl leading-tight font-bold">

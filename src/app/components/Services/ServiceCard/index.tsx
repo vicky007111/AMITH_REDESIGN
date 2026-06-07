@@ -27,7 +27,7 @@ const ServicesCard = () => {
 
   return (
     <section className="dark:bg-darkmode bg-[url('/images/plan/price-plan-background-icons.svg')] bg-auto bg-center bg-no-repeat">
-      <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="mb-17">
           <h3 className="font-semibold lg:text-6xl sm:text-5xl text-3xl text-black dark:text-white text-center">
             Advanced Civil & <br /> Structural Engineering Services

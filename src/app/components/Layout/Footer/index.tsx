@@ -24,7 +24,7 @@ const Footer: FC = () => {
 
   return (
     <footer className="bg-Dark-primary dark:bg-darklight py-17 pb-6 transition-colors duration-300">
-      <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="grid grid-cols-12 sm:gap-1.875 gap-5">
           {/* Brand Column */}
           <div className="lg:col-span-4 col-span-12">
@@ -58,9 +58,9 @@ const Footer: FC = () => {
               </p>
               <p className="text-white/50 text-sm font-bold mb-0">
                 Call us:{" "}
-                <Link href="tel:+919940548833" className="text-primary hover:text-white transition-colors font-bold">
-                  +91 9940548833
-                </Link>
+              <Link href="tel:+919940548833" className="text-white hover:text-blue-300 transition-colors font-bold">
+                +91 9940548833
+              </Link>
               </p>
             </div>
           </div>
@@ -150,13 +150,13 @@ const Footer: FC = () => {
               Reach out directly to our administrative and engineering desks:
             </p>
             <div className="flex flex-col gap-2 text-xs sm:text-sm font-semibold">
-              <a href="mailto:amithcivilengineering@gmail.com" className="text-white hover:text-primary transition-colors">
+              <a href="mailto:amithcivilengineering@gmail.com" className="text-white hover:text-blue-300 transition-colors">
                 ✉️ amithcivilengineering@gmail.com
               </a>
-              <a href="mailto:sales@amith.in.net" className="text-white hover:text-primary transition-colors">
+              <a href="mailto:sales@amith.in.net" className="text-white hover:text-blue-300 transition-colors">
                 ✉️ sales@amith.in.net
               </a>
-              <a href="mailto:admin@amith.in.net" className="text-white hover:text-primary transition-colors">
+              <a href="mailto:admin@amith.in.net" className="text-white hover:text-blue-300 transition-colors">
                 ✉️ admin@amith.in.net
               </a>
             </div>

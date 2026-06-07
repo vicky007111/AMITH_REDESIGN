@@ -33,7 +33,7 @@ const Services = () => {
     <section className="dark:bg-darkmode bg-[url('/images/plan/price-plan-background-icons.svg')] bg-cover bg-center bg-no-repeat overflow-hidden">
       <div
         ref={ref}
-        className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4"
+        className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12"
       >
         <motion.div {...TopAnimation} className="mb-17">
           <p className="text-black/50 dark:text-white/50 text-lg lg:text-start text-center">

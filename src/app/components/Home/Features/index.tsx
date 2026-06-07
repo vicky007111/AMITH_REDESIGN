@@ -22,7 +22,7 @@ const Features = () => {
     <section id="about" className="bg-grey dark:bg-darklight overflow-x-hidden py-20 transition-colors duration-300">
       <div
         ref={ref}
-        className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4"
+        className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12"
       >
         <div className="grid grid-cols-12 xl:gap-24 gap-6 gap-y-11 items-center">
           <div className="lg:col-span-6 col-span-12 px-3">

@@ -60,7 +60,7 @@ const UsedTech = () => {
 
   return (
     <section className="dark:bg-darkmode py-16">
-      <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
         <h4 className="font-semibold md:text-40 text-32 text-black dark:text-white lg:text-start text-center mb-10">
           Tools, Software & <span className="text-primary">Compliance Standards</span>
         </h4>

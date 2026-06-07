@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="overflow-x-hidden before:content-[''] before:absolute lg:before:h-full sm:before:h-2/3 before:h-3/5 before:bg-no-repeat before:bg-[url('/images/hero/right-background.svg')] before:bg-cover before:right-0 lg:before:top-0 before:bottom-0 lg:before:w-40% before:w-full lg:before:z-0 before:z-1 sm:before:block before:hidden after:content-[''] after:absolute after:bg-grey dark:after:bg-darklight after:h-full lg:after:w-60% after:w-full after:left-0 after:top-0 relative h-full lg:py-9.375! pt-24! pb-0!">
-      <div className="container mx-auto lg:max-w-xl md:max-w-screen-md">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="grid-cols-12 grid z-1 items-center relative">
           <div className="lg:col-span-6 col-span-12 px-4 py-8 lg:py-16">
             <motion.div

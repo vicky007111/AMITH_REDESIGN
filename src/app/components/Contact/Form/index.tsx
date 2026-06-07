@@ -69,7 +69,7 @@ const ContactForm = () => {
   };
   return (
     <section className="dark:bg-darkmode pb-24 !pt-0">
-      <div className="container mx-auto lg:max-w-xl md:max-w-screen-md px-4">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="grid md:grid-cols-12 grid-cols-1 gap-8">
           <div className="col-span-6 md:pt-12 pt-0 relative">
             <h2 className="max-w-72 text-[40px] leading-[3rem] font-bold mb-9">Get A Quote</h2>

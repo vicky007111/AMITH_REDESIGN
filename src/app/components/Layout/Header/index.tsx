@@ -58,11 +58,11 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed top-0 py-1 z-50 w-full bg-transparent transition-all duration-300 ${
-        sticky ? "shadow-lg bg-white/95 dark:bg-darklight/95 backdrop-blur-md" : "shadow-none"
+        sticky || navbarOpen ? "shadow-lg bg-white/95 dark:bg-darklight/95 backdrop-blur-md" : "shadow-none"
       }`}
     >
       <div
-        className={`container mx-auto lg:max-w-xl md:max-w-screen-md flex items-center justify-between xl:gap-15 gap-10 duration-300 px-4 ${
+        className={`container mx-auto max-w-7xl flex items-center justify-between xl:gap-15 gap-10 duration-300 px-4 md:px-8 lg:px-12 ${
           sticky ? "py-3" : "py-6"
         }`}
       >
@@ -115,7 +115,7 @@ const Header: React.FC = () => {
       )}
       <div
         ref={mobileMenuRef}
-        className={`xl:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-xs ${
+        className={`xl:hidden fixed inset-y-0 right-0 h-screen w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-xs overflow-y-auto ${
           navbarOpen ? "translate-x-0" : "translate-x-full"
         } z-50`}
       >

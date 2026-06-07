@@ -22,7 +22,7 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = (
             onClick();
           }
         }}
-        className={`flex items-center justify-between w-full py-2 text-black dark:text-white focus:outline-none ${
+        className={`flex items-center justify-between w-full py-2 text-base font-semibold text-slate-800 hover:text-primary dark:text-white dark:hover:text-primary focus:outline-none transition-colors ${
           item.href === path ? "!text-primary dark:!text-primary" : null
         } `}
       >
