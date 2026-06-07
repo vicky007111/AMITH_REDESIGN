@@ -92,12 +92,12 @@ const Header: React.FC = () => {
             />
           </button>
           
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="hidden xl:block bg-primary text-white border border-primary px-5 py-2.5 rounded-lg hover:bg-transparent hover:text-primary dark:hover:text-white duration-300 text-sm font-semibold transition-all shadow-md shadow-primary/10 cursor-pointer"
           >
             Get Consultation
-          </a>
+          </Link>
 
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
@@ -148,15 +148,15 @@ const Header: React.FC = () => {
             <MobileHeaderLink key={index} item={item} onClick={() => setNavbarOpen(false)} />
           ))}
           <div className="mt-4 w-full">
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="block w-full text-center bg-primary text-white px-4 py-2.5 rounded-lg hover:bg-opacity-95 text-sm font-semibold transition-all"
               onClick={() => {
                 setNavbarOpen(false);
               }}
             >
               Get Consultation
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

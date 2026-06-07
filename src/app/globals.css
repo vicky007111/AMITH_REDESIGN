@@ -2,6 +2,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 @theme {
   --shadow-card-shadow:
     rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
@@ -93,6 +94,10 @@
 }
 
 @layer components {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply text-base overflow-x-hidden font-normal;
     -webkit-text-size-adjust: 100%;
@@ -104,7 +109,10 @@
   input[type="email"],
   input[type="tel"],
   select {
-    @apply block outline-hidden text-base font-normal text-midnight_text m-0 rounded-lg w-full placeholder:text-[#668199];
+    @apply block outline-hidden text-base font-normal text-midnight_text m-0 rounded-lg w-full placeholder:text-[#668199]
+      border border-slate-200 dark:border-darkborder bg-white dark:bg-darkmode px-4 py-3
+      focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
+      transition-all duration-200;
   }
 
   h1 {

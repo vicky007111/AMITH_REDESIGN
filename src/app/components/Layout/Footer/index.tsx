@@ -74,7 +74,7 @@ const Footer: FC = () => {
               {services.map((item, index) => (
                 <li key={index} className="pb-3">
                   <Link
-                    href="/#services"
+                    href={`/services/${item.slug}`}
                     className="text-base font-semibold text-white/50 hover:text-white transition-colors"
                   >
                     {item.title}
@@ -92,7 +92,7 @@ const Footer: FC = () => {
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
-                  href="/#home"
+                  href="/"
                   className="text-base font-semibold text-white/50 hover:text-white transition-colors"
                 >
                   Home
@@ -100,7 +100,7 @@ const Footer: FC = () => {
               </li>
               <li>
                 <Link
-                  href="/#about"
+                  href="/about"
                   className="text-base font-semibold text-white/50 hover:text-white transition-colors"
                 >
                   About Us
@@ -108,7 +108,7 @@ const Footer: FC = () => {
               </li>
               <li>
                 <Link
-                  href="/#services"
+                  href="/services"
                   className="text-base font-semibold text-white/50 hover:text-white transition-colors"
                 >
                   Services
@@ -116,23 +116,15 @@ const Footer: FC = () => {
               </li>
               <li>
                 <Link
-                  href="/#leadership"
+                  href="/gallery"
                   className="text-base font-semibold text-white/50 hover:text-white transition-colors"
                 >
-                  Leadership
+                  Gallery
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/#projects"
-                  className="text-base font-semibold text-white/50 hover:text-white transition-colors"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#contact"
+                  href="/contact"
                   className="text-base font-semibold text-white/50 hover:text-white transition-colors"
                 >
                   Contact Us

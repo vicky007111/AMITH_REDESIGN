@@ -11,6 +11,12 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = (
   };
   const path = usePathname();
 
+  // Determine if this link is active
+  const isActive =
+    item.href === "/"
+      ? path === "/"
+      : path === item.href || path.startsWith(item.href + "/");
+
   return (
     <div className="relative w-full">
       <Link
@@ -22,8 +28,10 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = (
             onClick();
           }
         }}
-        className={`flex items-center justify-between w-full py-2 text-base font-semibold text-slate-800 hover:text-primary dark:text-white dark:hover:text-primary focus:outline-none transition-colors ${
-          item.href === path ? "!text-primary dark:!text-primary" : null
+        className={`flex items-center justify-between w-full py-2 text-base font-semibold focus:outline-none transition-colors ${
+          isActive
+            ? "text-primary dark:text-primary"
+            : "text-slate-800 hover:text-primary dark:text-white dark:hover:text-primary"
         } `}
       >
         {item.label}
