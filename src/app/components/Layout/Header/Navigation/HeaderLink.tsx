@@ -33,10 +33,10 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
     >
       <Link
         href={item.href}
-        className={`text-base flex font-normal transition-colors duration-200 ${
+        className={`text-base flex items-center font-medium transition-colors duration-200 ${
           isActive
-            ? "text-primary dark:text-primary font-semibold"
-            : "text-black hover:text-primary dark:text-white dark:hover:text-primary"
+            ? "text-primary font-semibold"
+            : "text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-primary"
         }`}
       >
         {item.label}

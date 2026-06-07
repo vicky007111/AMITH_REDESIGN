@@ -20,10 +20,10 @@ const Logo: React.FC = () => {
         </svg>
       </div>
       <div className="flex flex-col">
-        <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-none">
+        <span className="text-xl font-bold tracking-tight text-primary dark:text-white leading-none">
           AMITH
         </span>
-        <span className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold mt-1">
+        <span className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-slate-400 font-semibold mt-1">
           Civil Consultancy
         </span>
       </div>
