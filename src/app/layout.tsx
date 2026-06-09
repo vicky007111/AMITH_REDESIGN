@@ -41,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={manrope.className}>
+      <body className={manrope.className} suppressHydrationWarning>
         <NextTopLoader color="#001C68" />
         <ThemeProvider
           attribute="class"
