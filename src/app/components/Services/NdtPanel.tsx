@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ndtTests } from "@/data/ndt";
+import Image from "next/image";
 
 /**
  * NdtPanel — Interactive NDT diagnostic method explorer.
@@ -69,75 +70,95 @@ export default function NdtPanel() {
               className="bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-8 lg:p-10 shadow-sm h-full"
               id={`ndt-detail-${selectedIndex}`}
             >
-              <span className="text-[10px] uppercase font-bold tracking-widest text-primary block mb-3">
-                NDT Diagnostic Method
-              </span>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-                {ndtTests[selectedIndex].name}
-              </h3>
-
-              <div className="flex flex-col gap-6">
-                {/* Mechanism */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center shrink-0"
-                      aria-hidden="true"
-                    >
-                      <svg
-                        className="w-3.5 h-3.5 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9.75 3.104v13.011c0 .852-.153 1.638-.445 2.391a9.041 9.041 0 0 1-2.085 3.002L3.13 17.417a8.977 8.977 0 0 0 1.37-2.617c.23-.62.348-1.247.348-1.859V3.104L9.75 3.104Z"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      How It Works
+              <div className="grid grid-cols-12 gap-8 items-center h-full">
+                {/* Details Text Content */}
+                <div className="col-span-12 lg:col-span-7 flex flex-col justify-between h-full">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-primary block mb-3">
+                      NDT Diagnostic Method
                     </span>
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                      {ndtTests[selectedIndex].name}
+                    </h3>
+
+                    <div className="flex flex-col gap-6">
+                      {/* Mechanism */}
+                      <div className="flex flex-col gap-2">
+                        <div className="flex items-center gap-2">
+                          <div
+                            className="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center shrink-0"
+                            aria-hidden="true"
+                          >
+                            <svg
+                              className="w-3.5 h-3.5 text-primary"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M9.75 3.104v13.011c0 .852-.153 1.638-.445 2.391a9.041 9.041 0 0 1-2.085 3.002L3.13 17.417a8.977 8.977 0 0 0 1.37-2.617c.23-.62.348-1.247.348-1.859V3.104L9.75 3.104Z"
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                            How It Works
+                          </span>
+                        </div>
+                        <p className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed pl-8">
+                          {ndtTests[selectedIndex].mechanism}
+                        </p>
+                      </div>
+
+                      {/* Divider */}
+                      <div className="border-t border-slate-100 dark:border-darkborder" aria-hidden="true" />
+
+                      {/* Anomalies */}
+                      <div className="flex flex-col gap-2">
+                        <div className="flex items-center gap-2">
+                          <div
+                            className="w-6 h-6 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0"
+                            aria-hidden="true"
+                          >
+                            <svg
+                              className="w-3.5 h-3.5 text-emerald-600"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                            What It Detects
+                          </span>
+                        </div>
+                        <p className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed pl-8">
+                          {ndtTests[selectedIndex].anomalies}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-medium leading-relaxed pl-8">
-                    {ndtTests[selectedIndex].mechanism}
-                  </p>
                 </div>
 
-                {/* Divider */}
-                <div className="border-t border-slate-100 dark:border-darkborder" aria-hidden="true" />
-
-                {/* Anomalies */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="w-6 h-6 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0"
-                      aria-hidden="true"
-                    >
-                      <svg
-                        className="w-3.5 h-3.5 text-emerald-600"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      What It Detects
-                    </span>
+                {/* Secondary Support Image Column */}
+                <div className="col-span-12 lg:col-span-5 h-full flex items-center justify-center">
+                  <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-md">
+                    <Image
+                      src="/images/services/ndt_concrete_testing.png"
+                      alt={`AMITH NDT Testing visual for ${ndtTests[selectedIndex].name}`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 25vw"
+                      className="object-cover"
+                    />
                   </div>
-                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-medium leading-relaxed pl-8">
-                    {ndtTests[selectedIndex].anomalies}
-                  </p>
                 </div>
               </div>
 

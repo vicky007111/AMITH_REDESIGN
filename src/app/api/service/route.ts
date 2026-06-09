@@ -5,7 +5,7 @@ const ServicesData = [
         icon: "solar:checklist-linear",
         title: "Quality Audit & TPQM",
         slug: "quality-audit-tpqm",
-        image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/whatsapp-quality-audit.jpg",
         description:
             "Third-Party Quality Monitoring and independent construction phase inspections to prevent structural flaws from day one.",
         detail:
@@ -33,7 +33,7 @@ const ServicesData = [
         icon: "solar:buildings-linear",
         title: "Structural Auditing & Stability",
         slug: "structural-auditing-stability",
-        image: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/whatsapp-structural-audit.jpeg",
         description:
             "Analytical condition assessment and load certifications of existing buildings, bridges, and distressed concrete infrastructure.",
         detail:
@@ -61,7 +61,7 @@ const ServicesData = [
         icon: "solar:health-linear",
         title: "NDT Diagnostics",
         slug: "ndt-diagnostics",
-        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/upv-testing.jpg",
         description:
             "Advanced non-destructive concrete tests including UPV, rebound hammer, carbonation depth, and core compressions.",
         detail:
@@ -89,7 +89,7 @@ const ServicesData = [
         icon: "solar:case-linear",
         title: "Testing of Building Materials",
         slug: "testing-building-materials",
-        image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/concrete-ctm-testing.jpg",
         description:
             "Certified material diagnostics covering rebar tensile bounds, concrete cubes, soil pH levels, and water purity.",
         detail:
@@ -117,7 +117,7 @@ const ServicesData = [
         icon: "solar:shield-linear",
         title: "Restoration & Rehabilitation",
         slug: "restoration-rehabilitation",
-        image: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/cfrp-rehabilitation.jpg",
         description:
             "Retrofitting specifications including carbon fiber wrapping, micro-concrete jacketing, and pressure epoxy grouting.",
         detail:
@@ -145,7 +145,7 @@ const ServicesData = [
         icon: "solar:chart-square-linear",
         title: "Concrete Mix Design (IS 10262)",
         slug: "concrete-mix-design",
-        image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/concrete-ctm-testing.jpg",
         description:
             "Scientific proportioning of concrete ingredients matching BIS standards for normal and accelerated cures.",
         detail:
