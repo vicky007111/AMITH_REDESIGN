@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import PageHero from "@/app/components/shared/PageHero";
 import ServicesFullGrid from "@/app/components/Services/ServicesFullGrid";
 import NdtPanel from "@/app/components/Services/NdtPanel";
+import CredibilitySection from "@/app/components/Services/CredibilitySection";
+import ServicesCta from "@/app/components/Services/ServicesCta";
 
 export const metadata: Metadata = {
   title: "Engineering Services | AMITH Civil & Allied Engineering Services",
@@ -28,6 +30,7 @@ export default function ServicesPage() {
           { label: "Home", href: "/" },
           { label: "Services" },
         ]}
+        image="/images/services/scaffolding_inspection.png"
       />
 
       {/* All 6 services from API — expandable cards */}
@@ -55,8 +58,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Technical Authority & Credibility Section */}
+      <CredibilitySection />
+
       {/* NDT Methods interactive explorer */}
       <NdtPanel />
+
+      {/* Closing Call-to-Action conversion banner */}
+      <ServicesCta />
     </main>
   );
 }

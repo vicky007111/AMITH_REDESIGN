@@ -33,7 +33,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
     >
       <Link
         href={item.href}
-        className={`text-base flex items-center font-medium transition-colors duration-200 ${
+        className={`relative text-base flex items-center font-medium transition-colors duration-200 pb-1 ${
           isActive
             ? "text-primary font-semibold"
             : "text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-primary"
@@ -56,6 +56,9 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
               d="m7 10l5 5l5-5"
             />
           </svg>
+        )}
+        {isActive && (
+          <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary rounded-full animate-fadeIn" />
         )}
       </Link>
       {submenuOpen && (
