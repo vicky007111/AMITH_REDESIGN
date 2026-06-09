@@ -40,7 +40,7 @@ export default function ServicesCta() {
             Engage Our Expertise
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-            Ready to Vette Your Next Project?
+            Ready to Vet Your Next Project?
           </h2>
           <p className="text-base text-slate-300 font-medium mt-4 leading-relaxed">
             Ensure safety, compliance, and material integrity. Contact our senior advisory panel to discuss your structural requirements today.
