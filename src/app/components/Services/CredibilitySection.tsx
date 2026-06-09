@@ -69,7 +69,7 @@ export default function CredibilitySection() {
                 alt="AMITH Structural Engineering Concrete Core Drilling Testing"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover hover:scale-102 duration-500 transition-transform"
+                className="object-cover hover:scale-[1.02] duration-500 transition-transform"
                 priority
               />
             </div>
