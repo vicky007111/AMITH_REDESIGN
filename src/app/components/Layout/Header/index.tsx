@@ -67,7 +67,7 @@ const Header: React.FC = () => {
         }`}
       >
         <Logo />
-        <ul className="hidden xl:flex flex-grow items-center justify-start gap-10">
+        <ul className="hidden xl:flex flex-grow items-center justify-start gap-8 xl:gap-10">
           {headerData.map((item, index) => (
             <HeaderLink key={index} item={item} />
           ))}
@@ -76,7 +76,7 @@ const Header: React.FC = () => {
           <button
             aria-label="Toggle theme"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex items-center justify-center text-primary hover:text-primary/80 dark:text-white bg-transparent rounded-full p-2 outline-none cursor-pointer transition-colors duration-200"
+            className="flex items-center justify-center text-primary hover:text-primary/80 dark:text-white bg-transparent rounded-full p-2 outline-none cursor-pointer transition-colors duration-200 hover:scale-105 active:scale-95"
           >
             <Icon
               icon="solar:sun-2-bold"
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
           
           <Link
             href="/contact"
-            className="hidden xl:block bg-primary text-white border border-primary px-5 py-2.5 rounded-lg hover:bg-transparent hover:text-primary dark:hover:text-white duration-300 text-sm font-semibold transition-all shadow-md shadow-primary/10 cursor-pointer"
+            className="hidden xl:block bg-primary hover:bg-primary/95 text-white px-5 py-2.5 rounded-xl hover:scale-[1.02] active:scale-[0.98] duration-200 text-sm font-bold transition-all shadow-lg shadow-primary/10 cursor-pointer"
           >
             Get Consultation
           </Link>
@@ -150,7 +150,7 @@ const Header: React.FC = () => {
           <div className="mt-4 w-full">
             <Link
               href="/contact"
-              className="block w-full text-center bg-primary text-white px-4 py-2.5 rounded-lg hover:bg-opacity-95 text-sm font-semibold transition-all"
+              className="block w-full text-center bg-primary text-white px-4 py-2.5 rounded-xl hover:bg-opacity-95 text-sm font-bold transition-all"
               onClick={() => {
                 setNavbarOpen(false);
               }}

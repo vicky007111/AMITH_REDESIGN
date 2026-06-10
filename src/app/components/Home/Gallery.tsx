@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface GalleryItem {
   id: number;
@@ -78,21 +78,20 @@ const galleryItems: GalleryItem[] = [
 ];
 
 export default function Gallery() {
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
-
-  const filters = ["All", "Structural Audits", "QA/QC & TPQM", "Restoration & Rehabilitation"];
-
-  const filteredItems = selectedFilter === "All"
-    ? galleryItems
-    : galleryItems.filter(item => item.category === selectedFilter);
+  // Select 3 featured items representing each category to preview
+  const featuredItems = [
+    galleryItems.find(item => item.id === 1),
+    galleryItems.find(item => item.id === 4),
+    galleryItems.find(item => item.id === 7),
+  ].filter((item): item is GalleryItem => !!item);
 
   return (
     <section
       id="gallery"
-      className="bg-slate-50 dark:bg-darklight py-20 transition-colors duration-300"
+      className="bg-slate-50 dark:bg-darklight py-16 transition-colors duration-300"
     >
       <div className="container mx-auto max-w-7xl px-6 md:px-12">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
             On-Site Evidence
           </p>
@@ -102,26 +101,9 @@ export default function Gallery() {
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setSelectedFilter(filter)}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
-                selectedFilter === filter
-                  ? "bg-primary text-white shadow-lg shadow-primary/20"
-                  : "bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder text-slate-600 dark:text-slate-400 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary"
-              }`}
-            >
-              {filter === "Restoration & Rehabilitation" ? "Restoration & Rehab" : filter}
-            </button>
-          ))}
-        </div>
-
-        {/* Filterable Grid */}
+        {/* Featured Projects Grid */}
         <div className="grid grid-cols-12 gap-8">
-          {filteredItems.map((item) => (
+          {featuredItems.map((item) => (
             <div
               key={item.id}
               className="col-span-12 md:col-span-6 lg:col-span-4 group flex flex-col bg-white dark:bg-darkmode rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-sm hover:shadow-card-shadow transition-all duration-300"
@@ -150,6 +132,16 @@ export default function Gallery() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Explore Gallery Button */}
+        <div className="flex justify-center mt-12">
+          <Link
+            href="/gallery"
+            className="px-8 py-3.5 rounded-xl text-base font-bold bg-white dark:bg-darkmode border border-slate-300 dark:border-darkborder text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-white hover:border-primary dark:hover:border-white transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+          >
+            Explore Gallery
+          </Link>
         </div>
       </div>
     </section>
