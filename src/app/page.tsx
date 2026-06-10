@@ -395,48 +395,64 @@ export default function Home() {
     <div className="grid md:grid-cols-3 gap-8">
 
   {[
-  {
-    image: "/IMG-20250323-WA0127.jpg",
-    title: "Structural Audit",
-  },
-  {
-    image: "/IMG-20250323-WA0128.jpg",
-    title: "Quality Inspection",
-  },
-  {
-    image: "/IMG-20250323-WA0129.jpg",
-    title: "Engineering Testing",
-  },
-  {
-    image: "/IMG-20250828-WA0039.jpg",
-    title: "Site Inspection",
-  },
-  {
-    image: "/IMG-20250828-WA0062.jpg",
-    title: "Construction Audit",
-  },
-  {
-    image: "/IMG-20241118-WA0090.jpg",
-    title: "Material Testing",
-  },
-].map((photo, index) => (
-  <div
-    key={index}
-    className="bg-white rounded-2xl shadow-lg overflow-hidden"
-  >
-    <img
-      src={photo.image}
-      alt={photo.title}
-      className="h-[250px] w-full object-cover"
-    />
+    {
+      image: "/gallery/structural-audit.jpg",
+      title: "FRP Structural Strengthening",
+      description:
+        "Carbon fiber reinforced polymer wrapping for enhancing structural strength and durability.",
+    },
+    {
+      image: "/gallery/quality-inspection.jpg",
+      title: "Structural Surface Preparation",
+      description:
+        "Surface preparation and assessment carried out before structural rehabilitation works.",
+    },
+    {
+      image: "/gallery/engineering-testing.jpg",
+      title: "Structural Rehabilitation Work",
+      description:
+        "Rehabilitation and restoration activities performed to improve structural performance.",
+    },
+    {
+      image: "/gallery/site-inspection.jpg",
+      title: "UPV Testing",
+      description:
+        "Ultrasonic Pulse Velocity testing conducted to evaluate concrete quality and integrity.",
+    },
+    {
+      image: "/gallery/construction-audit.jpg",
+      title: "Structural Quality Audit",
+      description:
+        "Comprehensive quality audit and inspection of structural components and construction practices.",
+    },
+    {
+      image: "/gallery/material-testing.jpg",
+      title: "Rebound Hammer Test",
+      description:
+        "Non-destructive testing using rebound hammer equipment to assess concrete surface strength.",
+    },
+  ].map((photo, index) => (
+    <div
+      key={index}
+      className="bg-white rounded-2xl shadow-lg overflow-hidden"
+    >
+      <img
+        src={photo.image}
+        alt={photo.title}
+        className="h-[250px] w-full object-cover"
+      />
 
-    <div className="p-4">
-      <h3 className="font-semibold text-blue-600">
-        {photo.title}
-      </h3>
+      <div className="p-4">
+        <h3 className="font-semibold text-blue-600">
+          {photo.title}
+        </h3>
+
+        <p className="text-gray-600 text-sm mt-2">
+          {photo.description}
+        </p>
+      </div>
     </div>
-  </div>
-))}
+  ))}
 
 </div>
 
