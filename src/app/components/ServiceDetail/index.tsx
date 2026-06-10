@@ -3,34 +3,31 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
-import HeroSub from "@/app/components/SharedComponent/HeroSub";
+import PageHero, { BreadcrumbItem } from "@/app/components/shared/PageHero";
 import UsedTech from "@/app/components/Services/Technologies";
 import ServiceDetailSkeleton from "../Skeleton/ServiceDetail/page";
 
 const ServiceDetail = () => {
-    const [services, setServices] = useState<any[]>([])
+    const [services, setServices] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('/api/service')
-                if (!res.ok) throw new Error('Failed to fetch')
+                const res = await fetch('/api/service');
+                if (!res.ok) throw new Error('Failed to fetch');
 
-                const data = await res.json()
-                setServices(data.ServicesData || [])
+                const data = await res.json();
+                setServices(data.ServicesData || []);
             } catch (error) {
-                console.error('Error fetching services:', error)
+                console.error('Error fetching services:', error);
             }
-        }
+        };
 
-        fetchData()
-    }, [])
+        fetchData();
+    }, []);
+
     const { slug } = useParams();
     const item = services.find((item) => item.slug === slug);
-    const breadcrumbLinks = [
-        { href: "/services", text: "Service" },
-        { href: "/services", text: "Services Detail" },
-    ];
 
     if (!item) {
         return (
@@ -38,28 +35,39 @@ const ServiceDetail = () => {
         );
     }
 
+    const breadcrumb: BreadcrumbItem[] = [
+        { label: "Home", href: "/" },
+        { label: "Services", href: "/services" },
+        { label: item.title },
+    ];
+
     return (
         <>
-            <HeroSub
+            <PageHero
+                label="Our Services"
                 title={item.title}
-                description={item.description}
-                breadcrumbLinks={breadcrumbLinks}
+                subtitle={item.description}
+                breadcrumb={breadcrumb}
             />
             <section className="dark:bg-darkmode">
                 <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-                    <div className="grid lg:grid-cols-2 items-center">
-                        <div className="mx-auto">
-                            <Image
-                                src={item.image}
-                                alt={item.title}
-                                width={480}
-                                height={480}
-                            />
+                    <div className="grid lg:grid-cols-2 items-center gap-8 lg:gap-12">
+                        <div className="w-full">
+                            <div className="relative w-full aspect-[4/3] max-w-xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-100 dark:border-white/5">
+                                <Image
+                                    src={item.image}
+                                    alt={item.title}
+                                    fill
+                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                    className="object-cover"
+                                    priority
+                                />
+                            </div>
                         </div>
                         <div>
-                            <h3 className="font-semibold md:text-5xl text-32 text-black dark:text-white lg:text-start text-center mb-4">
+                            <h2 className="font-semibold md:text-5xl text-32 text-black dark:text-white lg:text-start text-center mb-4">
                                 What It <span className="text-primary">Does</span>
-                            </h3>
+                            </h2>
                             <p className="text-xl text-black/50 dark:text-white/50">
                                 {item.detail}
                             </p>
@@ -69,9 +77,9 @@ const ServiceDetail = () => {
             </section>
             <section className="bg-grey dark:bg-darklight">
                 <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-                    <h4 className="font-semibold md:text-40 text-32 text-black dark:text-white lg:text-start text-center">
+                    <h2 className="font-semibold md:text-40 text-32 text-black dark:text-white lg:text-start text-center">
                         Features
-                    </h4>
+                    </h2>
                     <ul className="mt-4 text-xl">
                         {item.features.map((feature: any, index: any) => (
                             <li
