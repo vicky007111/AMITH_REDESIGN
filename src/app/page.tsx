@@ -23,6 +23,38 @@ function Counter({ end }: { end: number }) {
 
   return <>{count}+</>;
 }
+const galleryImages = [
+  {
+    image: "/IMG-20250323-WA0127.jpg",
+    title: "Structural Audit",
+    description: "Structural audit and condition assessment."
+  },
+  {
+    image: "/IMG-20250323-WA0128.jpg",
+    title: "Quality Inspection",
+    description: "Quality inspection activities."
+  },
+  {
+    image: "/IMG-20250323-WA0129.jpg",
+    title: "Engineering Testing",
+    description: "Engineering testing services."
+  },
+  {
+    image: "/IMG-20250828-WA0039.jpg",
+    title: "Site Inspection",
+    description: "On-site inspection work."
+  },
+  {
+    image: "/IMG-20250828-WA0062.jpg",
+    title: "Construction Audit",
+    description: "Construction quality audit."
+  },
+  {
+    image: "/IMG-20241118-WA0090.jpg",
+    title: "Material Testing",
+    description: "Material testing and evaluation."
+  }
+];
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
@@ -345,6 +377,7 @@ export default function Home() {
 
   </div>
 </section>
+
   {/* Gallery Section */}
 <section className="py-24 px-6">
   <div className="max-w-7xl mx-auto">
@@ -361,41 +394,49 @@ export default function Home() {
 
     <div className="grid md:grid-cols-3 gap-8">
 
-  <img
-    src="/IMG-20250323-WA0127.jpg"
-    alt="Structural Audit"
-    className="rounded-2xl shadow-lg h-[250px] w-full object-cover"
-  />
+  {[
+  {
+    image: "/IMG-20250323-WA0127.jpg",
+    title: "Structural Audit",
+  },
+  {
+    image: "/IMG-20250323-WA0128.jpg",
+    title: "Quality Inspection",
+  },
+  {
+    image: "/IMG-20250323-WA0129.jpg",
+    title: "Engineering Testing",
+  },
+  {
+    image: "/IMG-20250828-WA0039.jpg",
+    title: "Site Inspection",
+  },
+  {
+    image: "/IMG-20250828-WA0062.jpg",
+    title: "Construction Audit",
+  },
+  {
+    image: "/IMG-20241118-WA0090.jpg",
+    title: "Material Testing",
+  },
+].map((photo, index) => (
+  <div
+    key={index}
+    className="bg-white rounded-2xl shadow-lg overflow-hidden"
+  >
+    <img
+      src={photo.image}
+      alt={photo.title}
+      className="h-[250px] w-full object-cover"
+    />
 
-  <img
-    src="/IMG-20250323-WA0128.jpg"
-    alt="Quality Inspection"
-    className="rounded-2xl shadow-lg h-[250px] w-full object-cover"
-  />
-
-  <img
-    src="/IMG-20250323-WA0129.jpg"
-    alt="Engineering Testing"
-    className="rounded-2xl shadow-lg h-[250px] w-full object-cover"
-  />
-
-  <img
-    src="/IMG-20250828-WA0039.jpg"
-    alt="Site Inspection"
-    className="rounded-2xl shadow-lg h-[250px] w-full object-cover"
-  />
-
-  <img
-    src="/IMG-20250828-WA0062.jpg"
-    alt="Construction Audit"
-    className="rounded-2xl shadow-lg h-[250px] w-full object-cover"
-  />
-
-  <img
-    src="/IMG-20241118-WA0090.jpg"
-    alt="Material Testing"
-    className="rounded-2xl shadow-lg h-[250px] w-full object-cover"
-  />
+    <div className="p-4">
+      <h3 className="font-semibold text-blue-600">
+        {photo.title}
+      </h3>
+    </div>
+  </div>
+))}
 
 </div>
 
