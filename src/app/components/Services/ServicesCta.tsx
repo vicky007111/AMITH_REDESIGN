@@ -36,13 +36,13 @@ export default function ServicesCta() {
 
       <div className="container mx-auto max-w-7xl px-6 md:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+          <p className="text-blue font-bold text-sm uppercase tracking-wider mb-3">
             Engage Our Expertise
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-white">
             Ready to Vet Your Next Project?
           </h2>
-          <p className="text-base text-slate-300 font-medium mt-4 leading-relaxed">
+          <p className="text-base text-slate-200 font-medium mt-4 leading-relaxed">
             Ensure safety, compliance, and material integrity. Contact our senior advisory panel to discuss your structural requirements today.
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function ServicesCta() {
                 <div className="mt-6 pt-4 border-t border-white/10">
                   <Link
                     href={action.link}
-                    className="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-primary dark:hover:text-primary transition-colors duration-200"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-blue transition-colors duration-200"
                   >
                     {action.ctaText}
                     <Icon icon="solar:alt-arrow-right-linear" width="16" height="16" />

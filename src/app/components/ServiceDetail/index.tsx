@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import { Icon } from "@iconify/react";
 import PageHero, { BreadcrumbItem } from "@/app/components/shared/PageHero";
 import UsedTech from "@/app/components/Services/Technologies";
 import ServiceDetailSkeleton from "../Skeleton/ServiceDetail/page";
@@ -44,14 +43,16 @@ const ServiceDetail = () => {
     return (
         <>
             <PageHero
-                label="Our Services"
                 title={item.title}
                 subtitle={item.description}
                 breadcrumb={breadcrumb}
             />
-            <section className="dark:bg-darkmode">
-                <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-                    <div className="grid lg:grid-cols-2 items-center gap-8 lg:gap-12">
+
+            {/* Section A — Service Overview */}
+            <section className="bg-white dark:bg-darkmode py-20 transition-colors duration-300">
+                <div className="container mx-auto max-w-7xl px-6 md:px-12">
+                    <div className="grid lg:grid-cols-2 items-start gap-10 lg:gap-16">
+                        {/* Image */}
                         <div className="w-full">
                             <div className="relative w-full aspect-[4/3] max-w-xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-100 dark:border-white/5">
                                 <Image
@@ -64,49 +65,62 @@ const ServiceDetail = () => {
                                 />
                             </div>
                         </div>
+
+                        {/* Text Content */}
                         <div>
-                            <h2 className="font-semibold md:text-5xl text-32 text-black dark:text-white lg:text-start text-center mb-4">
+                            <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+                                Service Overview
+                            </p>
+                            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4">
                                 What It <span className="text-primary">Does</span>
                             </h2>
-                            <p className="text-xl text-black/50 dark:text-white/50">
+                            <div className="w-12 h-1 bg-primary rounded-full mb-6" aria-hidden="true" />
+                            <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
                                 {item.detail}
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
-            <section className="bg-grey dark:bg-darklight">
-                <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-                    <h2 className="font-semibold md:text-40 text-32 text-black dark:text-white lg:text-start text-center">
-                        Features
+
+            {/* Section B — Capabilities */}
+            <section className="bg-slate-50 dark:bg-darklight py-20 border-y border-slate-100 dark:border-darkborder transition-colors duration-300">
+                <div className="container mx-auto max-w-7xl px-6 md:px-12">
+                    <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+                        Capabilities
+                    </p>
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                        Key Features &amp; Methodology
                     </h2>
-                    <ul className="mt-4 text-xl">
-                        {item.features.map((feature: any, index: any) => (
-                            <li
+                    <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-10" aria-hidden="true" />
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {item.features.map((feature: any, index: number) => (
+                            <div
                                 key={index}
-                                className="my-3"
+                                className="bg-white dark:bg-darkmode rounded-xl p-5 flex gap-4 items-start border border-slate-100 dark:border-darkborder shadow-sm"
                             >
-                                <div className="flex items-start sm:gap-5 gap-3">
-                                    <div>
-                                        <Icon
-                                            icon="solar:check-circle-linear"
-                                            width="18"
-                                            height="18"
-                                            className="font-semibold text-primary mt-2 w-4 h-4"
-                                        />
-                                    </div>
-                                    <p className="text-xl text-black/50 dark:text-white/50">
-                                        <span className="font-medium text-black dark:text-white">
-                                            {feature.title}:
-                                        </span>{" "}
+                                {/* Bullet indicator */}
+                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                                    <div className="w-2 h-2 rounded-full bg-primary" />
+                                </div>
+
+                                {/* Content */}
+                                <div>
+                                    <h3 className="text-sm font-bold text-slate-800 dark:text-white leading-snug">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed mt-1">
                                         {feature.description}
                                     </p>
                                 </div>
-                            </li>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 </div>
             </section>
+
+            {/* Technologies carousel */}
             <UsedTech />
         </>
     );

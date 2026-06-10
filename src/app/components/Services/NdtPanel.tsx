@@ -152,7 +152,7 @@ export default function NdtPanel() {
                 <div className="col-span-12 lg:col-span-5 h-full flex items-center justify-center">
                   <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-md">
                     <Image
-                      src="/images/services/ndt_concrete_testing.png"
+                      src={ndtTests[selectedIndex].image || "/images/services/ndt_concrete_testing.png"}
                       alt={`AMITH NDT Testing visual for ${ndtTests[selectedIndex].name}`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 25vw"
