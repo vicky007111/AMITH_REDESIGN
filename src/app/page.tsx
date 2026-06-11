@@ -23,39 +23,152 @@ function Counter({ end }: { end: number }) {
 
   return <>{count}+</>;
 }
-const galleryImages = [
+const galleryData = {
+"Core Drilling": [
+{
+  image: "/gallery/core-drilling/core-drilling-video.mp4",
+  description: "Core drilling operation video"
+},
+{
+  image: "/gallery/core-drilling/core-drilling-concrete-column-amenity-building.jpg",
+  description: "Core drilling on concrete column – amenity building"
+},
+{
+  image: "/gallery/core-drilling/core-drilling-residential-column-exterior.jpg",
+  description: "Core drilling on residential column exterior"
+},
+{
+  image: "/gallery/core-drilling/core-drilling-closeup-column.jpg",
+  description: "Core drilling close-up on column"
+},
+{
+  image: "/gallery/core-drilling/core-drilling-interior-office-wall.jpg",
+  description: "Core drilling on interior office wall"
+},
+{
+  image: "/gallery/core-drilling/core-drilling-operation-in-progress.jpg",
+  description: "Core drilling operation in progress"
+}
+],
+
+"Structural Testing": [
   {
-    image: "/IMG-20250323-WA0127.jpg",
-    title: "Structural Audit",
-    description: "Structural audit and condition assessment."
+    image: "/gallery/structural-testing/cp-voltmeter-rebar-corrosion-assessment.jpg",
+    description: "CP voltmeter rebar corrosion assessment"
   },
   {
-    image: "/IMG-20250323-WA0128.jpg",
-    title: "Quality Inspection",
-    description: "Quality inspection activities."
+    image: "/gallery/structural-testing/half-cell-potential-testing-structure.jpg",
+    description: "Half-cell potential testing on structure"
   },
   {
-    image: "/IMG-20250323-WA0129.jpg",
-    title: "Engineering Testing",
-    description: "Engineering testing services."
+    image: "/gallery/structural-testing/upv-testing-interior-column.jpg",
+    description: "UPV testing on interior column"
   },
   {
-    image: "/IMG-20250828-WA0039.jpg",
-    title: "Site Inspection",
-    description: "On-site inspection work."
+    image: "/gallery/structural-testing/structural-testing-with-instruments.jpg",
+    description: "Structural testing with instruments"
   },
   {
-    image: "/IMG-20250828-WA0062.jpg",
-    title: "Construction Audit",
-    description: "Construction quality audit."
+    image: "/gallery/structural-testing/rooftop-half-cell-potential-test-a5-column.jpg",
+    description: "Rooftop half-cell potential test (A5 column)"
   },
   {
-    image: "/IMG-20241118-WA0090.jpg",
-    title: "Material Testing",
-    description: "Material testing and evaluation."
+    image: "/gallery/structural-testing/industrial-structure-rebar-corrosion-test.jpg",
+    description: "Industrial structure rebar corrosion test"
+  },
+  {
+    image: "/gallery/structural-testing/cp-test-industrial-tank-wall.jpg",
+    description: "CP test on industrial tank wall"
+  },
+  {
+    image: "/gallery/structural-testing/half-cell-testing-exposed-structure.jpg",
+    description: "Half-cell testing on exposed structure"
+  },
+  {
+    image: "/gallery/structural-testing/structural-assessment-deteriorated-wall.jpg",
+    description: "Structural assessment on deteriorated wall"
+  },
+  {
+    image: "/gallery/structural-testing/corrosion-mapping-industrial-structure.jpg",
+    description: "Corrosion mapping on industrial structure"
+  },
+  {
+    image: "/gallery/structural-testing/upv-test-beam.jpg",
+    description: "UPV (Ultrasonic Pulse Velocity) test on beam"
+  },
+  {
+    image: "/gallery/structural-testing/overhead-structural-testing-ceiling-slab.jpeg",
+    description: "Overhead structural testing on ceiling slab"
+  },
+  {
+    image: "/gallery/structural-testing/structural-test-industrial-ceiling.jpeg",
+    description: "Structural test on industrial ceiling"
+  },
+  {
+    image: "/gallery/structural-testing/concrete-slab-testing-from-below.jpeg",
+    description: "Concrete slab testing from below"
+  },
+  {
+    image: "/gallery/structural-testing/vertical-structural-inspection.jpeg",
+    description: "Vertical structural inspection"
+  },
+  {
+    image: "/gallery/structural-testing/rebar-assessment-structural-wall.jpg",
+    description: "Rebar assessment on structural wall"
   }
-];
+],
+
+"Structural Repair": [
+  {
+    image: "/gallery/structural-repair/carbon-fibre-wrap-repair-cracked-column.jpg",
+    description: "Carbon fibre wrap repair on cracked column"
+  },
+  {
+    image: "/gallery/structural-repair/frp-strengthening-structural-member.jpg",
+    description: "FRP strengthening of structural member"
+  },
+  {
+    image: "/gallery/structural-repair/column-repair-carbon-fibre-reinforcement.jpg",
+    description: "Column repair with carbon fibre reinforcement"
+  },
+  {
+    image: "/gallery/structural-repair/core-drilling-commercial-office-building.jpg",
+    description: "Core drilling in commercial office building"
+  },
+  {
+    image: "/gallery/structural-repair/structural-repair-work-facility.jpg",
+    description: "Structural repair work at facility"
+  },
+  {
+    image: "/gallery/structural-repair/site-repair-strengthening-work.jpg",
+    description: "Site repair and strengthening work"
+  },
+  {
+    image: "/gallery/structural-repair/remediation-work-commercial-premises.jpg",
+    description: "Remediation work at commercial premises"
+  },
+  {
+    image: "/gallery/structural-repair/field-repair-building-site.jpg",
+    description: "Field repair at building site"
+  },
+  {
+    image: "/gallery/structural-repair/structural-strengthening-site.jpg",
+    description: "Structural strengthening on site"
+  }
+],
+"Lab & Equipment": [
+  {
+    image: "/gallery/lab-equipment/compression-testing-machine-concrete-cubes.jpg",
+    description: "Compression testing machine with concrete cubes"
+  },
+  {
+    image: "/gallery/lab-equipment/concrete-cube-preparation-testing-lab.jpg",
+    description: "Concrete cube preparation in testing lab"
+  }
+],
+};
 export default function Home() {
+  const [activeCategory, setActiveCategory] = useState("Core Drilling");
   return (
     <main className="min-h-screen bg-white">
 
@@ -392,67 +505,62 @@ export default function Home() {
       </p>
     </div>
 
+    <div className="flex flex-wrap justify-center gap-4 mb-10">
+  {Object.keys(galleryData).map((category) => (
+    <button
+      key={category}
+      onClick={() => setActiveCategory(category)}
+      className={`px-6 py-2 rounded-lg font-medium ${
+        activeCategory === category
+          ? "bg-blue-600 text-white"
+          : "bg-gray-200 text-gray-700"
+      }`}
+    >
+      {category}
+    </button>
+  ))}
+</div>
     <div className="grid md:grid-cols-3 gap-8">
 
-  {[
-    {
-      image: "/gallery/structural-audit.jpg",
-      title: "FRP Structural Strengthening",
-      description:
-        "Carbon fiber reinforced polymer wrapping for enhancing structural strength and durability.",
-    },
-    {
-      image: "/gallery/quality-inspection.jpg",
-      title: "Structural Surface Preparation",
-      description:
-        "Surface preparation and assessment carried out before structural rehabilitation works.",
-    },
-    {
-      image: "/gallery/engineering-testing.jpg",
-      title: "Structural Rehabilitation Work",
-      description:
-        "Rehabilitation and restoration activities performed to improve structural performance.",
-    },
-    {
-      image: "/gallery/site-inspection.jpg",
-      title: "UPV Testing",
-      description:
-        "Ultrasonic Pulse Velocity testing conducted to evaluate concrete quality and integrity.",
-    },
-    {
-      image: "/gallery/construction-audit.jpg",
-      title: "Structural Quality Audit",
-      description:
-        "Comprehensive quality audit and inspection of structural components and construction practices.",
-    },
-    {
-      image: "/gallery/material-testing.jpg",
-      title: "Rebound Hammer Test",
-      description:
-        "Non-destructive testing using rebound hammer equipment to assess concrete surface strength.",
-    },
-  ].map((photo, index) => (
+  {galleryData[activeCategory as keyof typeof galleryData].map(
+  (image, index) => (
     <div
       key={index}
-      className="bg-white rounded-2xl shadow-lg overflow-hidden"
+      className="group relative bg-white rounded-2xl shadow-lg overflow-hidden"
     >
-      <img
-        src={photo.image}
-        alt={photo.title}
-        className="h-[250px] w-full object-cover"
-      />
+  {image.image?.endsWith(".mp4") ? (
+  <>
+    <video
+      controls
+      className="h-[250px] w-full object-cover"
+    >
+      <source src={image.image} type="video/mp4" />
+    </video>
 
-      <div className="p-4">
-        <h3 className="font-semibold text-blue-600">
-          {photo.title}
-        </h3>
-
-        <p className="text-gray-600 text-sm mt-2">
-          {photo.description}
-        </p>
-      </div>
+    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none">
+      <p className="text-white text-sm font-semibold text-center px-4">
+        {image.description}
+      </p>
     </div>
-  ))}
+  </>
+) : (
+  <>
+          <img
+            src={image.image}
+            alt={image.description}
+            className="h-[250px] w-full object-cover"
+          />
+
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+            <p className="text-white text-sm font-semibold text-center px-4">
+               {image.description}
+            </p>
+          </div>
+        </>
+      )}
+    </div>
+  )
+)}
 
 </div>
 
