@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
-import Link from "next/link";
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 
@@ -9,13 +8,10 @@ const Features = () => {
   const ref = useRef(null);
   const inView = useInView(ref);
 
-  const leftAnimation = {
-    animate: inView ? { x: 0, opacity: 1 } : { x: "-10%", opacity: 0 },
-    transition: { duration: 1, delay: 0.8 },
-  };
-  const rightAnimation = {
-    animate: inView ? { x: 0, opacity: 1 } : { x: "10%", opacity: 0 },
-    transition: { duration: 1, delay: 0.8 },
+  const fadeIn = {
+    initial: { opacity: 0, y: 15 },
+    animate: inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 },
+    transition: { duration: 0.4 },
   };
 
   return (
@@ -26,17 +22,18 @@ const Features = () => {
       >
         <div className="grid grid-cols-12 xl:gap-24 gap-6 gap-y-11 items-center">
           <div className="lg:col-span-6 col-span-12 px-3">
-            <motion.div {...leftAnimation} className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-2xl">
+            <motion.div {...fadeIn} className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-2xl bg-slate-100">
               <Image
-                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80&fm=webp"
                 alt="AMITH Laboratory Testing and Quality Inspections"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </motion.div>
           </div>
           <div className="lg:col-span-6 col-span-12 px-3">
-            <motion.div {...rightAnimation}>
+            <motion.div {...fadeIn}>
               <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
                 Why Choose Us
               </p>
@@ -96,14 +93,6 @@ const Features = () => {
                   </div>
                 </li>
               </ul>
-              <div className="mt-8">
-                <Link
-                  href="/#services"
-                  className="py-3 px-6 bg-primary rounded-lg text-white font-semibold text-sm hover:opacity-95 duration-300 block w-fit shadow-md shadow-primary/10"
-                >
-                  Explore Our Services
-                </Link>
-              </div>
             </motion.div>
           </div>
         </div>
