@@ -17,7 +17,6 @@ export default function Contact() {
     e.preventDefault();
     setErrorMsg("");
 
-    // Simple validation
     if (!name || !phone || !email || !message) {
       setErrorMsg("Please fill out all fields.");
       return;
@@ -25,26 +24,44 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setName("");
-      setPhone("");
-      setEmail("");
-      setMessage("");
-    }, 1500);
+    fetch("https://formsubmit.co/ajax/amithcivilengineering@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Message: message,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setIsSubmitting(false);
+        if (data.success) {
+          setSubmitSuccess(true);
+          setName("");
+          setPhone("");
+          setEmail("");
+          setMessage("");
+        } else {
+          setErrorMsg("Submission failed. Please try again.");
+        }
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+        setErrorMsg("Something went wrong. Please call us directly.");
+      });
   };
 
   return (
     <section
       id="contact"
-      className="bg-slate-50 dark:bg-darklight py-20 transition-colors duration-300"
+      className="bg-slate-50 dark:bg-darklight py-12 lg:py-20 transition-colors duration-300"
     >
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-        <div className="grid grid-cols-12 gap-12 items-start">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-16">
+        <div className="flex flex-col lg:flex-row gap-8 items-stretch">
           {/* Left Column: Info Details */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col gap-8">
+          <div className="w-full lg:w-[45%] flex flex-col gap-8">
             <div>
               <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
                 Get In Touch
@@ -109,19 +126,19 @@ export default function Contact() {
                   <div className="flex flex-col gap-0.5 mt-1">
                     <a
                       href="mailto:amithcivilengineering@gmail.com"
-                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
+                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all"
                     >
                       Primary: amithcivilengineering@gmail.com
                     </a>
                     <a
                       href="mailto:sales@amith.in.net"
-                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
+                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all"
                     >
                       Sales: sales@amith.in.net
                     </a>
                     <a
                       href="mailto:admin@amith.in.net"
-                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
+                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all"
                     >
                       Admin: admin@amith.in.net
                     </a>
@@ -129,11 +146,25 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+
+            {/* Embedded map */}
+            <div className="rounded-xl overflow-hidden h-[200px] sm:h-[240px] lg:h-[260px] w-full border border-slate-200 dark:border-darkborder">
+              <iframe
+                src="https://www.google.com/maps?q=No.35/F3,+Sai+Krupa+Apartment,+Ramagirinagar,+Taramani+Link+Road,+Velachery,+Chennai+600042&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="AMITH Civil & Allied Engineering Services — Office Location"
+              />
+            </div>
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="col-span-12 lg:col-span-7">
-            <div className="bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-8 lg:p-10 shadow-sm">
+          <div className="w-full lg:w-[55%]">
+            <div className="bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-8 lg:p-10 shadow-sm h-full flex flex-col">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
                 Request a Consultation
               </h3>
@@ -159,10 +190,11 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-5">
+                  <div className="flex-1 flex flex-col gap-5">
+                  <div className="flex flex-col sm:flex-row gap-4">
                     {/* Name */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 w-full">
                       <label className="text-xs font-bold text-slate-500 uppercase">
                         Full Name
                       </label>
@@ -172,12 +204,12 @@ export default function Contact() {
                         onChange={(e) => setName(e.target.value)}
                         placeholder="John Doe"
                         required
-                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder"
+                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full"
                       />
                     </div>
 
                     {/* Phone */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 w-full">
                       <label className="text-xs font-bold text-slate-500 uppercase">
                         Phone Number
                       </label>
@@ -187,7 +219,7 @@ export default function Contact() {
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 XXXXX XXXXX"
                         required
-                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder"
+                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full"
                       />
                     </div>
                   </div>
@@ -208,19 +240,20 @@ export default function Contact() {
                   </div>
 
                   {/* Message */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 flex-1">
                     <label className="text-xs font-bold text-slate-500 uppercase">
                       Message / Project Details
                     </label>
                     <textarea
-                      rows={5}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Describe your structural testing or auditing requirement..."
                       required
-                      className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder block w-full outline-hidden"
+                      className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder block w-full outline-hidden flex-1 min-h-[120px] resize-none"
                     ></textarea>
                   </div>
+
+                  </div>{/* end flex-1 fields wrapper */}
 
                   {errorMsg && (
                     <p className="text-xs font-bold text-rose-500 bg-rose-50 dark:bg-rose-950/20 border border-rose-500/10 p-3 rounded-lg">
