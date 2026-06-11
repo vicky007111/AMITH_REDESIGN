@@ -10,8 +10,8 @@ export interface BreadcrumbItem {
 }
 
 export interface PageHeroProps {
-  /** Short uppercase label above the heading (e.g. "About Us") */
-  label: string;
+  /** Short uppercase label above the heading (e.g. "About Us") — omit to hide the kicker badge */
+  label?: string;
   /** Large primary heading */
   title: string;
   /** Optional subtitle / description paragraph */
@@ -39,8 +39,8 @@ export default function PageHero({
   return (
     <section
       id="page-hero"
-      className="relative overflow-hidden pt-32 pb-20 bg-gradient-to-br from-darkmode via-[#001243] to-[#001c68] transition-colors duration-300"
-      aria-label={`${label} page header`}
+      className="relative overflow-hidden pt-28! md:pt-32! lg:pt-36! pb-20 bg-gradient-to-br from-darkmode via-[#001243] to-[#001c68] transition-colors duration-300"
+      aria-label={label ? `${label} page header` : "Page header"}
     >
       {/* Decorative geometric shapes */}
       <div
@@ -108,16 +108,18 @@ export default function PageHero({
               ))}
             </motion.nav>
 
-            {/* Kicker label */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 text-primary font-bold text-xs uppercase tracking-wider mb-5"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true" />
-              {label}
-            </motion.div>
+            {/* Kicker label — only rendered when label prop is provided */}
+            {label && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 text-primary font-bold text-xs uppercase tracking-wider mb-5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true" />
+                {label}
+              </motion.div>
+            )}
 
             {/* Heading */}
             <motion.h1

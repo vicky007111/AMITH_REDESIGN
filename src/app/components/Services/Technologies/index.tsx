@@ -61,9 +61,13 @@ const UsedTech = () => {
   return (
     <section className="dark:bg-darkmode py-16">
       <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-        <h4 className="font-semibold md:text-40 text-32 text-black dark:text-white lg:text-start text-center mb-10">
+        <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+          Engineering Stack
+        </p>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white lg:text-start text-center leading-tight">
           Tools, Software & <span className="text-primary">Compliance Standards</span>
-        </h4>
+        </h2>
+        <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-10" aria-hidden="true" />
         <div>
           <Slider {...settings}>
             {technologies.map((item, index) => (

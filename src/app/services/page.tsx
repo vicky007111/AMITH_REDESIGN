@@ -23,14 +23,12 @@ export default function ServicesPage() {
   return (
     <main>
       <PageHero
-        label="Our Services"
         title="Comprehensive Engineering & Advisory Services"
         subtitle="From forensic NDT diagnostics and structural stability certifications to concrete mix design and restoration schemes — AMITH delivers the full spectrum of civil engineering consultancy."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Services" },
         ]}
-        image="/images/services/scaffolding_inspection.png"
       />
 
       {/* All 6 services from API — expandable cards */}
