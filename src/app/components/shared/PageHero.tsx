@@ -109,7 +109,7 @@ export default function PageHero({
             </motion.nav>
 
             {/* Kicker label — only rendered when label prop is provided */}
-            {label && (
+            {/* {label && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export default function PageHero({
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true" />
                 {label}
               </motion.div>
-            )}
+            )} */}
 
             {/* Heading */}
             <motion.h1
