@@ -62,7 +62,7 @@ export default function PageHero({
         />
       </div>
 
-      <div className="container mx-auto max-w-7xl px-6 md:px-12 relative z-10">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-8 lg:px-16 relative z-10">
         <div className={image ? "grid grid-cols-12 gap-8 items-center" : ""}>
           {/* Content side */}
           <div className={image ? "col-span-12 lg:col-span-7" : ""}>
@@ -109,7 +109,7 @@ export default function PageHero({
             </motion.nav>
 
             {/* Kicker label — only rendered when label prop is provided */}
-            {label && (
+            {/* {label && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export default function PageHero({
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true" />
                 {label}
               </motion.div>
-            )}
+            )} */}
 
             {/* Heading */}
             <motion.h1

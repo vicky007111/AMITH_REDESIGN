@@ -35,7 +35,7 @@ const Footer: FC = () => {
                   src="/logo-white.png"
                   alt="AMITH Civil Consultancy Logo"
                   width={160}
-                  height={56}
+                  height={80}
                   className="h-14 w-auto object-contain"
                 />
               </Link>

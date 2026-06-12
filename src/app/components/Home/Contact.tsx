@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useRef } from "react";
 import { Icon } from "@iconify/react";
 
 export default function Contact() {
@@ -12,12 +12,19 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // ✅ Auto-grow textarea
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+    e.target.style.height = "auto";
+    e.target.style.height = e.target.scrollHeight + "px";
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
 
-    // Simple validation
     if (!name || !phone || !email || !message) {
       setErrorMsg("Please fill out all fields.");
       return;
@@ -25,26 +32,45 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setName("");
-      setPhone("");
-      setEmail("");
-      setMessage("");
-    }, 1500);
+    fetch("https://formsubmit.co/ajax/amithcivilengineering@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Message: message,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setIsSubmitting(false);
+        if (data.success) {
+          setSubmitSuccess(true);
+          setName("");
+          setPhone("");
+          setEmail("");
+          setMessage("");
+          if (textareaRef.current) textareaRef.current.style.height = "auto";
+        } else {
+          setErrorMsg("Submission failed. Please try again.");
+        }
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+        setErrorMsg("Something went wrong. Please call us directly.");
+      });
   };
 
   return (
     <section
       id="contact"
-      className="bg-slate-50 dark:bg-darklight py-20 transition-colors duration-300"
+      className="bg-slate-50 dark:bg-darklight py-12 lg:py-20 transition-colors duration-300"
     >
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-        <div className="grid grid-cols-12 gap-12 items-start">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-16">
+        <div className="flex flex-col lg:flex-row gap-8 items-stretch">
           {/* Left Column: Info Details */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col gap-8">
+          <div className="w-full lg:w-[45%] flex flex-col gap-8">
             <div>
               <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
                 Get In Touch
@@ -55,13 +81,12 @@ export default function Contact() {
               <div className="w-12 h-1 bg-primary mt-4 rounded-full"></div>
             </div>
 
-            <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
-              Whether you need a full structural stability certificate, forensic NDT
-              investigations, or stage-by-stage quality monitoring, our senior directors
-              are here to advise you.
-            </p>
+            {/* <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+              Whether you need technical consultation or project support, we're 
+              just a message away. Expect a response within 24 business hours.
+            </p> */}
 
-            {/* Contacts details list */}
+            {/* Contact details list */}
             <div className="flex flex-col gap-6">
               {/* Address */}
               <div className="flex gap-4">
@@ -107,32 +132,37 @@ export default function Contact() {
                     Official Emails
                   </span>
                   <div className="flex flex-col gap-0.5 mt-1">
-                    <a
-                      href="mailto:amithcivilengineering@gmail.com"
-                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
-                    >
+                    <a href="mailto:amithcivilengineering@gmail.com" className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all">
                       Primary: amithcivilengineering@gmail.com
                     </a>
-                    <a
-                      href="mailto:sales@amith.in.net"
-                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
-                    >
+                    <a href="mailto:sales@amith.in.net" className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all">
                       Sales: sales@amith.in.net
                     </a>
-                    <a
-                      href="mailto:admin@amith.in.net"
-                      className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
-                    >
+                    <a href="mailto:admin@amith.in.net" className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all">
                       Admin: admin@amith.in.net
                     </a>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Embedded map */}
+            <div className="rounded-xl overflow-hidden h-[200px] sm:h-[240px] lg:h-[260px] w-full border border-slate-200 dark:border-darkborder">
+              <iframe
+                src="https://www.google.com/maps?q=No.35/F3,+Sai+Krupa+Apartment,+Ramagirinagar,+Taramani+Link+Road,+Velachery,+Chennai+600042&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="AMITH Civil & Allied Engineering Services — Office Location"
+              />
+            </div>
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="col-span-12 lg:col-span-7">
+          <div className="w-full lg:w-[55%] flex items-center">
             <div className="bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-8 lg:p-10 shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
                 Request a Consultation
@@ -140,12 +170,7 @@ export default function Contact() {
 
               {submitSuccess ? (
                 <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 rounded-2xl p-6 text-center">
-                  <Icon
-                    icon="solar:check-circle-bold"
-                    width="48"
-                    height="48"
-                    className="mx-auto mb-4 text-emerald-500"
-                  />
+                  <Icon icon="solar:check-circle-bold" width="48" height="48" className="mx-auto mb-4 text-emerald-500" />
                   <h4 className="text-lg font-bold mb-2">Message Sent Successfully!</h4>
                   <p className="text-sm font-medium text-emerald-600/80">
                     Thank you. A senior engineering advisor from AMITH will reach out to
@@ -159,44 +184,37 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {/* Name */}
-                    <div className="flex flex-col gap-2">
-                      <label className="text-xs font-bold text-slate-500 uppercase">
-                        Full Name
-                      </label>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+
+                  {/* Row 1: Name + Phone */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col gap-2 w-full">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Full Name</label>
                       <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="John Doe"
                         required
-                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder"
+                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full"
                       />
                     </div>
-
-                    {/* Phone */}
-                    <div className="flex flex-col gap-2">
-                      <label className="text-xs font-bold text-slate-500 uppercase">
-                        Phone Number
-                      </label>
+                    <div className="flex flex-col gap-2 w-full">
+                      <label className="text-xs font-bold text-slate-500 uppercase">Phone Number</label>
                       <input
                         type="tel"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 XXXXX XXXXX"
                         required
-                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder"
+                        className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full"
                       />
                     </div>
                   </div>
 
                   {/* Email */}
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
-                      Email Address
-                    </label>
+                    <label className="text-xs font-bold text-slate-500 uppercase">Email Address</label>
                     <input
                       type="email"
                       value={email}
@@ -207,19 +225,24 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Message */}
+                  {/* ✅ Auto-grow Message Textarea */}
                   <div className="flex flex-col gap-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
-                      Message / Project Details
-                    </label>
+                    <label className="text-xs font-bold text-slate-500 uppercase">Message / Project Details</label>
                     <textarea
-                      rows={5}
+                      ref={textareaRef}
                       value={message}
-                      onChange={(e) => setMessage(e.target.value)}
+                      onChange={handleTextareaChange}
                       placeholder="Describe your structural testing or auditing requirement..."
                       required
-                      className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder block w-full outline-hidden"
-                    ></textarea>
+                      rows={4}
+                      className="text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full outline-none resize-none overflow-hidden min-h-[120px]"
+                    />
+                  </div>
+
+                  {/* ✅ Trust Line */}
+                  <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                    <Icon icon="solar:shield-check-linear" width="16" height="16" className="text-emerald-500 shrink-0" />
+                    We typically respond within 24 hours. Your information is kept confidential.
                   </div>
 
                   {errorMsg && (
@@ -228,7 +251,7 @@ export default function Contact() {
                     </p>
                   )}
 
-                  {/* Submit button */}
+                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -243,6 +266,41 @@ export default function Contact() {
                       "Send Message"
                     )}
                   </button>
+
+                  {/* ✅ Option B: Alternate contact quick links */}
+                  <div className="mt-2">
+                    <p className="text-xs text-slate-400 font-medium text-center mb-3">Or reach us directly via</p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      {/* WhatsApp */}
+                      <a
+                        href="https://wa.me/919940548833"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-darkborder hover:border-green-500 hover:bg-green-50 dark:hover:bg-green-950/20 transition-all duration-200 group no-underline"
+                      >
+                        <Icon icon="logos:whatsapp-icon" width="20" height="20" />
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 group-hover:text-green-600">WhatsApp</span>
+                      </a>
+
+                      {/* Phone */}
+                      <a
+                        href="tel:+919940548833"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-darkborder hover:border-primary hover:bg-primary/5 transition-all duration-200 group no-underline"
+                      >
+                        <Icon icon="solar:phone-bold" width="20" height="20" className="text-primary" />
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 group-hover:text-primary">Call Us</span>
+                      </a>
+
+                      {/* Email */}
+                      <a
+                        href="mailto:amithcivilengineering@gmail.com"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-darkborder hover:border-primary hover:bg-primary/5 transition-all duration-200 group no-underline"
+                      >
+                        <Icon icon="solar:letter-bold" width="20" height="20" className="text-primary" />
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 group-hover:text-primary">Email Us</span>
+                      </a>
+                    </div>
+                  </div>
                 </form>
               )}
             </div>
