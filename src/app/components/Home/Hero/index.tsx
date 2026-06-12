@@ -63,25 +63,18 @@ const Hero: React.FC = () => {
         "flex flex-col",
         "transition-colors duration-300",
 
-        /* Left panel — off-white with blueprint grid (covers full width, lg=70%) */
+        /* Blueprint grid background covering the entire section */
         "after:content-[''] after:absolute after:inset-0 after:z-0",
-        "lg:after:w-[70%] after:w-full",
         "after:bg-slate-50 dark:after:bg-darklight",
         "after:bg-[linear-gradient(to_right,rgba(0,28,104,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,28,104,0.03)_1px,transparent_1px)]",
         "dark:after:bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)]",
         "after:bg-[size:40px_40px]",
-
-        /* Right panel — solid blue accent column — DESKTOP ONLY */
-        "before:content-[''] before:absolute before:right-0 before:z-[1]",
-        "before:hidden lg:before:block",
-        "lg:before:top-0 lg:before:h-full lg:before:w-[30%]",
-        "before:bg-primary",
       ].join(" ")}
     >
       {/* Inner wrapper */}
       <div className="relative z-10 w-full flex-1 flex">
-        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 w-full flex">
-          <div className="grid grid-cols-12 w-full items-center gap-y-6 lg:gap-x-12">
+        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 w-full flex items-stretch">
+          <div className="grid grid-cols-12 w-full items-stretch gap-y-6 lg:gap-x-12">
 
             {/* ───── LEFT COLUMN ───── */}
             <div className="lg:col-span-7 col-span-12 flex flex-col justify-center pt-24 sm:pt-28 lg:pt-20 pb-4 lg:pb-8">
@@ -144,12 +137,15 @@ const Hero: React.FC = () => {
             </div>
 
             {/* ───── RIGHT COLUMN — Image ───── */}
-            <div className="lg:col-span-5 col-span-12 flex justify-center items-center pb-6 sm:pb-8 lg:pt-20 lg:pb-8">
+            <div className="lg:col-span-5 col-span-12 flex justify-center items-center pb-6 sm:pb-8 lg:pt-20 lg:pb-8 relative">
+              {/* Blue accent column that bleeds to the right edge of the screen on desktop */}
+              <div className="hidden lg:block absolute inset-y-0 left-0 right-[-100vw] bg-primary z-0" />
+              
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.15 }}
-                className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-2xl bg-slate-50 group"
+                className="relative z-10 w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] lg:-translate-x-12 aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-2xl bg-slate-50 group"
               >
                 <Image
                   src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85&fm=webp"
