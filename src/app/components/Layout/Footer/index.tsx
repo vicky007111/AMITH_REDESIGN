@@ -25,8 +25,8 @@ const Footer: FC = () => {
 
   return (
     <footer className="bg-Dark-primary dark:bg-darklight py-17 pb-6 transition-colors duration-300">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-        <div className="grid grid-cols-12 sm:gap-1.875 gap-5">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-1.875">
           {/* Brand Column */}
           <div className="lg:col-span-4 col-span-12">
             <div className="md:pe-7.5">
@@ -145,8 +145,8 @@ const Footer: FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex md:flex-nowrap flex-wrap gap-6 items-center justify-between sm:pt-17 pt-10 border-t border-white/10 mt-10">
-          <p className="text-base font-semibold text-white/50 mb-0">
+        <div className="flex md:flex-nowrap flex-wrap gap-4 sm:gap-6 items-center justify-between sm:pt-17 pt-8 border-t border-white/10 mt-8 sm:mt-10">
+          <p className="text-xs sm:text-sm lg:text-base font-semibold text-white/50 mb-0">
             &copy; {new Date().getFullYear()} AMITH Civil & Allied Engineering Services Pvt Ltd. All Rights Reserved.
           </p>
           <div className="flex gap-4 items-center">
