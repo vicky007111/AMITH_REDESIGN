@@ -1,0 +1,243 @@
+export interface GalleryItem {
+  id: number;
+  title: string;
+  category: "Structural Audits" | "QA/QC & TPQM" | "Restoration & Rehabilitation";
+  imageUrl: string;
+  location: string;
+}
+
+export const galleryItems: GalleryItem[] = [
+  {
+    id: 1,
+    title: "Core Drilling - Amenity Building",
+    category: "Structural Audits",
+    imageUrl: "/gallery/core-drilling/core-drilling-concrete-column-amenity-building.jpg",
+    location: "Project Site",
+  },
+  {
+    id: 2,
+    title: "Core Drilling - Residential Column",
+    category: "Structural Audits",
+    imageUrl: "/gallery/core-drilling/core-drilling-residential-column-exterior.jpg",
+    location: "Project Site",
+  },
+  {
+    id: 3,
+    title: "Core Drilling Close-up",
+    category: "Structural Audits",
+    imageUrl: "/gallery/core-drilling/core-drilling-closeup-column.jpg",
+    location: "Project Site",
+  },
+  {
+    id: 4,
+    title: "Core Drilling - Interior Office Wall",
+    category: "Structural Audits",
+    imageUrl: "/gallery/core-drilling/core-drilling-interior-office-wall.jpg",
+    location: "Project Site",
+  },
+  {
+    id: 5,
+    title: "Core Drilling Operation in Progress",
+    category: "Structural Audits",
+    imageUrl: "/gallery/core-drilling/core-drilling-operation-in-progress.jpg",
+    location: "Project Site",
+  },
+  {
+    id: 6,
+    title: "Concrete Cube Compression Testing",
+    category: "QA/QC & TPQM",
+    imageUrl: "/gallery/lab-equipment/compression-testing-machine-concrete-cubes.jpg",
+    location: "Testing Laboratory",
+  },
+  {
+    id: 7,
+    title: "Concrete Cube Preparation",
+    category: "QA/QC & TPQM",
+    imageUrl: "/gallery/lab-equipment/concrete-cube-preparation-testing-lab.jpg",
+    location: "Testing Laboratory",
+  },
+  {
+    id: 8,
+    title: "Carbon Fibre Wrap Repair",
+    category: "Restoration & Rehabilitation",
+    imageUrl: "/gallery/structural-repair/carbon-fibre-wrap-repair-cracked-column.jpg",
+    location: "Repair Site",
+  },
+  {
+    id: 9,
+    title: "FRP Structural Strengthening",
+    category: "Restoration & Rehabilitation",
+    imageUrl: "/gallery/structural-repair/frp-strengthening-structural-member.jpg",
+    location: "Repair Site",
+  },
+  {
+  id: 10,
+  title: "Column Carbon Fibre Reinforcement",
+  category: "Restoration & Rehabilitation",
+  imageUrl: "/gallery/structural-repair/column-repair-carbon-fibre-reinforcement.jpg",
+  location: "Repair Site",
+},
+{
+  id: 11,
+  title: "Core Drilling Commercial Office Building",
+  category: "Restoration & Rehabilitation",
+  imageUrl: "/gallery/structural-repair/core-drilling-commercial-office-building.jpg",
+  location: "Repair Site",
+},
+{
+  id: 12,
+  title: "Structural Repair Work Facility",
+  category: "Restoration & Rehabilitation",
+  imageUrl: "/gallery/structural-repair/structural-repair-work-facility.jpg",
+  location: "Repair Site",
+},
+{
+  id: 13,
+  title: "Site Repair Strengthening Work",
+  category: "Restoration & Rehabilitation",
+  imageUrl: "/gallery/structural-repair/site-repair-strengthening-work.jpg",
+  location: "Repair Site",
+},
+{
+  id: 14,
+  title: "Remediation Work Commercial Premises",
+  category: "Restoration & Rehabilitation",
+  imageUrl: "/gallery/structural-repair/remediation-work-commercial-premises.jpg",
+  location: "Repair Site",
+},
+{
+  id: 15,
+  title: "Field Repair Building Site",
+  category: "Restoration & Rehabilitation",
+  imageUrl: "/gallery/structural-repair/field-repair-building-site.jpg",
+  location: "Repair Site",
+},
+{
+  id: 16,
+  title: "Structural Strengthening Site",
+  category: "Restoration & Rehabilitation",
+  imageUrl: "/gallery/structural-repair/structural-strengthening-site.jpg",
+  location: "Repair Site",
+},
+{
+  id: 17,
+  title: "UPV Testing Interior Column",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/upv-testing-interior-column.jpg",
+  location: "Testing Site",
+},
+{
+  id: 18,
+  title: "CP Voltmeter Rebar Corrosion Assessment",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/cp-voltmeter-rebar-corrosion-assessment.jpg",
+  location: "Testing Site",
+},
+{
+  id: 19,
+  title: "Half Cell Potential Testing Structure",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/half-cell-potential-testing-structure.jpg",
+  location: "Testing Site",
+},
+{
+  id: 20,
+  title: "Structural Testing With Instruments",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/structural-testing-with-instruments.jpg",
+  location: "Testing Site",
+},
+{
+  id: 21,
+  title: "Rooftop Half Cell Potential Test",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/rooftop-half-cell-potential-test-a5-column.jpg",
+  location: "Testing Site",
+},
+{
+  id: 22,
+  title: "Industrial Structure Rebar Corrosion Test",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/industrial-structure-rebar-corrosion-test.jpg",
+  location: "Industrial Site",
+},
+{
+  id: 23,
+  title: "CP Test Industrial Tank Wall",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/cp-test-industrial-tank-wall.jpg",
+  location: "Industrial Site",
+},
+{
+  id: 24,
+  title: "Half Cell Testing Exposed Structure",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/half-cell-testing-exposed-structure.jpg",
+  location: "Testing Site",
+},
+{
+  id: 25,
+  title: "Structural Assessment Deteriorated Wall",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/structural-assessment-deteriorated-wall.jpg",
+  location: "Testing Site",
+},
+{
+  id: 26,
+  title: "Corrosion Mapping Industrial Structure",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/corrosion-mapping-industrial-structure.jpg",
+  location: "Industrial Site",
+},
+{
+  id: 27,
+  title: "UPV Test Beam",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/upv-test-beam.jpg",
+  location: "Testing Site",
+},
+{
+  id: 28,
+  title: "Overhead Structural Testing Ceiling Slab",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/overhead-structural-testing-ceiling-slab.jpeg",
+  location: "Testing Site",
+},
+{
+  id: 29,
+  title: "Structural Test Industrial Ceiling",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/structural-test-industrial-ceiling.jpeg",
+  location: "Industrial Site",
+},
+{
+  id: 30,
+  title: "Concrete Slab Testing From Below",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/concrete-slab-testing-from-below.jpeg",
+  location: "Testing Site",
+},
+{
+  id: 31,
+  title: "Vertical Structural Inspection",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/vertical-structural-inspection.jpeg",
+  location: "Testing Site",
+},
+{
+  id: 32,
+  title: "Rebar Assessment Structural Wall",
+  category: "Structural Audits",
+  imageUrl: "/gallery/structural-testing/rebar-assessment-structural-wall.jpg",
+  location: "Testing Site",
+},
+];
+
+export const galleryFilters = [
+  "All",
+  "Structural Audits",
+  "QA/QC & TPQM",
+  "Restoration & Rehabilitation",
+] as const;
+
+export type GalleryFilter = (typeof galleryFilters)[number];
