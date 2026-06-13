@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
       className={[
         /* Height: auto on mobile, fill viewport on lg+ */
         "overflow-hidden relative",
-        "lg:h-screen",
+        "min-h-[85vh] lg:h-screen",
         "flex flex-col",
         "transition-colors duration-300",
 
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
           <div className="grid grid-cols-12 w-full items-stretch gap-y-6 lg:gap-x-12">
 
             {/* ───── LEFT COLUMN ───── */}
-            <div className="lg:col-span-7 col-span-12 flex flex-col justify-between pt-24 sm:pt-28 lg:pt-20 pb-6 lg:pb-2">
+            <div className="lg:col-span-7 col-span-12 flex flex-col justify-between pt-24 sm:pt-28 lg:pt-20 pb-12 sm:pb-16 lg:pb-2">
               {/* Main content group */}
               <motion.div
                 initial={{ y: 15, opacity: 0 }}
@@ -87,17 +87,17 @@ const Hero: React.FC = () => {
                 className="flex flex-col justify-center flex-1"
               >
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-blue-300 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-3 sm:mb-4 w-fit select-none">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-blue-300 font-bold text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-5 w-fit select-none">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary dark:bg-blue-400 animate-pulse" />
                   <span className="hidden sm:inline">Engineering Consultancy &amp; Structural Audits</span>
                   <span className="sm:hidden">Engineering Consultancy</span>
-                  <span className="text-[9px] text-slate-400 font-mono pl-1 border-l border-slate-300 dark:border-slate-700 hidden md:inline">
+                  <span className="text-[10px] text-slate-400 font-mono pl-1 border-l border-slate-300 dark:border-slate-700 hidden md:inline">
                     12.9815° N, 80.2223° E
                   </span>
                 </div>
 
                 {/* Heading */}
-                <h1 className="text-slate-900 dark:text-white mb-0 text-[1.75rem] sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+                <h1 className="text-slate-900 dark:text-white mb-0 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
                   Precision Engineering.
                   <br />
                   <span className="text-primary dark:text-blue-400">
@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
                 </h1>
 
                 {/* Subtext */}
-                <p className="text-sm sm:text-base md:text-lg font-medium text-slate-500 dark:text-slate-400 mt-3 sm:mt-4 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg font-medium text-slate-500 dark:text-slate-400 mt-4 sm:mt-5 leading-relaxed max-w-xl">
                   AMITH Civil &amp; Allied Engineering Services Pvt Ltd delivers
                   expert diagnostics, quality auditing (TPQM), and structural
                   retrofitting designs. In association with NABL-accredited
@@ -114,10 +114,10 @@ const Hero: React.FC = () => {
                 </p>
 
                 {/* CTA */}
-                <div className="mt-4 flex flex-wrap gap-4 items-center">
+                <div className="mt-5 sm:mt-6 flex flex-wrap gap-4 items-center">
                   <Link
                     href="/services"
-                    className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold bg-primary text-white hover:bg-primary/95 hover:scale-[1.02] active:scale-[0.98] duration-200 shadow-lg shadow-primary/20 transition-all text-center inline-block cursor-pointer"
+                    className="px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl text-base font-bold bg-primary text-white hover:bg-primary/95 hover:scale-[1.02] active:scale-[0.98] duration-200 shadow-lg shadow-primary/20 transition-all text-center inline-block cursor-pointer"
                   >
                     Explore Services
                   </Link>
@@ -129,14 +129,14 @@ const Hero: React.FC = () => {
                 initial={{ y: 10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex flex-wrap items-center gap-6 sm:gap-8 md:gap-12 pt-5 sm:pt-6 border-t border-slate-200 dark:border-slate-800"
+                className="flex flex-wrap items-center gap-8 sm:gap-10 md:gap-12 pt-6 sm:pt-8 border-t border-slate-200 dark:border-slate-800"
               >
                 {STATS.map((stat, i) => (
                   <div key={i} className="flex flex-col">
-                    <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white leading-none">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-none">
                       <CountUp end={stat.end} suffix={stat.suffix} />
                     </div>
-                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 mt-1 sm:mt-1.5 font-bold uppercase tracking-wider leading-none">
+                    <div className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1.5 sm:mt-2 font-bold uppercase tracking-wider leading-none">
                       {stat.label}
                     </div>
                   </div>
@@ -145,7 +145,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* ───── RIGHT COLUMN — Image ───── */}
-            <div className="lg:col-span-5 col-span-12 flex justify-center items-center pb-6 sm:pb-8 lg:pt-20 lg:pb-0 relative">
+            <div className="hidden lg:flex lg:col-span-5 justify-center items-center lg:pt-20 lg:pb-0 relative">
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
