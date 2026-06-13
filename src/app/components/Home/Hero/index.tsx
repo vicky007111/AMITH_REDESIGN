@@ -91,9 +91,6 @@ const Hero: React.FC = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-primary dark:bg-blue-400 animate-pulse" />
                   <span className="hidden sm:inline">Engineering Consultancy &amp; Structural Audits</span>
                   <span className="sm:hidden">Engineering Consultancy</span>
-                  <span className="text-[10px] text-slate-400 font-mono pl-1 border-l border-slate-300 dark:border-slate-700 hidden md:inline">
-                    12.9815° N, 80.2223° E
-                  </span>
                 </div>
 
                 {/* Heading */}
