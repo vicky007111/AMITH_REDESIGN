@@ -73,8 +73,8 @@ const Hero: React.FC = () => {
     >
       {/* Inner wrapper */}
       <div className="relative z-10 w-full flex-1 flex">
-        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 w-full flex items-stretch">
-          <div className="grid grid-cols-12 w-full items-stretch gap-y-6 lg:gap-x-12">
+        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 w-full flex items-stretch lg:h-full">
+          <div className="grid grid-cols-12 w-full items-stretch gap-y-6 lg:gap-x-12 lg:h-full">
 
             {/* ───── LEFT COLUMN ───── */}
             <div className="lg:col-span-7 col-span-12 flex flex-col justify-center pt-24 sm:pt-28 lg:pt-20 pb-4 lg:pb-8">
