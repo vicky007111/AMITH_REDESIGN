@@ -135,10 +135,9 @@
     @apply text-22 font-medium text-midnight_text dark:text-white/60;
   }
 
-}
-
-section {
-  @apply sm:py-16 py-8;
+  section {
+    @apply sm:py-16 py-8;
+  }
 }
 
 .blog-details p,

@@ -62,7 +62,7 @@ export default function PageHero({
         />
       </div>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-8 lg:px-16 relative z-10">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <div className={image ? "grid grid-cols-12 gap-8 items-center" : ""}>
           {/* Content side */}
           <div className={image ? "col-span-12 lg:col-span-7" : ""}>

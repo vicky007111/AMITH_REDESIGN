@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import AnimateOnScroll from "@/app/components/shared/AnimateOnScroll";
 
 interface GalleryItem {
   id: number;
@@ -88,61 +89,65 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="bg-slate-50 dark:bg-darklight py-16 transition-colors duration-300"
+      className="bg-slate-50 dark:bg-darklight py-12 sm:py-16 transition-colors duration-300"
     >
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
-        <div className="text-center mb-12">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
+        <AnimateOnScroll className="text-center mb-8 sm:mb-10 lg:mb-12">
           <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
             On-Site Evidence
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">
             Engineering Gallery
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-        </div>
+        </AnimateOnScroll>
 
         {/* Featured Projects Grid */}
-        <div className="grid grid-cols-12 gap-8">
-          {featuredItems.map((item) => (
-            <div
+        <div className="grid grid-cols-12 gap-4 sm:gap-6 lg:gap-8">
+          {featuredItems.map((item, index) => (
+            <AnimateOnScroll
               key={item.id}
-              className="col-span-12 md:col-span-6 lg:col-span-4 group flex flex-col bg-white dark:bg-darkmode rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-sm hover:shadow-card-shadow transition-all duration-300"
+              delay={index * 0.1}
+              className="col-span-12 md:col-span-6 lg:col-span-4 flex flex-col"
             >
-              {/* Image Frame */}
-              <div className="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-darklight">
-                <Image
-                  src={item.imageUrl}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <span className="absolute top-4 left-4 px-2.5 py-1 rounded bg-primary text-[10px] font-bold text-white uppercase tracking-wider">
-                  {item.category === "Restoration & Rehabilitation" ? "Restoration" : item.category === "QA/QC & TPQM" ? "QA/QC" : "Audit"}
-                </span>
-              </div>
+              <div className="bg-white dark:bg-darkmode rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-sm hover:shadow-card-shadow hover:-translate-y-1 transition-all duration-300 flex flex-col flex-grow group">
+                {/* Image Frame */}
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-darklight">
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-2.5 py-1 rounded bg-primary text-[10px] font-bold text-white uppercase tracking-wider">
+                    {item.category === "Restoration & Rehabilitation" ? "Restoration" : item.category === "QA/QC & TPQM" ? "QA/QC" : "Audit"}
+                  </span>
+                </div>
 
-              {/* Text Area */}
-              <div className="p-6 flex flex-col gap-2 flex-grow">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
-                  Location: {item.location}
-                </span>
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-200">
-                  {item.title}
-                </h3>
+                {/* Text Area */}
+                <div className="p-4 sm:p-6 flex flex-col gap-1.5 sm:gap-2 flex-grow">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
+                    Location: {item.location}
+                  </span>
+                  <h3 className="text-sm sm:text-base lg:text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-200">
+                    {item.title}
+                  </h3>
+                </div>
               </div>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
 
         {/* Explore Gallery Button */}
-        <div className="flex justify-center mt-12">
+        <AnimateOnScroll delay={0.3} className="flex justify-center mt-8 sm:mt-10 lg:mt-12">
           <Link
             href="/gallery"
-            className="px-8 py-3.5 rounded-xl text-base font-bold bg-white dark:bg-darkmode border border-slate-300 dark:border-darkborder text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-white hover:border-primary dark:hover:border-white transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+            className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold bg-white dark:bg-darkmode border border-slate-300 dark:border-darkborder text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-white hover:border-primary dark:hover:border-white transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
           >
             Explore Gallery
           </Link>
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
