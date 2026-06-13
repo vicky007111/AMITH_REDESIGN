@@ -5,7 +5,7 @@ import Services from "@/app/components/Home/Services";
 import Features from "@/app/components/Home/Features";
 import Projects from "@/app/components/Home/Projects";
 import Gallery from "@/app/components/Home/Gallery";
-import Contact from "@/app/components/Home/Contact";
+import ContactCTA from "@/app/components/Home/ContactCTA";
 
 export const metadata: Metadata = {
   title: "AMITH Civil & Allied Engineering Services | Structural Audit & QA/QC Consultancy",
@@ -23,7 +23,7 @@ export default function HomePage() {
       <Features showAboutButton />
       <Projects />
       <Gallery />
-      <Contact />
+      <ContactCTA />
     </main>
   );
 }

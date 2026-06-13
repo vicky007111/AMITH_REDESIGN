@@ -27,13 +27,11 @@ const CountUp = ({
       delay: 0.3,
     });
     return () => controls.stop();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [end, duration]);
 
   React.useEffect(() => {
     const unsubscribe = rounded.on("change", (v) => setDisplay(v));
     return () => unsubscribe();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -57,7 +55,7 @@ const Hero: React.FC = () => {
   return (
     <section
       className={[
-        /* Height: auto on mobile, full viewport on lg+ */
+        /* Height: auto on mobile, fill viewport on lg+ */
         "overflow-hidden relative",
         "lg:h-screen",
         "flex flex-col",
@@ -71,17 +69,22 @@ const Hero: React.FC = () => {
         "after:bg-[size:40px_40px]",
       ].join(" ")}
     >
+      {/* Blue accent panel — spans full section height on the right side */}
+      <div className="hidden lg:block absolute top-0 bottom-0 right-0 w-[34.00%] bg-primary z-[1]" />
+
       {/* Inner wrapper */}
       <div className="relative z-10 w-full flex-1 flex">
         <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 w-full flex items-stretch">
           <div className="grid grid-cols-12 w-full items-stretch gap-y-6 lg:gap-x-12">
 
             {/* ───── LEFT COLUMN ───── */}
-            <div className="lg:col-span-7 col-span-12 flex flex-col justify-center pt-24 sm:pt-28 lg:pt-20 pb-4 lg:pb-8">
+            <div className="lg:col-span-7 col-span-12 flex flex-col justify-between pt-24 sm:pt-28 lg:pt-20 pb-6 lg:pb-2">
+              {/* Main content group */}
               <motion.div
                 initial={{ y: 15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
+                className="flex flex-col justify-center flex-1"
               >
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-blue-300 font-bold text-[10px] sm:text-xs uppercase tracking-wider mb-3 sm:mb-4 w-fit select-none">
@@ -119,28 +122,31 @@ const Hero: React.FC = () => {
                     Explore Services
                   </Link>
                 </div>
+              </motion.div>
 
-                {/* Animated Stats Row */}
-                <div className="flex flex-wrap items-center gap-6 sm:gap-8 md:gap-12 mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-slate-200 dark:border-slate-800">
-                  {STATS.map((stat, i) => (
-                    <div key={i} className="flex flex-col">
-                      <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white leading-none">
-                        <CountUp end={stat.end} suffix={stat.suffix} />
-                      </div>
-                      <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 mt-1 sm:mt-1.5 font-bold uppercase tracking-wider leading-none">
-                        {stat.label}
-                      </div>
+              {/* Stats Row — pinned to the bottom of the left column */}
+              <motion.div
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex flex-wrap items-center gap-6 sm:gap-8 md:gap-12 pt-5 sm:pt-6 border-t border-slate-200 dark:border-slate-800"
+              >
+                {STATS.map((stat, i) => (
+                  <div key={i} className="flex flex-col">
+                    <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white leading-none">
+                      <CountUp end={stat.end} suffix={stat.suffix} />
                     </div>
-                  ))}
-                </div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 mt-1 sm:mt-1.5 font-bold uppercase tracking-wider leading-none">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
               </motion.div>
             </div>
 
             {/* ───── RIGHT COLUMN — Image ───── */}
-            <div className="lg:col-span-5 col-span-12 flex justify-center items-center pb-6 sm:pb-8 lg:pt-20 lg:pb-8 relative">
-              {/* Blue accent column that bleeds to the right edge of the screen on desktop */}
-              <div className="hidden lg:block absolute inset-y-0 left-0 right-[-100vw] bg-primary z-0" />
-              
+            <div className="lg:col-span-5 col-span-12 flex justify-center items-center pb-6 sm:pb-8 lg:pt-20 lg:pb-0 relative">
+
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
