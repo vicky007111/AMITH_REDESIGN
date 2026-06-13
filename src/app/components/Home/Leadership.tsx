@@ -104,10 +104,10 @@ export default function Leadership() {
   return (
     <section
       id="leadership"
-      className="bg-slate-50 dark:bg-darklight py-20 transition-colors duration-300"
+      className="bg-slate-50 dark:bg-darklight transition-colors duration-300"
     >
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
-        <div className="text-center mb-16">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="text-center mb-10 sm:mb-14 lg:mb-16">
           <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
             Elite Leadership Team
           </p>
@@ -121,7 +121,7 @@ export default function Leadership() {
         </div>
 
         {/* Profiles Grid */}
-        <div className="grid grid-cols-12 gap-8">
+        <div className="grid grid-cols-12 gap-6 sm:gap-8">
           {directors.map((director, index) => (
             <div
               key={director.name}

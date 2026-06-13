@@ -25,7 +25,7 @@ const Footer: FC = () => {
 
   return (
     <footer className="bg-Dark-primary dark:bg-darklight py-17 pb-6 transition-colors duration-300">
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-1.875">
           {/* Brand Column */}
           <div className="lg:col-span-4 col-span-12">

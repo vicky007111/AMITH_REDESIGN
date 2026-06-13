@@ -50,7 +50,7 @@ const ServiceDetail = () => {
 
             {/* Section A — Service Overview */}
             <section className="bg-white dark:bg-darkmode py-20 transition-colors duration-300">
-                <div className="container mx-auto max-w-7xl px-6 md:px-12">
+                <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
                     <div className="grid lg:grid-cols-2 items-start gap-10 lg:gap-16">
                         {/* Image */}
                         <div className="w-full">
@@ -85,7 +85,7 @@ const ServiceDetail = () => {
 
             {/* Section B — Capabilities */}
             <section className="bg-slate-50 dark:bg-darklight py-20 border-y border-slate-100 dark:border-darkborder transition-colors duration-300">
-                <div className="container mx-auto max-w-7xl px-6 md:px-12">
+                <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
                     <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
                         Capabilities
                     </p>

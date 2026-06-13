@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
       className={[
         /* Height: auto on mobile, fill viewport on lg+ */
         "overflow-hidden relative",
-        "min-h-[85vh] lg:h-screen",
+        "min-h-[80svh] lg:h-screen",
         "flex flex-col",
         "transition-colors duration-300",
 
@@ -74,11 +74,11 @@ const Hero: React.FC = () => {
 
       {/* Inner wrapper */}
       <div className="relative z-10 w-full flex-1 flex">
-        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 w-full flex items-stretch">
+        <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12 w-full flex items-stretch">
           <div className="grid grid-cols-12 w-full items-stretch gap-y-6 lg:gap-x-12">
 
             {/* ───── LEFT COLUMN ───── */}
-            <div className="lg:col-span-7 col-span-12 flex flex-col justify-between pt-24 sm:pt-28 lg:pt-20 pb-12 sm:pb-16 lg:pb-2">
+            <div className="lg:col-span-7 col-span-12 flex flex-col justify-between pt-24 sm:pt-28 lg:pt-20 pb-12 sm:pb-16 lg:pb-2 xl:pb-4 2xl:pb-8">
               {/* Main content group */}
               <motion.div
                 initial={{ y: 15, opacity: 0 }}
