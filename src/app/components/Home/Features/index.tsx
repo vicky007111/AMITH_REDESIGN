@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@iconify/react";
 import AnimateOnScroll from "@/app/components/shared/AnimateOnScroll";
 
@@ -18,7 +19,11 @@ const FEATURES = [
   },
 ];
 
-const Features = () => {
+interface FeaturesProps {
+  showAboutButton?: boolean;
+}
+
+const Features = ({ showAboutButton = false }: FeaturesProps) => {
   return (
     <section id="about" className="bg-grey dark:bg-darklight overflow-x-hidden py-12 sm:py-16 lg:py-20 transition-colors duration-300">
       <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
@@ -74,6 +79,17 @@ const Features = () => {
                 </AnimateOnScroll>
               ))}
             </ul>
+
+            {showAboutButton && (
+              <AnimateOnScroll delay={0.5} className="mt-8">
+                <Link
+                  href="/about"
+                  className="px-6 py-3 rounded-xl text-sm sm:text-base font-bold bg-primary text-white hover:bg-primary/95 hover:scale-[1.02] active:scale-[0.98] duration-200 shadow-lg shadow-primary/20 transition-all text-center inline-block cursor-pointer"
+                >
+                  More About Us
+                </Link>
+              </AnimateOnScroll>
+            )}
           </div>
         </div>
       </div>

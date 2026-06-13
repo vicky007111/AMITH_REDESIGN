@@ -5,7 +5,6 @@ import Services from "@/app/components/Home/Services";
 import Features from "@/app/components/Home/Features";
 import Projects from "@/app/components/Home/Projects";
 import Gallery from "@/app/components/Home/Gallery";
-import VisionMission from "@/app/components/Home/VisionMission";
 import Contact from "@/app/components/Home/Contact";
 
 export const metadata: Metadata = {
@@ -21,10 +20,9 @@ export default function HomePage() {
       {/* Preview: 3 services, with "All Services" link */}
       <Services limit={3} preview />
       {/* Features = WhyChooseUs component */}
-      <Features />
+      <Features showAboutButton />
       <Projects />
       <Gallery />
-      <VisionMission />
       <Contact />
     </main>
   );
