@@ -21,7 +21,7 @@ export default function ContactPage() {
       <PageHero
         label="Contact Us"
         title="Let's Discuss Your Infrastructure Project"
-        subtitle="Whether you need a structural stability certificate, forensic NDT investigations, or stage-by-stage quality monitoring, our senior directors are here to advise you. Reach out — we respond within 24 business hours."
+        subtitle="Whether you need technical consultation or project support, we're just a message away. Expect a response within 24 business hours."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Contact Us" },

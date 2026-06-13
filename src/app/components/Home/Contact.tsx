@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useRef } from "react";
 import { Icon } from "@iconify/react";
 import AnimateOnScroll from "@/app/components/shared/AnimateOnScroll";
 
@@ -13,12 +13,19 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // ✅ Auto-grow textarea
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+    e.target.style.height = "auto";
+    e.target.style.height = e.target.scrollHeight + "px";
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
 
-    // Simple validation
     if (!name || !phone || !email || !message) {
       setErrorMsg("Please fill out all fields.");
       return;
@@ -26,15 +33,34 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setName("");
-      setPhone("");
-      setEmail("");
-      setMessage("");
-    }, 1500);
+    fetch("https://formsubmit.co/ajax/amithcivilengineering@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        Name: name,
+        Phone: phone,
+        Email: email,
+        Message: message,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setIsSubmitting(false);
+        if (data.success) {
+          setSubmitSuccess(true);
+          setName("");
+          setPhone("");
+          setEmail("");
+          setMessage("");
+          if (textareaRef.current) textareaRef.current.style.height = "auto";
+        } else {
+          setErrorMsg("Submission failed. Please try again.");
+        }
+      })
+      .catch(() => {
+        setIsSubmitting(false);
+        setErrorMsg("Something went wrong. Please call us directly.");
+      });
   };
 
   return (
@@ -116,19 +142,33 @@ export default function Contact() {
                     </a>
                     <a
                       href="mailto:sales@amith.in.net"
-                      className="text-[11px] sm:text-xs lg:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
+                      className="text-[11px] sm:text-xs lg:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all"
                     >
                       Sales: sales@amith.in.net
                     </a>
                     <a
                       href="mailto:admin@amith.in.net"
-                      className="text-[11px] sm:text-xs lg:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors"
+                      className="text-[11px] sm:text-xs lg:text-sm text-slate-700 dark:text-slate-300 font-bold hover:text-primary transition-colors break-all"
                     >
                       Admin: admin@amith.in.net
                     </a>
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Embedded map */}
+            <div className="rounded-xl overflow-hidden h-[200px] sm:h-[240px] lg:h-[260px] w-full border border-slate-200 dark:border-darkborder">
+              <iframe
+                src="https://www.google.com/maps?q=No.35/F3,+Sai+Krupa+Apartment,+Ramagirinagar,+Taramani+Link+Road,+Velachery,+Chennai+600042&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="AMITH Civil & Allied Engineering Services — Office Location"
+              />
             </div>
           </AnimateOnScroll>
 
@@ -173,6 +213,7 @@ export default function Contact() {
                         onChange={(e) => setName(e.target.value)}
                         placeholder="John Doe"
                         required
+                        className="text-sm sm:text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full"
                       />
                     </div>
 
@@ -187,6 +228,7 @@ export default function Contact() {
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 XXXXX XXXXX"
                         required
+                        className="text-sm sm:text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full"
                       />
                     </div>
                   </div>
@@ -202,6 +244,7 @@ export default function Contact() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="john@example.com"
                       required
+                      className="text-sm sm:text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full"
                     />
                   </div>
 
@@ -211,13 +254,20 @@ export default function Contact() {
                       Message / Project Details
                     </label>
                     <textarea
-                      rows={4}
+                      ref={textareaRef}
                       value={message}
-                      onChange={(e) => setMessage(e.target.value)}
+                      onChange={handleTextareaChange}
                       placeholder="Describe your structural testing or auditing requirement..."
                       required
-                      className="text-sm sm:text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder block w-full outline-hidden"
-                    ></textarea>
+                      rows={4}
+                      className="text-sm sm:text-base font-medium py-3 px-4 rounded-lg bg-slate-50 dark:bg-darklight border border-slate-200 dark:border-darkborder w-full outline-hidden resize-none overflow-hidden min-h-[120px]"
+                    />
+                  </div>
+
+                  {/* Trust Line */}
+                  <div className="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                    <Icon icon="solar:shield-check-linear" width="16" height="16" className="text-emerald-500 shrink-0" />
+                    We typically respond within 24 hours. Your information is kept confidential.
                   </div>
 
                   {errorMsg && (
@@ -226,7 +276,7 @@ export default function Contact() {
                     </p>
                   )}
 
-                  {/* Submit button */}
+                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -241,6 +291,41 @@ export default function Contact() {
                       "Send Message"
                     )}
                   </button>
+
+                  {/* Option B: Alternate contact quick links */}
+                  <div className="mt-2">
+                    <p className="text-xs text-slate-400 font-medium text-center mb-3">Or reach us directly via</p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      {/* WhatsApp */}
+                      <a
+                        href="https://wa.me/919940548833"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-darkborder hover:border-green-500 hover:bg-green-50 dark:hover:bg-green-950/20 transition-all duration-200 group no-underline"
+                      >
+                        <Icon icon="logos:whatsapp-icon" width="20" height="20" />
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 group-hover:text-green-600">WhatsApp</span>
+                      </a>
+
+                      {/* Phone */}
+                      <a
+                        href="tel:+919940548833"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-darkborder hover:border-primary hover:bg-primary/5 transition-all duration-200 group no-underline"
+                      >
+                        <Icon icon="solar:phone-bold" width="20" height="20" className="text-primary" />
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 group-hover:text-primary">Call Us</span>
+                      </a>
+
+                      {/* Email */}
+                      <a
+                        href="mailto:amithcivilengineering@gmail.com"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 dark:border-darkborder hover:border-primary hover:bg-primary/5 transition-all duration-200 group no-underline"
+                      >
+                        <Icon icon="solar:letter-bold" width="20" height="20" className="text-primary" />
+                        <span className="text-sm font-bold text-slate-600 dark:text-slate-300 group-hover:text-primary">Email Us</span>
+                      </a>
+                    </div>
+                  </div>
                 </form>
               )}
             </div>
