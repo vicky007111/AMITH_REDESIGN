@@ -43,7 +43,7 @@ const Services = ({ limit, preview = false }: ServicesProps) => {
       id="services"
       className="dark:bg-darkmode bg-[url('/images/plan/price-plan-background-icons.svg')] bg-cover bg-center bg-no-repeat overflow-hidden"
     >
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Section heading — scroll-reveal */}
         <AnimateOnScroll className="mb-8 lg:mb-17">
           <p className="text-black/50 dark:text-white/50 text-base sm:text-lg lg:text-start text-center">

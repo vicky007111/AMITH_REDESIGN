@@ -24,7 +24,7 @@ export default function CredibilitySection() {
 
   return (
     <section className="bg-grey dark:bg-darklight py-20 border-y border-slate-100 dark:border-darkborder transition-colors duration-300">
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="grid grid-cols-12 gap-8 xl:gap-16 items-center">
           {/* Left Column: Text Content */}
           <div className="col-span-12 lg:col-span-6 flex flex-col gap-6">

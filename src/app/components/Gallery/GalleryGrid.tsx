@@ -25,7 +25,7 @@ export default function GalleryGrid() {
       className="bg-white dark:bg-darkmode py-20 transition-colors duration-300"
       aria-label="Project gallery"
     >
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Filter tabs */}
         <div
           className="flex flex-wrap justify-center gap-2 mb-12"

@@ -32,6 +32,7 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
   --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1920px;
 
   --text-22: 1.375rem;
   --text-22--line-height: 2rem;
@@ -136,7 +137,7 @@
   }
 
   section {
-    @apply sm:py-16 py-8;
+    @apply py-10 sm:py-14 lg:py-20 2xl:py-24;
   }
 }
 

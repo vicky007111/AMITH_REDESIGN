@@ -6,12 +6,12 @@ import AnimateOnScroll from "@/app/components/shared/AnimateOnScroll";
 
 export default function ContactCTA() {
   return (
-    <section id="contact-cta" className="bg-white dark:bg-darkmode transition-colors duration-300 py-16 sm:py-24 relative overflow-hidden">
+    <section id="contact-cta" className="bg-white dark:bg-darkmode transition-colors duration-300 relative overflow-hidden">
       {/* Decorative background shapes */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* Left Column: Expanded overview and details */}

@@ -34,7 +34,7 @@ export default function ServicesCta() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" />
 
-      <div className="container mx-auto max-w-7xl px-6 md:px-12 relative z-10">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-blue font-bold text-sm uppercase tracking-wider mb-3">
             Engage Our Expertise

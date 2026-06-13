@@ -39,7 +39,7 @@ export default function PageHero({
   return (
     <section
       id="page-hero"
-      className="relative overflow-hidden pt-28! md:pt-32! lg:pt-36! pb-20 bg-gradient-to-br from-darkmode via-[#001243] to-[#001c68] transition-colors duration-300"
+      className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 bg-gradient-to-br from-darkmode via-[#001243] to-[#001c68] transition-colors duration-300"
       aria-label={label ? `${label} page header` : "Page header"}
     >
       {/* Decorative geometric shapes */}
@@ -62,7 +62,7 @@ export default function PageHero({
         />
       </div>
 
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <div className={image ? "grid grid-cols-12 gap-8 items-center" : ""}>
           {/* Content side */}
           <div className={image ? "col-span-12 lg:col-span-7" : ""}>

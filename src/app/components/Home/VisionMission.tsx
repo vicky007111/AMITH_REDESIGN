@@ -24,7 +24,7 @@ export default function VisionMission() {
 
   return (
     <section className="bg-white dark:bg-darkmode py-12 sm:py-16 lg:py-20 transition-colors duration-300">
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="grid grid-cols-12 gap-5 sm:gap-6 lg:gap-12 items-stretch">
           {/* Vision Card - Left Column */}
           <AnimateOnScroll className="col-span-12 lg:col-span-6 flex">
