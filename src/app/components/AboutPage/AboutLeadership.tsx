@@ -85,6 +85,29 @@ const directors: Director[] = [
 ];
 
 export default function AboutLeadership() {
+  const [activeDirector, setActiveDirector] = useState<Director | null>(null);
+
+  useEffect(() => {
+    if (activeDirector) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeDirector]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveDirector(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <section
       id="leadership"
@@ -110,20 +133,93 @@ export default function AboutLeadership() {
           </div>
         </div>
 
-        {/* Horizontal Listing Rows - Two-Tier Infographic Layout */}
-        <div className="flex flex-col gap-8 max-w-7xl mx-auto">
+        {/* Compact Listing Rows - Photo Left, Content Right */}
+        <div className="flex flex-col gap-6 max-w-5xl mx-auto">
           {directors.map((director) => (
             <div
               key={director.name}
-              className="w-full bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-6 sm:p-8 lg:p-10 hover:shadow-card-shadow hover:-translate-y-0.5 transition-all duration-300"
+              className="w-full bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-6 sm:p-8 hover:shadow-card-shadow hover:-translate-y-0.5 transition-all duration-300"
             >
-              <div className="flex flex-col gap-6">
-                
-                {/* Tier 1: Profile & Bio (100% width on Desktop) */}
-                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start pb-6 border-b border-slate-100 dark:border-darkborder/50">
-                  {/* Left Column: Avatar */}
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
+                {/* Left Column: Avatar (Photo) */}
+                <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-cream dark:bg-primary/10 flex items-center justify-center text-primary font-bold text-3xl lg:text-4xl border-2 border-primary/20 shrink-0 relative select-none shadow-sm">
+                  {director.avatarInitials}
+                  <div className="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white border-2 border-white dark:border-darkmode shadow-md">
+                    <Icon
+                      icon="solar:verified-check-bold"
+                      width="16"
+                      height="16"
+                    />
+                  </div>
+                </div>
+
+                {/* Right Column: Profile Summary & Button */}
+                <div className="flex-1 text-center md:text-left space-y-3 w-full">
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 justify-center md:justify-start">
+                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
+                      {director.name}
+                    </h3>
+                    <span className="inline-block self-center text-xs font-bold text-primary bg-primary/5 dark:bg-primary/10 border border-primary/10 px-3 py-1 rounded-full whitespace-nowrap">
+                      {director.role}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-1 text-xs font-semibold text-slate-400">
+                    <span className="italic">{director.highlight}</span>
+                    <span className="hidden md:inline text-slate-300 dark:text-darkborder">•</span>
+                    <span className="uppercase tracking-wider">
+                      Experience: <span className="text-slate-700 dark:text-slate-200 font-bold">{director.experience}</span>
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                    {director.bio}
+                  </p>
+
+                  <div className="pt-2 flex justify-center md:justify-start">
+                    <button
+                      onClick={() => setActiveDirector(director)}
+                      className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-primary/5 hover:bg-primary text-primary hover:text-white transition-all duration-300 border border-primary/10 hover:border-primary flex items-center gap-2 group cursor-pointer shadow-sm hover:shadow-md"
+                    >
+                      <span>View Full Profile &amp; Vetting History</span>
+                      <Icon
+                        icon="solar:arrow-right-linear"
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                        width="16"
+                        height="16"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Credentials & Projects Modal Popup Overlay */}
+        {activeDirector && (
+          <div 
+            className="fixed inset-0 bg-slate-900/65 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+            onClick={() => setActiveDirector(null)}
+          >
+            <div 
+              className="w-full max-w-4xl bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl relative my-8 animate-fade-in max-h-[90vh] overflow-y-auto flex flex-col gap-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setActiveDirector(null)}
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-xl bg-slate-100 dark:bg-darklight text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white flex items-center justify-center border border-slate-200/50 dark:border-darkborder/50 transition-colors duration-200 cursor-pointer"
+                aria-label="Close Credentials Modal"
+              >
+                <Icon icon="solar:close-circle-bold" width="24" height="24" />
+              </button>
+
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+                {/* Modal Left Column: Photo/Avatar (33% width on Desktop) */}
+                <div className="md:col-span-4 flex flex-col items-center text-center md:text-left gap-4 pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-slate-100 dark:border-darkborder/50 md:pr-6 lg:pr-8 w-full shrink-0">
                   <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-cream dark:bg-primary/10 flex items-center justify-center text-primary font-bold text-4xl border-2 border-primary/20 shrink-0 relative select-none shadow-sm">
-                    {director.avatarInitials}
+                    {activeDirector.avatarInitials}
                     <div className="absolute bottom-1 right-1 w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white border-2 border-white dark:border-darkmode shadow-md">
                       <Icon
                         icon="solar:verified-check-bold"
@@ -133,41 +229,43 @@ export default function AboutLeadership() {
                     </div>
                   </div>
 
-                  {/* Right Column: Profile details and bio paragraph */}
-                  <div className="flex-1 text-center md:text-left space-y-3 w-full">
-                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 justify-center md:justify-start">
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
-                        {director.name}
-                      </h3>
-                      <span className="inline-block self-center text-xs font-bold text-primary bg-primary/5 dark:bg-primary/10 border border-primary/10 px-3 py-1 rounded-full whitespace-nowrap">
-                        {director.role}
-                      </span>
-                    </div>
-
-                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-1 text-xs font-semibold text-slate-400">
-                      <span className="italic">{director.highlight}</span>
-                      <span className="hidden md:inline text-slate-300 dark:text-darkborder">•</span>
-                      <span className="uppercase tracking-wider">
-                        Experience: <span className="text-slate-700 dark:text-slate-200 font-bold">{director.experience}</span>
-                      </span>
-                    </div>
-
-                    <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed bg-slate-50/50 dark:bg-darklight/40 p-4 rounded-2xl border border-slate-100 dark:border-darkborder w-full">
-                      {director.bio}
+                  <div className="space-y-2 w-full">
+                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight">
+                      {activeDirector.name}
+                    </h3>
+                    <span className="inline-block text-xs font-bold text-primary bg-primary/5 dark:bg-primary/10 border border-primary/10 px-3 py-1 rounded-full">
+                      {activeDirector.role}
+                    </span>
+                    <p className="text-[11px] text-slate-400 font-semibold italic block">
+                      {activeDirector.highlight}
                     </p>
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider block pt-1">
+                      Experience: <span className="text-slate-700 dark:text-slate-200 font-bold">{activeDirector.experience}</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Tier 2: Split into 2 columns (Credentials & Projects) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                  {/* Left Column: Academic & Operational Credentials */}
-                  <div className="flex flex-col justify-start h-full bg-slate-50/50 dark:bg-darkmode/30 border border-slate-100 dark:border-darkborder/50 rounded-2xl p-5 sm:p-6">
-                    <h4 className="text-xs font-extrabold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-slate-200/50 dark:border-darkborder/50 pb-2">
+                {/* Modal Right Column: Full Details (67% width on Desktop) */}
+                <div className="md:col-span-8 flex flex-col gap-6 w-full">
+                  {/* Detailed Bio Section */}
+                  <div>
+                    <h4 className="text-xs font-extrabold uppercase text-slate-400 tracking-wider mb-2 flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-darkborder/50">
+                      <Icon icon="solar:user-bold" className="text-primary" width="16" height="16" />
+                      Detailed Profile
+                    </h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
+                      {activeDirector.bio}
+                    </p>
+                  </div>
+
+                  {/* Credentials Section */}
+                  <div className="bg-blue-50/10 dark:bg-blue-950/5 border border-blue-100/10 dark:border-blue-950/20 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
+                    <h4 className="text-xs font-extrabold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-blue-100/10 dark:border-blue-950/10 pb-2">
                       <Icon icon="solar:diploma-verified-bold" className="text-primary" width="16" height="16" />
                       Academic &amp; Operational Credentials
                     </h4>
                     <ul className="space-y-3">
-                      {director.credentials.map((cred, i) => (
+                      {activeDirector.credentials.map((cred, i) => (
                         <li key={i} className="flex gap-2.5 items-start text-xs text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
                           <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-1.5"></span>
                           <span>{cred}</span>
@@ -176,14 +274,14 @@ export default function AboutLeadership() {
                     </ul>
                   </div>
 
-                  {/* Right Column: Key Projects & Audits Vetted */}
-                  <div className="flex flex-col justify-start h-full bg-emerald-50/10 dark:bg-emerald-950/5 border border-emerald-100/10 dark:border-emerald-950/20 rounded-2xl p-5 sm:p-6">
+                  {/* Vetted Projects Section */}
+                  <div className="bg-emerald-50/10 dark:bg-emerald-950/5 border border-emerald-100/10 dark:border-emerald-950/20 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
                     <h4 className="text-xs font-extrabold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-emerald-100/10 dark:border-emerald-950/10 pb-2">
                       <Icon icon="solar:structure-bold" className="text-emerald-500" width="16" height="16" />
                       Key Projects &amp; Audits Vetted
                     </h4>
                     <ul className="space-y-3">
-                      {director.keyProjects.map((proj, i) => (
+                      {activeDirector.keyProjects.map((proj, i) => (
                         <li key={i} className="flex gap-2.5 items-start text-xs text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
                           <span>{proj}</span>
@@ -192,12 +290,10 @@ export default function AboutLeadership() {
                     </ul>
                   </div>
                 </div>
-
               </div>
             </div>
-          ))}
-        </div>
-
+          </div>
+        )}
       </div>
     </section>
   );
