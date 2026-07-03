@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import PageHero from "@/app/components/shared/PageHero";
-import Features from "@/app/components/Home/Features";
-import Leadership from "@/app/components/Home/Leadership";
-import VisionMission from "@/app/components/Home/VisionMission";
+import AboutFeatures from "@/app/components/AboutPage/AboutFeatures";
+import AboutLeadership from "@/app/components/AboutPage/AboutLeadership";
+import AboutVisionMission from "@/app/components/AboutPage/AboutVisionMission";
+
 
 export const metadata: Metadata = {
   title: "About Us | AMITH Civil & Allied Engineering Services",
@@ -29,15 +30,12 @@ export default function AboutPage() {
           { label: "About Us" },
         ]}
       />
-
-      {/* Why Choose Us section (Features component) */}
-      <Features />
-
-      {/* Leadership — board of directors with credential modals */}
-      <Leadership />
-
       {/* Vision & Mission statement cards */}
-      <VisionMission />
+      <AboutVisionMission />
+      {/* Why Choose Us section */}
+      <AboutFeatures />
+      {/* Leadership — board of directors horizontal list with credentials modals */}
+      <AboutLeadership />
     </main>
   );
 }
