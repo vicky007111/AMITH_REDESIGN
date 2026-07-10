@@ -51,8 +51,8 @@ export default function HeroBanner() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden flex flex-col justify-end pt-28 pb-8 sm:pb-10 lg:pb-12"
-      style={{ height: "80vh", minHeight: "560px", maxHeight: "750px" }}
+      className="relative w-full overflow-hidden flex flex-col justify-center pt-24 sm:pt-28 pb-10 sm:pb-12"
+      style={{ height: "70vh", minHeight: "440px", maxHeight: "680px" }}
       aria-label="Hero banner"
     >
       {/* ── Slideshow background images ── */}
@@ -121,22 +121,23 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5, ease: EASE }}
-          className="flex flex-wrap gap-4 items-center"
+          className="flex flex-wrap gap-3 sm:gap-4 items-center"
         >
+          {/* Explore Our Services */}
           <Link
             href="/services"
-            className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 cursor-pointer"
+            className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm overflow-hidden transition-all duration-300 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #001c68 0%, #0033a0 100%)",
               color: "#fff",
               boxShadow: "0 4px 20px rgba(0, 28, 104, 0.35)",
             }}
           >
-            <span className="relative z-10">Explore Our Services</span>
+            <span className="relative z-10">Explore Services</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -157,15 +158,60 @@ export default function HeroBanner() {
             />
           </Link>
 
+          {/* About Us */}
+          <Link
+            href="/about"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border border-white/30 hover:border-white/60 text-white backdrop-blur-sm hover:bg-white/10 transition-all duration-300 cursor-pointer"
+          >
+            About Us
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </Link>
+
+          {/* Gallery */}
+          <Link
+            href="/gallery"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border border-white/30 hover:border-white/60 text-white backdrop-blur-sm hover:bg-white/10 transition-all duration-300 cursor-pointer"
+          >
+            Gallery
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </Link>
+
+          {/* Contact Us */}
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-bold text-sm sm:text-base border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
           >
             Contact Us
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

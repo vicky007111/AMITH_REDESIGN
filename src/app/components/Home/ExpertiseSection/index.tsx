@@ -48,7 +48,7 @@ const SERVICES = [
     description:
       "Designing sustainable repair, strengthening and providing rehabilitation solutions that enhance structural integrity, extend service life and optimize lifecycle costs.",
     imagePath: "/images/services/service-4.jpg",
-    icon: "solar:tools-bold",
+    icon: "solar:settings-bold",
     imageAlt: "Concrete restoration and structural rehabilitation work",
   },
   {
