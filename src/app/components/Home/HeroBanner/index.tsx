@@ -14,22 +14,22 @@ const HERO_SLIDES = [
   {
     src: "/images/banner-candidates/hero-wide.jpg",
     alt: "AMITH engineer conducting a concrete core drilling inspection on a structural column",
-    position: "center 40%",
+    position: "center 25%",
   },
   {
     src: "/gallery/structural-testing/corrosion-mapping-industrial-structure.jpg",
     alt: "AMITH engineers performing corrosion mapping on an industrial structure",
-    position: "center 50%",
+    position: "center 25%",
   },
   {
     src: "/gallery/structural-repair/structural-strengthening-site.jpg",
     alt: "Engineers inspecting structural strengthening at an industrial facility",
-    position: "center 45%",
+    position: "center 15%",
   },
   {
     src: "/images/banner-candidates/image6.jpeg",
     alt: "Quality audit engineer with clipboard on construction site",
-    position: "center 30%",
+    position: "center 10%",
   },
 ] as const;
 
