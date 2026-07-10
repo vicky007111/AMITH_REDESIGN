@@ -63,7 +63,7 @@ const Header: React.FC = () => {
     >
       <div
         className={`container mx-auto max-w-6xl flex items-center justify-between xl:gap-15 gap-10 duration-300 px-4 sm:px-6 md:px-8 lg:px-12 ${
-          sticky ? "py-3" : "py-6"
+          sticky ? "py-1.5" : "py-3"
         }`}
       >
         <Logo />
