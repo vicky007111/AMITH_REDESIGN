@@ -7,23 +7,25 @@ import { motion } from "motion/react";
 import { EASE } from "@/app/components/Home/anim";
 
 // ---------------------------------------------------------------------------
-// SWAPPABLE CONSTANT — replace this single path when the client sends the
-// dedicated wide-format hero photo. The rest of the component requires no edits.
+// TODO: swap for client-provided hero photo
+// Replace this single path when the client sends their final wide-format
+// hero image. The rest of the component requires no edits.
 // ---------------------------------------------------------------------------
 const HERO_IMAGE_PATH = "/images/banner-candidates/hero-wide.jpg";
 
-// Per-image object-position to make the crop look intentional.
-const HERO_IMAGE_POSITION = "right center";
+// Per-image object-position — tweak if the replacement photo needs
+// a different crop anchor.
+const HERO_IMAGE_POSITION = "center 40%";
 
 export default function HeroBanner() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden flex flex-col justify-end"
-      style={{ minHeight: "calc(100vh - 72px)" }}
+      className="relative w-full overflow-hidden flex flex-col justify-end pt-28 pb-8 sm:pb-10 lg:pb-12"
+      style={{ height: "80vh", minHeight: "560px", maxHeight: "750px" }}
       aria-label="Hero banner"
     >
-      {/* ── Background image ── */}
+      {/* ── Full-bleed background image ── */}
       <div className="absolute inset-0 z-0">
         <Image
           src={HERO_IMAGE_PATH}
@@ -36,75 +38,126 @@ export default function HeroBanner() {
         />
       </div>
 
-      {/* ── Gradient overlay: dark on left for text readability, transparent on right ── */}
+      {/* ── Scrim: bottom-heavy gradient for text legibility ──
+           Desktop: transparent top → dark bottom-left.
+           Mobile: stronger overall scrim so text stays readable on any crop. */}
       <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          background:
-            "linear-gradient(to right, rgba(8, 23, 56, 0.85) 0%, rgba(8, 23, 56, 0.7) 40%, rgba(8, 23, 56, 0.3) 70%, transparent 100%)",
+          background: [
+            "linear-gradient(to top, rgba(0, 15, 48, 0.92) 0%, rgba(0, 15, 48, 0.75) 25%, rgba(0, 15, 48, 0.3) 50%, transparent 70%)",
+          ].join(", "),
         }}
       />
 
-      {/* ── Content ── */}
-      <div className="relative z-20 w-full">
-        <div className="container mx-auto max-w-7xl px-6 md:px-12 pb-10 sm:pb-12 lg:pb-14 pt-20 sm:pt-24 lg:pt-28">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 text-white font-semibold text-xs sm:text-sm uppercase tracking-wider mb-5 sm:mb-6 w-fit select-none"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-warning animate-pulse" />
-            Independent Engineering Consultancy
-          </motion.div>
-
-          {/* Headline — leads the load sequence */}
+      {/* ── Content container ── */}
+      <div className="relative z-20 container mx-auto max-w-7xl px-6 md:px-12">
+          {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
-            className="text-white font-extrabold leading-tight tracking-tight mb-4 sm:mb-5 max-w-4xl"
-            style={{ fontSize: "clamp(1.75rem, 5vw, 3.75rem)", lineHeight: 1.1 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+            className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl"
+            style={{
+              fontSize: "clamp(2rem, 5.5vw, 4rem)",
+              lineHeight: 1.08,
+            }}
           >
-            Engineering Assurance for{" "}
-            <span className="text-warning">Safer Infrastructure</span>
+            Engineering Assurance
+            <br />
+            for <span className="text-warning">Safer Infrastructure</span>
           </motion.h1>
 
-          {/* Subheadline — follows the headline ~150ms later */}
+          {/* Subheadline */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: EASE }}
-            className="text-white/85 font-medium leading-relaxed max-w-2xl mb-8 sm:mb-10"
-            style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)" }}
+            transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
+            className="text-white/90 font-medium leading-relaxed max-w-xl mb-8 sm:mb-10"
+            style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)" }}
           >
             Amith is an Independent Engineering Consultancy firm for Quality,
             Stability &amp; Asset Performance.
           </motion.p>
 
-          {/* CTA buttons */}
+          {/* CTA buttons — custom-styled, not generic components */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4, ease: EASE }}
-            className="flex flex-wrap gap-4 items-center"
+            transition={{ duration: 0.5, delay: 0.5, ease: EASE }}
+            className="flex flex-wrap gap-4 items-center mb-6"
           >
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base bg-primary text-white hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary/30 cursor-pointer"
+              className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 cursor-pointer"
+              style={{
+                background: "linear-gradient(135deg, #001c68 0%, #0033a0 100%)",
+                color: "#fff",
+                boxShadow: "0 4px 20px rgba(0, 28, 104, 0.35)",
+              }}
             >
-              Explore Our Services
+              <span className="relative z-10">Explore Our Services</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+              {/* Hover glow layer */}
+              <span
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #0033a0 0%, #0050d0 100%)",
+                }}
+              />
             </Link>
+
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base bg-white/15 backdrop-blur-sm border border-white/30 text-white hover:bg-white/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+              className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg font-bold text-sm sm:text-base border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
             >
               Contact Us
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform duration-300 group-hover:translate-x-0.5"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
             </Link>
           </motion.div>
+
+          {/* Secondary strap line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
+          >
+            <div className="flex items-center gap-3">
+              <span className="hidden sm:block w-10 h-px bg-warning/70" />
+              <p className="text-white/60 text-xs sm:text-sm font-medium tracking-wide uppercase">
+                Reliable Engineering · Trusted Decisions · Sustainable
+                Infrastructure
+              </p>
+            </div>
+          </motion.div>
         </div>
-      </div>
     </section>
   );
 }
