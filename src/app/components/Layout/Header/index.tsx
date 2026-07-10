@@ -7,11 +7,10 @@ import { headerData } from "./Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "./Navigation/HeaderLink";
 import MobileHeaderLink from "./Navigation/MobileHeaderLink";
-import { useTheme } from "next-themes";
-import { Icon } from "@iconify/react";
+
 
 const Header: React.FC = () => {
-  const { theme, setTheme } = useTheme();
+
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const pathname = usePathname();
@@ -57,7 +56,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 py-1 z-50 w-full bg-white dark:bg-darklight border-b border-slate-100 dark:border-darkborder transition-all duration-300 ${
+      className={`fixed top-0 py-1 z-50 w-full bg-white border-b border-slate-100 transition-all duration-300 ${
         sticky ? "shadow-md" : "shadow-sm"
       }`}
     >
@@ -73,24 +72,7 @@ const Header: React.FC = () => {
           ))}
         </ul>
         <div className="flex items-center gap-4">
-          <button
-            aria-label="Toggle theme"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex items-center justify-center text-primary hover:text-primary/80 dark:text-white bg-transparent rounded-full p-2 outline-none cursor-pointer transition-colors duration-200 hover:scale-105 active:scale-95"
-          >
-            <Icon
-              icon="solar:sun-2-bold"
-              width="22"
-              height="22"
-              className="hidden dark:block text-white"
-            />
-            <Icon
-              icon="solar:moon-bold"
-              width="22"
-              height="22"
-              className="dark:hidden block"
-            />
-          </button>
+
           
           <Link
             href="/contact"
@@ -101,7 +83,7 @@ const Header: React.FC = () => {
 
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
-            className="block xl:hidden p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-darklight transition-colors duration-200"
+            className="block xl:hidden p-2 rounded-lg hover:bg-slate-50 transition-colors duration-200"
             aria-label="Toggle mobile menu"
           >
             <span className="block w-6 h-0.5 bg-primary"></span>
@@ -115,16 +97,16 @@ const Header: React.FC = () => {
       )}
       <div
         ref={mobileMenuRef}
-        className={`xl:hidden fixed inset-y-0 right-0 h-screen w-full bg-white dark:bg-darklight shadow-lg transform transition-transform duration-300 max-w-xs overflow-y-auto ${
+        className={`xl:hidden fixed inset-y-0 right-0 h-screen w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs overflow-y-auto ${
           navbarOpen ? "translate-x-0" : "translate-x-full"
         } z-50`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-darkborder">
+        <div className="flex items-center justify-between p-4 border-b border-slate-100">
           <Logo />
           <button
             onClick={() => setNavbarOpen(false)}
             aria-label="Close mobile menu"
-            className="text-slate-500 dark:text-slate-400"
+            className="text-slate-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
