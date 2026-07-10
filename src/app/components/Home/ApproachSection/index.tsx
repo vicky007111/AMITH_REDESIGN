@@ -84,7 +84,7 @@ export default function ApproachSection() {
         </Reveal>
 
         {/* One reveal parent so the line draw and step reveals stay in sync */}
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: false, amount: 0.4 }}>
           {/* Desktop (lg+): horizontal stepper with a drawing connector line */}
           <div className="hidden lg:block relative">
             {/* Connector line spans the circle centres (10% → 90% of the row) */}
