@@ -133,7 +133,7 @@ export default function HeroBanner() {
               boxShadow: "0 4px 20px rgba(0, 28, 104, 0.35)",
             }}
           >
-            <span className="relative z-10">Explore Services</span>
+            <span className="relative z-10">Explore Our Services</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -156,50 +156,6 @@ export default function HeroBanner() {
                 background: "linear-gradient(135deg, #0033a0 0%, #0050d0 100%)",
               }}
             />
-          </Link>
-
-          {/* About Us */}
-          <Link
-            href="/about"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border border-white/30 hover:border-white/60 text-white backdrop-blur-sm hover:bg-white/10 transition-all duration-300 cursor-pointer"
-          >
-            About Us
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </Link>
-
-          {/* Gallery */}
-          <Link
-            href="/gallery"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border border-white/30 hover:border-white/60 text-white backdrop-blur-sm hover:bg-white/10 transition-all duration-300 cursor-pointer"
-          >
-            Gallery
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
           </Link>
 
           {/* Contact Us */}
