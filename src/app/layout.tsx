@@ -47,6 +47,7 @@ export default function RootLayout({
           attribute="class"
           enableSystem={false}
           defaultTheme="light"
+          forcedTheme="light"
         >
           <Header />
           {children}
