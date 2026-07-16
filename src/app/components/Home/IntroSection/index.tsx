@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { fadeUp, fadeScale, EASE } from "@/app/components/Home/anim";
+import { fadeUp, fadeScale, EASE } from "@/app/components/shared/anim";
 
 // Parent drives the reveal; children inherit the "show" label and stagger in.
 // `staggerChildren` sequences the paragraphs; the tagline (last child) gets a
@@ -15,9 +15,9 @@ export default function IntroSection() {
   return (
     <section
       id="intro"
-      className="bg-white dark:bg-darkmode transition-colors duration-300 py-10 sm:py-12 lg:py-14"
+      className="bg-white transition-colors duration-300 section-py"
     >
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
+      <div className="section-container">
         <motion.div
           className="max-w-4xl mx-auto"
           variants={containerVariants}
@@ -29,7 +29,7 @@ export default function IntroSection() {
           {/* Section label */}
           <motion.p
             variants={fadeUp}
-            className="text-primary font-bold text-sm uppercase tracking-wider mb-2"
+            className="kicker-text"
           >
             Who We Are
           </motion.p>
@@ -37,7 +37,7 @@ export default function IntroSection() {
           {/* Heading */}
           <motion.h2
             variants={fadeUp}
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight"
           >
             Trusted Engineering Partners for Infrastructure Owners
           </motion.h2>
@@ -45,7 +45,7 @@ export default function IntroSection() {
           {/* Paragraph 1 */}
           <motion.p
             variants={fadeUp}
-            className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed mb-4"
+            className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed mb-4"
           >
             We help owners, developers, industries, institutions and public
             agencies maximize the safety, durability and performance of their
@@ -56,7 +56,7 @@ export default function IntroSection() {
           {/* Paragraph 2 */}
           <motion.p
             variants={fadeUp}
-            className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium leading-relaxed mb-6"
+            className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed mb-6"
           >
             From quality audits during construction to structural stability
             evaluations &amp; condition assessment during the service period,
@@ -72,7 +72,7 @@ export default function IntroSection() {
             aria-label="Company tagline"
           >
             <p
-              className="font-extrabold text-primary dark:text-blue leading-snug tracking-tight"
+              className="font-extrabold text-primary leading-snug tracking-tight"
               style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", lineHeight: 1.35 }}
             >
               Reliable Engineering. Trusted Decisions.{" "}

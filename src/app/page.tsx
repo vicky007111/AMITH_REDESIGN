@@ -10,6 +10,7 @@ import IndustriesSection from "@/app/components/Home/IndustriesSection";
 import ApproachSection from "@/app/components/Home/ApproachSection";
 import ClosingCTA from "@/app/components/Home/ClosingCTA";
 import PromotersSection from "@/app/components/Home/PromotersSection";
+import GalleryPreview from "@/app/components/Home/GalleryPreview";
 
 export const metadata: Metadata = {
   title:
@@ -44,6 +45,9 @@ export default function HomePage() {
 
       {/* 8. Meet Our Promoters — 3-col card layout */}
       <PromotersSection />
+
+      {/* 9. Gallery preview — sample images linking to the full gallery */}
+      <GalleryPreview />
     </main>
   );
 }

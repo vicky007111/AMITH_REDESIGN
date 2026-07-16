@@ -1,32 +1,17 @@
-"use client"
-import React, { FC, useState, useEffect } from "react";
+import React, { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import Reveal from "@/app/components/shared/Reveal";
+import { servicesData } from "@/data/services";
 
 const Footer: FC = () => {
-  const [services, setServices] = useState<any[]>([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/api/service')
-        if (!res.ok) throw new Error('Failed to fetch')
-
-        const data = await res.json()
-        setServices(data.ServicesData || [])
-      } catch (error) {
-        console.error('Error fetching services:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
+  const services = servicesData;
 
   return (
-    <footer className="bg-Dark-primary dark:bg-darklight py-17 pb-6 transition-colors duration-300">
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
-        <div className="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-1.875">
+    <footer className="bg-Dark-primary py-17 pb-6 transition-colors duration-300">
+      <div className="section-container">
+        <Reveal amount={0.1} className="grid grid-cols-12 gap-6 sm:gap-8 lg:gap-1.875">
           {/* Brand Column */}
           <div className="lg:col-span-4 col-span-12">
             <div className="md:pe-7.5">
@@ -56,7 +41,7 @@ const Footer: FC = () => {
 
           {/* Services Dynamic List */}
           <div className="lg:col-span-3 sm:col-span-6 col-span-12">
-            <h4 className="text-lg text-white dark:text-white font-semibold mb-2.375 uppercase tracking-wider">
+            <h4 className="text-lg text-white font-semibold mb-2.375 uppercase tracking-wider">
               Our Services
             </h4>
             <ul>
@@ -75,7 +60,7 @@ const Footer: FC = () => {
 
           {/* Quick Links / Sitemap */}
           <div className="lg:col-span-2 sm:col-span-6 col-span-12">
-            <h4 className="text-lg text-white dark:text-white font-semibold mb-2.375 uppercase tracking-wider">
+            <h4 className="text-lg text-white font-semibold mb-2.375 uppercase tracking-wider">
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
@@ -124,7 +109,7 @@ const Footer: FC = () => {
 
           {/* Contact coordinates list */}
           <div className="lg:col-span-3 col-span-12">
-            <h4 className="text-lg text-white dark:text-white font-semibold sm:mb-2.375 mb-6 uppercase tracking-wider">
+            <h4 className="text-lg text-white font-semibold sm:mb-2.375 mb-6 uppercase tracking-wider">
               Official Channels
             </h4>
             <p className="text-base text-white/50 font-semibold mb-4 leading-relaxed">
@@ -142,7 +127,7 @@ const Footer: FC = () => {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Bottom Bar */}
         <div className="flex md:flex-nowrap flex-wrap gap-4 sm:gap-6 items-center justify-between sm:pt-17 pt-8 border-t border-white/10 mt-8 sm:mt-10">

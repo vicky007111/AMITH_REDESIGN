@@ -59,12 +59,12 @@ const UsedTech = () => {
   };
 
   return (
-    <section className="dark:bg-darkmode py-16">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-        <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+    <section className="section-py">
+      <div className="section-container">
+        <p className="kicker-text">
           Engineering Stack
         </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white lg:text-start text-center leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 lg:text-start text-center leading-tight">
           Tools, Software & <span className="text-primary">Compliance Standards</span>
         </h2>
         <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-10" aria-hidden="true" />
@@ -72,7 +72,7 @@ const UsedTech = () => {
           <Slider {...settings}>
             {technologies.map((item, index) => (
               <div key={index} className="px-3">
-                <div className="bg-grey dark:bg-darklight rounded-2xl p-6 flex flex-col items-center text-center gap-4 border border-slate-100 dark:border-darkborder shadow-sm h-48 justify-center">
+                <div className="bg-grey rounded-2xl p-6 flex flex-col items-center text-center gap-4 border border-slate-100 shadow-sm h-48 justify-center">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                     <Icon
                       icon={item.icon}
@@ -81,10 +81,10 @@ const UsedTech = () => {
                     />
                   </div>
                   <div>
-                    <h5 className="text-md font-bold text-slate-800 dark:text-white mb-1">
+                    <h5 className="text-md font-bold text-slate-800 mb-1">
                       {item.name}
                     </h5>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                    <p className="text-xs text-slate-500 font-medium">
                       {item.desc}
                     </p>
                   </div>

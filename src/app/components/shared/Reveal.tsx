@@ -12,6 +12,8 @@ type RevealProps = {
   variants?: Variants;
   /** Fraction of the element that must be visible to trigger (0–1). */
   amount?: number;
+  /** Forwarded to the variant's `show` function — use with `staggered*` variants for per-item delay. */
+  custom?: number;
 };
 
 /**
@@ -24,14 +26,18 @@ export default function Reveal({
   className,
   variants = fadeUp,
   amount,
+  custom,
 }: RevealProps) {
+  const viewport = amount != null ? { once: true, amount } : VIEWPORT;
+
   return (
     <motion.div
       className={className}
+      custom={custom}
       variants={variants}
       initial="hidden"
       whileInView="show"
-      viewport={amount != null ? { once: true, amount } : VIEWPORT}
+      viewport={viewport}
     >
       {children}
     </motion.div>

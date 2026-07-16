@@ -1,17 +1,27 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Layout/Header";
 import Footer from "@/app/components/Layout/Footer";
-import { ThemeProvider } from "next-themes";
 import ScrollToTop from "@/app/components/ScrollToTop";
 import NextTopLoader from "nextjs-toploader";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
+const SITE_URL = "https://amith.in.net";
+const SITE_TITLE = "AMITH Civil & Allied Engineering Services | Structural Audit & QA/QC Consultancy";
+const SITE_DESCRIPTION = "AMITH Civil & Allied Engineering Services Pvt Ltd is a premier civil engineering consultancy specializing in structural audits, TPQM, NDT testing, material testing, and restoration in Chennai.";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#001c68",
+};
+
 export const metadata: Metadata = {
-  title: "AMITH Civil & Allied Engineering Services | Structural Audit & QA/QC Consultancy",
-  description: "AMITH Civil & Allied Engineering Services Pvt Ltd is a premier civil engineering consultancy specializing in structural audits, TPQM, NDT testing, material testing, and restoration in Chennai.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   keywords: [
     "Structural Audit Consultants Chennai",
     "Quality Audit Services Chennai",
@@ -19,18 +29,35 @@ export const metadata: Metadata = {
     "NDT Testing Concrete",
     "Civil Engineering Consultancy Chennai",
     "Material Testing Laboratory Chennai",
-    "Concrete Mix Design",
+    "Condition Assessment Survey",
     "Building Distress Assessment",
     "Restoration and Rehabilitation of Concrete Structures"
   ],
   authors: [{ name: "AMITH Civil & Allied Engineering Services" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "AMITH Civil & Allied Engineering Services | Structural Audit & QA/QC Consultancy",
+    title: SITE_TITLE,
     description: "Expert engineering consultancy, NABL-associated material testing, and advanced structural diagnostics in Chennai.",
-    url: "https://amith.in.net",
+    url: SITE_URL,
     siteName: "AMITH Civil & Allied Engineering Services",
+    images: [
+      {
+        url: "/images/og/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AMITH Civil & Allied Engineering Services",
+      },
+    ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/images/og/og-image.png"],
   },
 };
 
@@ -40,20 +67,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={manrope.className} suppressHydrationWarning>
+    <html lang="en">
+      <body className={manrope.className}>
         <NextTopLoader color="#001C68" />
-        <ThemeProvider
-          attribute="class"
-          enableSystem={false}
-          defaultTheme="light"
-          forcedTheme="light"
-        >
-          <Header />
-          {children}
-          <Footer />
-          <ScrollToTop />
-        </ThemeProvider>
+        <Header />
+        {children}
+        <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

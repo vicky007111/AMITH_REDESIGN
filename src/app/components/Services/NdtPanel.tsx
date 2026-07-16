@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ndtTests } from "@/data/ndt";
 import Image from "next/image";
+import Reveal from "@/app/components/shared/Reveal";
 
 /**
  * NdtPanel — Interactive NDT diagnostic method explorer.
@@ -17,26 +18,26 @@ export default function NdtPanel() {
   return (
     <section
       id="ndt-methods"
-      className="bg-slate-50 dark:bg-darklight py-20 transition-colors duration-300"
+      className="bg-slate-50 section-py transition-colors duration-300"
       aria-label="NDT Diagnostic Methods"
     >
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="section-container">
         {/* Section header */}
-        <div className="text-center mb-14">
-          <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+        <Reveal className="text-center mb-14">
+          <p className="kicker-text">
             Non-Destructive Testing
           </p>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
             NDT Diagnostic Methods
           </h2>
-          <p className="text-base text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto mt-3">
+          <p className="text-base text-slate-500 font-medium max-w-2xl mx-auto mt-3">
             Select any test below to explore how each diagnostic method works
             and what structural anomalies it identifies.
           </p>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" aria-hidden="true" />
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-12 gap-8 items-start">
+        <Reveal amount={0.15} className="grid grid-cols-12 gap-8 items-start">
           {/* Left: Test selector tabs */}
           <div className="col-span-12 md:col-span-5 flex flex-col gap-3">
             {ndtTests.map((test, index) => (
@@ -47,7 +48,7 @@ export default function NdtPanel() {
                 className={`w-full text-left px-5 py-4 rounded-2xl border transition-all duration-200 cursor-pointer font-semibold text-sm leading-snug ${
                   selectedIndex === index
                     ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
-                    : "bg-white dark:bg-darkmode border-slate-200 dark:border-darkborder text-slate-600 dark:text-slate-400 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary"
+                    : "bg-white border-slate-200 text-slate-600 hover:border-primary hover:text-primary"
                 }`}
               >
                 <span className="flex items-center gap-3">
@@ -67,7 +68,7 @@ export default function NdtPanel() {
           <div className="col-span-12 md:col-span-7">
             <div
               key={selectedIndex}
-              className="bg-white dark:bg-darkmode border border-slate-200 dark:border-darkborder rounded-3xl p-8 lg:p-10 shadow-sm h-full"
+              className="bg-white border border-slate-200 rounded-3xl p-8 lg:p-10 shadow-sm h-full"
               id={`ndt-detail-${selectedIndex}`}
             >
               <div className="grid grid-cols-12 gap-8 items-center h-full">
@@ -77,7 +78,7 @@ export default function NdtPanel() {
                     <span className="text-[10px] uppercase font-bold tracking-widest text-primary block mb-3">
                       NDT Diagnostic Method
                     </span>
-                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-6 leading-tight">
                       {ndtTests[selectedIndex].name}
                     </h3>
 
@@ -107,13 +108,13 @@ export default function NdtPanel() {
                             How It Works
                           </span>
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed pl-8">
+                        <p className="text-sm text-slate-600 font-medium leading-relaxed pl-8">
                           {ndtTests[selectedIndex].mechanism}
                         </p>
                       </div>
 
                       {/* Divider */}
-                      <div className="border-t border-slate-100 dark:border-darkborder" aria-hidden="true" />
+                      <div className="border-t border-slate-100" aria-hidden="true" />
 
                       {/* Anomalies */}
                       <div className="flex flex-col gap-2">
@@ -140,7 +141,7 @@ export default function NdtPanel() {
                             What It Detects
                           </span>
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed pl-8">
+                        <p className="text-sm text-slate-600 font-medium leading-relaxed pl-8">
                           {ndtTests[selectedIndex].anomalies}
                         </p>
                       </div>
@@ -150,7 +151,7 @@ export default function NdtPanel() {
 
                 {/* Secondary Support Image Column */}
                 <div className="col-span-12 lg:col-span-5 h-full flex items-center justify-center">
-                  <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-md">
+                  <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden border border-slate-200 shadow-md">
                     <Image
                       src={ndtTests[selectedIndex].image || "/images/services/ndt_concrete_testing.png"}
                       alt={`AMITH NDT Testing visual for ${ndtTests[selectedIndex].name}`}
@@ -163,7 +164,7 @@ export default function NdtPanel() {
               </div>
 
               {/* Navigation dots */}
-              <div className="flex items-center gap-2 mt-8 pt-6 border-t border-slate-100 dark:border-darkborder" aria-label="Test navigation">
+              <div className="flex items-center gap-2 mt-8 pt-6 border-t border-slate-100" aria-label="Test navigation">
                 {ndtTests.map((_, i) => (
                   <button
                     key={i}
@@ -172,14 +173,14 @@ export default function NdtPanel() {
                     className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                       i === selectedIndex
                         ? "bg-primary w-6"
-                        : "bg-slate-200 dark:bg-darkborder w-1.5 hover:bg-primary/40"
+                        : "bg-slate-200 w-1.5 hover:bg-primary/40"
                     }`}
                   />
                 ))}
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

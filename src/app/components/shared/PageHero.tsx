@@ -62,7 +62,7 @@ export default function PageHero({
         />
       </div>
 
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
+      <div className="section-container relative z-10">
         <div className={image ? "grid grid-cols-12 gap-8 items-center" : ""}>
           {/* Content side */}
           <div className={image ? "col-span-12 lg:col-span-7" : ""}>
@@ -176,7 +176,7 @@ export default function PageHero({
           viewBox="0 0 1440 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-12 block dark:fill-darkmode fill-white"
+          className="w-full h-12 block fill-white"
           preserveAspectRatio="none"
         >
           <path d="M0 48L1440 48L1440 0C1200 38 960 48 720 38C480 28 240 0 0 0L0 48Z" />

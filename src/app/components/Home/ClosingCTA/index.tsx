@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
-import Reveal from "@/app/components/Home/Reveal";
-import { fadeScale, EASE } from "@/app/components/Home/anim";
+import Reveal from "@/app/components/shared/Reveal";
+import { fadeScale, EASE } from "@/app/components/shared/anim";
 
 const PILLARS = [
   {
@@ -37,35 +37,35 @@ export default function ClosingCTA() {
   return (
     <section
       id="closing-cta"
-      className="bg-slate-50 dark:bg-darklight transition-colors duration-300 relative overflow-hidden py-14 sm:py-16 lg:py-20"
+      className="bg-slate-50 transition-colors duration-300 relative overflow-hidden section-py"
     >
       {/* Decorative background glows */}
       <div
-        className="absolute -top-10 -left-10 w-96 h-96 rounded-full pointer-events-none opacity-40 dark:opacity-20"
+        className="absolute -top-10 -left-10 w-96 h-96 rounded-full pointer-events-none opacity-40"
         style={{
           background: "radial-gradient(circle, rgba(0,28,104,0.12) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
       <div
-        className="absolute -bottom-10 -right-10 w-96 h-96 rounded-full pointer-events-none opacity-40 dark:opacity-20"
+        className="absolute -bottom-10 -right-10 w-96 h-96 rounded-full pointer-events-none opacity-40"
         style={{
           background: "radial-gradient(circle, rgba(0,28,104,0.12) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
 
-      <div className="container mx-auto max-w-6xl px-6 md:px-12 relative z-10">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-12 lg:mb-16">
           {/* Left Column: Heading + Paragraph */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <span className="text-primary font-bold text-xs sm:text-sm uppercase tracking-widest mb-3 bg-primary/10 dark:bg-primary/20 px-3 py-1 rounded-full">
+            <span className="text-primary font-bold text-xs sm:text-sm uppercase tracking-widest mb-3 bg-primary/10 px-3 py-1 rounded-full">
               Engineering Excellence
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
               Building Confidence Through Engineering Excellence
             </h2>
-            <p className="text-base text-slate-600 dark:text-slate-300 font-medium leading-relaxed mb-0">
+            <p className="text-base text-slate-600 font-medium leading-relaxed mb-0">
               Every structure tells a story. Our responsibility is to understand its
               condition, evaluate its performance and provide technically sound
               recommendations that ensure safety, reliability and extend the
@@ -84,17 +84,17 @@ export default function ClosingCTA() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.4, delay: index * 0.05, ease: EASE }}
                   whileHover={{ y: -3, scale: 1.01 }}
-                  className="flex items-center gap-3.5 bg-white dark:bg-darkmode border border-slate-100 dark:border-darkborder/40 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
+                  className="flex items-center gap-3.5 bg-white border border-slate-100 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/5 dark:bg-white/5 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center shrink-0">
                     <Icon
                       icon={pillar.icon}
-                      className="text-primary dark:text-warning"
+                      className="text-primary"
                       width="24"
                       height="24"
                     />
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 leading-snug">
+                  <span className="text-xs sm:text-sm font-semibold text-slate-700 leading-snug">
                     {pillar.text}
                   </span>
                 </motion.div>

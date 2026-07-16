@@ -1,7 +1,11 @@
 export interface GalleryItem {
   id: number;
   title: string;
-  category: "Structural Audits" | "QA/QC & TPQM" | "Restoration & Rehabilitation";
+  category:
+    | "Structural Audits"
+    | "Condition Assessment"
+    | "QA/QC & TPQM"
+    | "Restoration & Rehabilitation";
   imageUrl: string;
   location: string;
 }
@@ -122,7 +126,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 17,
     title: "UPV Testing Interior Column",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/upv-testing-interior-column.jpg",
     location: "Testing Site",
   },
@@ -136,7 +140,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 19,
     title: "Half Cell Potential Testing Structure",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/half-cell-potential-testing-structure.jpg",
     location: "Testing Site",
   },
@@ -150,21 +154,21 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 21,
     title: "Rooftop Half Cell Potential Test",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/rooftop-half-cell-potential-test-a5-column.jpg",
     location: "Testing Site",
   },
   {
     id: 22,
     title: "Industrial Structure Rebar Corrosion Test",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/industrial-structure-rebar-corrosion-test.jpg",
     location: "Industrial Site",
   },
   {
     id: 23,
     title: "CP Test Industrial Tank Wall",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/cp-test-industrial-tank-wall.jpg",
     location: "Industrial Site",
   },
@@ -178,14 +182,14 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 25,
     title: "Structural Assessment Deteriorated Wall",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/structural-assessment-deteriorated-wall.jpg",
     location: "Testing Site",
   },
   {
     id: 26,
     title: "Corrosion Mapping Industrial Structure",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/corrosion-mapping-industrial-structure.jpg",
     location: "Industrial Site",
   },
@@ -227,7 +231,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 32,
     title: "Rebar Assessment Structural Wall",
-    category: "Structural Audits",
+    category: "Condition Assessment",
     imageUrl: "/gallery/structural-testing/rebar-assessment-structural-wall.jpg",
     location: "Testing Site",
   },
@@ -236,6 +240,7 @@ export const galleryItems: GalleryItem[] = [
 export const galleryFilters = [
   "All",
   "Structural Audits",
+  "Condition Assessment",
   "QA/QC & TPQM",
   "Restoration & Rehabilitation",
 ] as const;

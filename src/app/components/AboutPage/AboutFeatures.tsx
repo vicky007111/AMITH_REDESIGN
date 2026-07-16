@@ -2,13 +2,16 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
-import AnimateOnScroll from "@/app/components/shared/AnimateOnScroll";
+import Reveal from "@/app/components/shared/Reveal";
+import { staggeredFadeUp } from "@/app/components/shared/anim";
+
+const featureVariants = staggeredFadeUp(0.1);
 
 const FEATURES = [
   {
     icon: "solar:diploma-verified-bold-duotone",
     title: "NABL Laboratory Association",
-    text: "Formal MoU with Tech-Civil Material Testing Laboratory Pvt Ltd, Chennai, to carry out specialized non-destructive and partial destructive concrete testing to assess distress and material quality.",
+    text: "Formal MoU with Civilone Research Center Pvt Ltd, Chennai, to carry out specialized non-destructive and partial destructive concrete testing to assess distress and material quality.",
   },
   {
     icon: "solar:users-group-rounded-bold-duotone",
@@ -18,7 +21,7 @@ const FEATURES = [
   {
     icon: "solar:structure-bold-duotone",
     title: "Heavy Infrastructure Footprint",
-    text: "Vetted over 500+ design specifications and supervised runways, sumps, and multi-storey townships.",
+    text: "Vetted over 100+ design specifications and supervised runways, sumps, and multi-storey townships.",
   },
 ];
 
@@ -81,14 +84,14 @@ const AboutFeatures = () => {
   const showActivePin = sweepX >= 43;
 
   return (
-    <section id="about-features" className="bg-grey dark:bg-darklight overflow-x-hidden py-12 sm:py-16 lg:py-20 transition-colors duration-300">
-      <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
+    <section id="about-features" className="bg-grey overflow-x-hidden section-py transition-colors duration-300">
+      <div className="section-container">
         <div className="grid grid-cols-12 gap-8 lg:gap-12 xl:gap-24 items-center">
 
           {/* Half-Cell Potential Sweep Column (Left) */}
           <div className="lg:col-span-6 col-span-12 pb-8 lg:pb-0">
-            <AnimateOnScroll>
-              <div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 dark:border-darkborder shadow-2xl bg-slate-900 group">
+            <Reveal variants={featureVariants} custom={0}>
+              <div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 shadow-2xl bg-slate-900 group">
 
                 {/* Layer 1: Base Image (Field Inspection) */}
                 <Image
@@ -128,7 +131,7 @@ const AboutFeatures = () => {
 
                 {/* Layer 3: Vertical Electrode Sweep Line & Probe */}
                 <div
-                  className="absolute top-0 bottom-0 w-[2px] bg-cyan-400 dark:bg-cyan-350 shadow-[0_0_12px_#22d3ee,0_0_4px_#22d3ee] z-20 pointer-events-none"
+                  className="absolute top-0 bottom-0 w-[2px] bg-cyan-400 shadow-[0_0_12px_#22d3ee,0_0_4px_#22d3ee] z-20 pointer-events-none"
                   style={{ left: `${sweepX}%` }}
                 >
                   {/* Sweeping Electrode Probe Indicator - aligned with technician's hand vertical position (~58%) */}
@@ -216,29 +219,29 @@ const AboutFeatures = () => {
                 </div>
 
               </div>
-            </AnimateOnScroll>
+            </Reveal>
           </div>
 
           {/* Text and Interactive Cards Column (Right) */}
           <div className="lg:col-span-6 col-span-12">
-            <AnimateOnScroll delay={0.15}>
-              <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+            <Reveal variants={featureVariants} custom={1}>
+              <p className="kicker-text">
                 Why Choose Us
               </p>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white pb-4 sm:pb-6 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 pb-3 sm:pb-4 leading-tight">
                 Engineering Integrity Backed by Academic &amp; Public Trust
               </h2>
-              <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed mb-8">
-                AMITH Civil &amp; Allied Engineering Services Pvt Ltd is not a construction contractor. By assessing structural distress, we provide cost-effective repair and rehabilitation designs to improve durability and upgrade structures to commensurate with the latest code provisions—serving as a single-platform partner for all construction needs.
+              <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed mb-5">
+                Not a construction contractor — we assess structural distress and deliver cost-effective repair and rehabilitation designs, upgraded to the latest code provisions, as your single-platform engineering partner.
               </p>
-            </AnimateOnScroll>
+            </Reveal>
 
             {/* Interactive Cards Stack */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               {FEATURES.map((feature, i) => (
-                <AnimateOnScroll key={i} delay={0.2 + i * 0.1}>
-                  <div className="group bg-white dark:bg-darkmode border border-slate-100 dark:border-darkborder rounded-2xl p-5 shadow-sm hover:shadow-card-shadow hover:border-primary/20 dark:hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-xl bg-primary/5 dark:bg-primary/10 flex items-center justify-center text-primary shrink-0 transition-all duration-300 group-hover:scale-105">
+                <Reveal key={i} variants={featureVariants} custom={2 + i}>
+                  <div className="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-card-shadow hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 flex gap-4 items-start">
+                    <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary shrink-0 transition-all duration-300 group-hover:scale-105">
                       <Icon
                         icon={feature.icon}
                         width="24"
@@ -246,15 +249,15 @@ const AboutFeatures = () => {
                       />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-slate-800 dark:text-white group-hover:text-primary dark:group-hover:text-primary transition-colors duration-200">
+                      <h4 className="text-base font-bold text-slate-800 group-hover:text-primary transition-colors duration-200">
                         {feature.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 font-medium leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium leading-relaxed">
                         {feature.text}
                       </p>
                     </div>
                   </div>
-                </AnimateOnScroll>
+                </Reveal>
               ))}
             </div>
           </div>

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { EASE } from "@/app/components/Home/anim";
+import { EASE } from "@/app/components/shared/anim";
 
 // ---------------------------------------------------------------------------
 // HERO SLIDESHOW IMAGES
@@ -51,8 +51,8 @@ export default function HeroBanner() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden flex flex-col justify-center pt-24 sm:pt-28 pb-10 sm:pb-12"
-      style={{ height: "70vh", minHeight: "440px", maxHeight: "680px" }}
+      className="relative w-full overflow-hidden flex flex-col justify-end pb-16 sm:pb-20"
+      style={{ height: "100svh", minHeight: "600px" }}
       aria-label="Hero banner"
     >
       {/* ── Slideshow background images ── */}
@@ -60,29 +60,44 @@ export default function HeroBanner() {
         <motion.div
           key={current}
           className="absolute inset-0 z-0"
-          initial={{ opacity: 0, scale: 1.08 }}
+          initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: EASE }}
+          transition={{ duration: 1.4, ease: EASE }}
         >
           <Image
             src={HERO_SLIDES[current].src}
             alt={HERO_SLIDES[current].alt}
             fill
             priority={current === 0}
+            quality={90}
             sizes="100vw"
             className="object-cover"
             style={{ objectPosition: HERO_SLIDES[current].position }}
           />
+          {/* Slow continuous Ken Burns drift while the slide is showing */}
+          <motion.div
+            className="absolute inset-0"
+            initial={{ scale: 1 }}
+            animate={{ scale: 1.06 }}
+            transition={{ duration: SLIDE_DURATION / 1000 + 1.4, ease: "linear" }}
+          />
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Scrim: bottom-heavy gradient for text legibility ── */}
+      {/* ── Scrim: bottom-heavy gradient for text legibility, plus subtle top/side vignette for a cinematic, professional finish ── */}
       <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to top, rgba(0, 15, 48, 0.92) 0%, rgba(0, 15, 48, 0.75) 25%, rgba(0, 15, 48, 0.3) 50%, transparent 70%)",
+            "linear-gradient(to top, rgba(0, 10, 35, 0.95) 0%, rgba(0, 12, 40, 0.82) 20%, rgba(0, 15, 48, 0.4) 45%, rgba(0, 15, 48, 0.18) 65%, rgba(0, 8, 30, 0.35) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 55%, rgba(0, 8, 28, 0.35) 100%)",
         }}
       />
 
@@ -95,8 +110,9 @@ export default function HeroBanner() {
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
           className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl"
           style={{
-            fontSize: "clamp(2rem, 5.5vw, 4rem)",
-            lineHeight: 1.08,
+            fontSize: "clamp(2.25rem, 6vw, 4.5rem)",
+            lineHeight: 1.06,
+            textShadow: "0 2px 24px rgba(0, 8, 28, 0.35)",
           }}
         >
           Engineering Assurance
@@ -204,6 +220,34 @@ export default function HeroBanner() {
           ))}
         </div>
       </div>
+
+      {/* ── Scroll cue ── */}
+      <motion.div
+        className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2 text-white/70"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 6, 0] }}
+        transition={{
+          opacity: { duration: 0.6, delay: 0.9 },
+          y: { duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: 1.2 },
+        }}
+        aria-hidden="true"
+      >
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Scroll</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 5v14" />
+          <path d="m19 12-7 7-7-7" />
+        </svg>
+      </motion.div>
     </section>
   );
 }

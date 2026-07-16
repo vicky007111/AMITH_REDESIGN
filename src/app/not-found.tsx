@@ -2,19 +2,9 @@ import NotFound from "@/app/components/NotFound";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 Page | Saturn ",
+  title: "Page Not Found | AMITH Civil & Allied Engineering Services",
 };
 
-const ErrorPage = () => {
-  const breadcrumbLinks = [
-    { href: "/", text: "Home" },
-    { href: "javascript:void(0)", text: "404" },
-  ];
-  return (
-    <>
-      <NotFound />
-    </>
-  );
-};
-
-export default ErrorPage;
+export default function ErrorPage() {
+  return <NotFound />;
+}
