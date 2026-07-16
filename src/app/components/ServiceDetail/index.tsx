@@ -1,32 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import PageHero, { BreadcrumbItem } from "@/app/components/shared/PageHero";
 import UsedTech from "@/app/components/Services/Technologies";
-import ServiceDetailSkeleton from "../Skeleton/ServiceDetail/page";
+import NdtPanel from "@/app/components/Services/NdtPanel";
+import Reveal from "@/app/components/shared/Reveal";
+import { staggeredFadeUp } from "@/app/components/shared/anim";
+import ServiceDetailSkeleton from "../Skeleton/ServiceDetail";
+import { servicesData } from "@/data/services";
+
+const overviewVariants = staggeredFadeUp(0.1);
+const stepVariants = staggeredFadeUp(0.08);
 
 const ServiceDetail = () => {
-    const [services, setServices] = useState<any[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch('/api/service');
-                if (!res.ok) throw new Error('Failed to fetch');
-
-                const data = await res.json();
-                setServices(data.ServicesData || []);
-            } catch (error) {
-                console.error('Error fetching services:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
     const { slug } = useParams();
-    const item = services.find((item) => item.slug === slug);
+    const item = servicesData.find((item) => item.slug === slug);
 
     if (!item) {
         return (
@@ -49,12 +38,13 @@ const ServiceDetail = () => {
             />
 
             {/* Section A — Service Overview */}
-            <section className="bg-white dark:bg-darkmode py-20 transition-colors duration-300">
-                <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
-                    <div className="grid lg:grid-cols-2 items-start gap-10 lg:gap-16">
-                        {/* Image */}
-                        <div className="w-full">
-                            <div className="relative w-full aspect-[4/3] max-w-xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-100 dark:border-white/5">
+            <section className="bg-white section-py transition-colors duration-300">
+                <div className="section-container">
+                    <div className="grid lg:grid-cols-2 items-stretch gap-10 lg:gap-16">
+                        {/* Image — stretches to match the height of the text column so
+                            short paragraphs don't leave empty space beside a tall photo */}
+                        <Reveal variants={overviewVariants} custom={0} className="w-full">
+                            <div className="relative w-full min-h-[280px] sm:min-h-[340px] lg:h-full rounded-3xl overflow-hidden shadow-xl border border-slate-100">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
@@ -64,61 +54,79 @@ const ServiceDetail = () => {
                                     priority
                                 />
                             </div>
-                        </div>
+                        </Reveal>
 
                         {/* Text Content */}
-                        <div>
-                            <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+                        <Reveal variants={overviewVariants} custom={1} className="flex flex-col justify-center">
+                            <p className="kicker-text">
                                 Service Overview
                             </p>
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight mb-4">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
                                 What It <span className="text-primary">Does</span>
                             </h2>
                             <div className="w-12 h-1 bg-primary rounded-full mb-6" aria-hidden="true" />
-                            <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                            <p className="text-base text-slate-500 font-medium leading-relaxed">
                                 {item.detail}
                             </p>
+                        </Reveal>
+                    </div>
+                </div>
+            </section>
+
+            {/* Section B — Process */}
+            <section className="bg-slate-50 section-py border-y border-slate-100 transition-colors duration-300">
+                <div className="section-container">
+                    <Reveal>
+                        <p className="kicker-text">
+                            Our Process
+                        </p>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                            Step-by-Step Methodology
+                        </h2>
+                        <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-12" aria-hidden="true" />
+                    </Reveal>
+
+                    <div className="relative max-w-3xl">
+                        {/* Connecting timeline rail */}
+                        <div
+                            className="absolute left-5 top-2 bottom-2 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent"
+                            aria-hidden="true"
+                        />
+
+                        <div className="flex flex-col gap-8">
+                            {item.features.map((feature: any, index: number) => (
+                                <Reveal
+                                    key={index}
+                                    variants={stepVariants}
+                                    custom={Math.min(index, 3)}
+                                    amount={0.3}
+                                    className="relative flex gap-6 items-start"
+                                >
+                                    {/* Step number badge */}
+                                    <div className="relative z-10 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-bold text-sm shadow-lg shadow-primary/30">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="bg-white rounded-2xl p-6 flex-1 border border-slate-100 shadow-sm hover:shadow-[0_16px_32px_rgba(0,28,104,0.10)] hover:-translate-y-1 transition-all duration-300">
+                                        <h3 className="text-base font-bold text-slate-800 leading-snug">
+                                            {feature.title}
+                                        </h3>
+                                        <p className="text-sm text-slate-500 font-medium leading-relaxed mt-1.5">
+                                            {feature.description}
+                                        </p>
+                                    </div>
+                                </Reveal>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Section B — Capabilities */}
-            <section className="bg-slate-50 dark:bg-darklight py-20 border-y border-slate-100 dark:border-darkborder transition-colors duration-300">
-                <div className="container mx-auto max-w-7xl 2xl:max-w-[1400px] 3xl:max-w-[1600px] px-4 sm:px-6 md:px-8 lg:px-12">
-                    <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
-                        Capabilities
-                    </p>
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
-                        Key Features &amp; Methodology
-                    </h2>
-                    <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-10" aria-hidden="true" />
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {item.features.map((feature: any, index: number) => (
-                            <div
-                                key={index}
-                                className="bg-white dark:bg-darkmode rounded-xl p-5 flex gap-4 items-start border border-slate-100 dark:border-darkborder shadow-sm"
-                            >
-                                {/* Bullet indicator */}
-                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                                    <div className="w-2 h-2 rounded-full bg-primary" />
-                                </div>
-
-                                {/* Content */}
-                                <div>
-                                    <h3 className="text-sm font-bold text-slate-800 dark:text-white leading-snug">
-                                        {feature.title}
-                                    </h3>
-                                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed mt-1">
-                                        {feature.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Structural Auditing & Stability also gets the full interactive
+                NDT Diagnostic Methods explorer, since in-situ concrete quality
+                evaluation (UPV / rebound hammer) is part of its process. */}
+            {item.slug === "structural-auditing-stability" && <NdtPanel />}
 
             {/* Technologies carousel */}
             <UsedTech />

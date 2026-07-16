@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import Reveal from "@/app/components/Home/Reveal";
-import { staggeredTag, VIEWPORT_EARLY } from "@/app/components/Home/anim";
+import Reveal from "@/app/components/shared/Reveal";
+import { staggeredTag, VIEWPORT_EARLY } from "@/app/components/shared/anim";
 
 const INDUSTRIES = [
   "Commercial Buildings",
@@ -23,9 +23,9 @@ export default function IndustriesSection() {
   return (
     <section
       id="industries"
-      className="bg-primary dark:bg-darklight transition-colors duration-300 py-10 sm:py-12 lg:py-14"
+      className="bg-primary transition-colors duration-300 section-py"
     >
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
+      <div className="section-container">
         {/* Heading */}
         <Reveal className="text-center mb-8 sm:mb-10">
           <p className="text-white/60 font-bold text-sm uppercase tracking-wider mb-3">

@@ -21,7 +21,7 @@ export default function ContactPage() {
       <PageHero
         label="Contact Us"
         title="Let's Discuss Your Infrastructure Project"
-        subtitle="Whether you need technical consultation or project support, we're just a message away. Expect a response within 24 business hours."
+        subtitle="Whether you need technical consultation or project support, our engineering team is ready to assist with your infrastructure needs."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Contact Us" },

@@ -30,8 +30,8 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = (
         }}
         className={`flex items-center justify-between w-full py-2 text-base font-semibold focus:outline-none transition-colors ${
           isActive
-            ? "text-primary dark:text-primary"
-            : "text-slate-800 hover:text-primary dark:text-white dark:hover:text-primary"
+            ? "text-primary"
+            : "text-slate-800 hover:text-primary"
         } `}
       >
         {item.label}

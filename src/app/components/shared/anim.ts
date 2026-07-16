@@ -1,12 +1,11 @@
 import type { Variants } from "motion/react";
 
 // ---------------------------------------------------------------------------
-// Homepage-only animation tokens.
+// Site-wide animation tokens.
 //
-// These live under Home/ (not shared/) on purpose: the homepage owns its
-// animation language and nothing here should leak into other routes. The
-// shared AnimateOnScroll component is used by the About page and must stay
-// untouched.
+// This is the single animation system for the whole site — every scroll
+// reveal should be built from these tokens (directly, or via the shared
+// `Reveal` component) rather than one-off motion.div configs.
 //
 // Easing is a controlled ease-out (no overshoot / bounce) — precise and
 // professional, appropriate for an engineering consultancy.

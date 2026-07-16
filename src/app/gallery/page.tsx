@@ -21,7 +21,7 @@ export default function GalleryPage() {
       <PageHero
         label="Project Gallery"
         title="On-Site Evidence from Landmark Engineering Works"
-        subtitle="A visual record of AMITH's structural audit campaigns, QA/QC site inspections, and building rehabilitation projects spanning military installations, government housing, and industrial infrastructure."
+        subtitle="A visual record of our structural audits, QA/QC inspections, and rehabilitation work across military, government, and industrial infrastructure."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Gallery" },

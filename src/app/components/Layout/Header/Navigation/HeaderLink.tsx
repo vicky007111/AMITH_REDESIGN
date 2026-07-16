@@ -36,7 +36,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
         className={`relative text-base flex items-center font-medium transition-colors duration-200 pb-1 ${
           isActive
             ? "text-primary font-semibold"
-            : "text-slate-700 hover:text-primary dark:text-slate-200 dark:hover:text-primary"
+            : "text-slate-700 hover:text-primary"
         }`}
       >
         {item.label}

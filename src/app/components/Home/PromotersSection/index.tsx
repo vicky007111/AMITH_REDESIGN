@@ -1,21 +1,27 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { motion } from "motion/react";
-import Reveal from "@/app/components/Home/Reveal";
-import { staggeredFadeUp, EASE, VIEWPORT_EARLY } from "@/app/components/Home/anim";
+import Reveal from "@/app/components/shared/Reveal";
+import { staggeredFadeUp, EASE, VIEWPORT_EARLY } from "@/app/components/shared/anim";
 
 const promoterCardVariants = staggeredFadeUp(0.1);
 
 // ---------------------------------------------------------------------------
 // SWAPPABLE PROMOTER IMAGE PATHS
 // Replace each path when the client sends the promoter photos.
+//
+// `slug` must match the corresponding director's `slug` in
+// AboutPage/AboutLeadership.tsx — it's used to deep-link into that person's
+// full profile modal on the About page.
 // ---------------------------------------------------------------------------
 const PROMOTERS = [
   {
     id: 1,
-    imagePath: "/images/Dr. Devadas Manoharan. M.jpeg",
+    slug: "devadas-manoharan",
+    imagePath: "/images/dr-devadas-manoharan-m.jpg",
     name: "Dr. Devadas Manoharan. M",
     tagline: "A Visionary in Civil Engineering & Infrastructure Management",
     avatarInitials: "DM",
@@ -24,7 +30,8 @@ const PROMOTERS = [
   },
   {
     id: 2,
-    imagePath: "/images/Er. Kalaimony R.jpeg",
+    slug: "kalaimony-r",
+    imagePath: "/images/er-kalaimony-r.jpg",
     name: "Er. Kalaimony R",
     tagline: "Director – Structural Assessment, Quality Audit & Rehabilitation Engineering",
     avatarInitials: "RK",
@@ -33,6 +40,7 @@ const PROMOTERS = [
   },
   {
     id: 3,
+    slug: "nallathambi",
     imagePath: "/images/Nallathambi.png",
     name: "Dr. Col. Nallathambi",
     tagline: "Strategic Advisor – Leadership, Infrastructure & Project Excellence",
@@ -57,9 +65,12 @@ function PromoterCard({
       whileHover={{ y: -6 }}
       transition={{ duration: 0.2, ease: EASE }}
     >
-      <div className="w-full bg-white dark:bg-darklight border border-slate-100 dark:border-darkborder hover:border-primary/30 rounded-3xl overflow-hidden shadow-[0_2px_10px_rgba(0,28,104,0.05)] hover:shadow-[0_18px_36px_rgba(0,28,104,0.16)] dark:hover:shadow-[0_18px_36px_rgba(0,28,104,0.30)] transition-[box-shadow,border-color] duration-300 flex flex-col group">
+      <Link
+        href={`/about?director=${promoter.slug}#leadership`}
+        className="w-full bg-white border border-slate-100 hover:border-primary/30 rounded-3xl overflow-hidden shadow-[0_2px_10px_rgba(0,28,104,0.05)] hover:shadow-[0_18px_36px_rgba(0,28,104,0.16)] transition-[box-shadow,border-color] duration-300 flex flex-col group"
+      >
         {/* Photo area */}
-        <div className="relative w-full aspect-[3/4] bg-cream dark:bg-primary/5 overflow-hidden">
+        <div className="relative w-full aspect-[3/4] bg-cream overflow-hidden">
           {/* Initials avatar — fallback shown behind the real photo */}
           <div
             className="absolute inset-0 flex items-center justify-center text-primary/30 font-black select-none"
@@ -86,7 +97,7 @@ function PromoterCard({
           {/* Verified badge + name */}
           <div className="flex items-start gap-2">
             <div className="flex flex-col gap-1 flex-1">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
                 {promoter.name}
               </h3>
               <span className="text-xs font-bold text-primary uppercase tracking-wide">
@@ -103,11 +114,21 @@ function PromoterCard({
             </div>
           </div>
 
-          <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed flex-1">
+          <p className="text-sm text-slate-500 font-medium leading-relaxed flex-1">
             {promoter.bio}
           </p>
+
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary mt-1">
+            View Full Profile
+            <Icon
+              icon="solar:arrow-right-linear"
+              width={14}
+              height={14}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </span>
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 }
@@ -116,15 +137,15 @@ export default function PromotersSection() {
   return (
     <section
       id="promoters"
-      className="bg-slate-50 dark:bg-darklight transition-colors duration-300"
+      className="bg-slate-50 transition-colors duration-300 section-py"
     >
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
+      <div className="section-container">
         {/* Section heading */}
         <Reveal className="text-center mb-10 sm:mb-14">
-          <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+          <p className="kicker-text">
             Our Promoters
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
             Meet Our Promoters
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />
@@ -144,14 +165,22 @@ export default function PromotersSection() {
 
         {/* Closing statement */}
         <Reveal className="text-center max-w-3xl mx-auto">
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 font-medium leading-relaxed italic">
-            <strong className="text-slate-800 dark:text-white not-italic">
+          <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed italic">
+            <strong className="text-slate-800 not-italic">
               Engineering Leadership You Can Trust
             </strong>{" "}
             — Together, our promoters combine technical expertise, professional
             integrity, and a shared vision of delivering reliable, innovative, and
             sustainable engineering solutions.
           </p>
+
+          <Link
+            href="/about#leadership"
+            className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-primary hover:bg-opacity-90 text-white font-bold text-sm sm:text-base shadow-lg shadow-primary/20 transition-all duration-200"
+          >
+            Meet Our Board of Directors
+            <Icon icon="solar:arrow-right-bold" width={18} height={18} />
+          </Link>
         </Reveal>
       </div>
     </section>

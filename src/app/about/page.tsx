@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import PageHero from "@/app/components/shared/PageHero";
 import AboutFeatures from "@/app/components/AboutPage/AboutFeatures";
 import AboutLeadership from "@/app/components/AboutPage/AboutLeadership";
@@ -8,7 +9,7 @@ import AboutVisionMission from "@/app/components/AboutPage/AboutVisionMission";
 export const metadata: Metadata = {
   title: "About Us | AMITH Civil & Allied Engineering Services",
   description:
-    "Meet the distinguished leadership of AMITH Civil & Allied Engineering Services — a former Vice Chancellor, a retired MES Colonel, and a senior IIT-Madras consultant. Learn our vision, mission, and over 100 years of combined engineering expertise.",
+    "Meet the leadership of AMITH Civil & Allied Engineering Services — a former Vice Chancellor, a retired MES Colonel, and a senior IIT-Madras consultant, each with 35-40 years of academic and engineering experience. Learn our vision and mission.",
   keywords: [
     "AMITH Engineering Leadership",
     "Structural Engineering Experts Chennai",
@@ -24,7 +25,7 @@ export default function AboutPage() {
       <PageHero
         label="About Us"
         title="A Team Built on Decades of Engineering Excellence"
-        subtitle="AMITH Civil & Allied Engineering Services Pvt Ltd is directed by three of South India's most distinguished civil engineering professionals, combining over 100 years of academic, military, and public sector expertise."
+        subtitle="AMITH Civil & Allied Engineering Services Pvt Ltd is directed by a team of civil engineering professionals, each bringing 35-40 years of academic and engineering experience across research, military, and public sector infrastructure."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "About Us" },
@@ -35,7 +36,9 @@ export default function AboutPage() {
       {/* Why Choose Us section */}
       <AboutFeatures />
       {/* Leadership — board of directors horizontal list with credentials modals */}
-      <AboutLeadership />
+      <Suspense fallback={null}>
+        <AboutLeadership />
+      </Suspense>
     </main>
   );
 }

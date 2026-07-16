@@ -9,7 +9,7 @@ const Logo: React.FC = () => {
         alt="AMITH Civil Consultancy Logo"
         width={160}
         height={80}
-        className="h-14 w-auto object-contain dark:hidden"
+        className="h-14 w-auto object-contain"
         priority
       />
       <Image
@@ -17,7 +17,7 @@ const Logo: React.FC = () => {
         alt="AMITH Civil Consultancy Logo"
         width={160}
         height={80}
-        className="h-14 w-auto object-contain hidden dark:block"
+        className="h-14 w-auto object-contain hidden"
         priority
       />
     </Link>

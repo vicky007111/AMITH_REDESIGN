@@ -2,12 +2,12 @@
 
 import { Icon } from "@iconify/react";
 import { motion } from "motion/react";
-import Reveal from "@/app/components/Home/Reveal";
+import Reveal from "@/app/components/shared/Reveal";
 import {
   staggeredFromLeft,
   staggeredPop,
   VIEWPORT_EARLY,
-} from "@/app/components/Home/anim";
+} from "@/app/components/shared/anim";
 
 const WHY_ITEMS = [
   "Independent Engineering Consultancy",
@@ -26,15 +26,15 @@ export default function WhyChooseAmith() {
   return (
     <section
       id="why-choose-amith"
-      className="bg-white dark:bg-darkmode transition-colors duration-300 py-10 sm:py-12 lg:py-14"
+      className="bg-white transition-colors duration-300 section-py"
     >
-      <div className="container mx-auto max-w-7xl px-6 md:px-12">
+      <div className="section-container">
         {/* Heading */}
         <Reveal className="text-center mb-8 sm:mb-10">
-          <p className="text-primary font-bold text-sm uppercase tracking-wider mb-3">
+          <p className="kicker-text">
             Why Amith?
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
             Why Choose Amith?
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />
@@ -52,7 +52,7 @@ export default function WhyChooseAmith() {
               key={i}
               variants={rowVariants}
               custom={i}
-              className="flex items-start gap-3 py-3.5 px-4 rounded-2xl bg-slate-50 dark:bg-darklight border border-slate-100 dark:border-darkborder hover:border-primary/40 hover:shadow-sm transition-colors duration-200"
+              className="flex items-start gap-3 py-3.5 px-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-primary/40 hover:shadow-sm transition-colors duration-200"
             >
               <motion.span
                 className="shrink-0 mt-0.5"
@@ -66,7 +66,7 @@ export default function WhyChooseAmith() {
                   className="text-success"
                 />
               </motion.span>
-              <span className="text-sm sm:text-base font-semibold text-slate-800 dark:text-white leading-snug">
+              <span className="text-sm sm:text-base font-semibold text-slate-800 leading-snug">
                 {item}
               </span>
             </motion.div>
