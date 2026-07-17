@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { Icon } from "@iconify/react";
 import { HeaderItem } from "../../../../types/menu";
 import { usePathname } from "next/navigation";
 
@@ -21,14 +22,14 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = (
     <div className="relative w-full">
       <Link
         href={item.href}
-        onClick={(e) => {
+        onClick={() => {
           if (item.submenu) {
             handleToggle();
           } else if (onClick) {
             onClick();
           }
         }}
-        className={`flex items-center justify-between w-full py-2 text-base font-semibold focus:outline-none transition-colors ${
+        className={`flex items-center justify-between w-full py-2 text-base font-semibold rounded-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
           isActive
             ? "text-primary"
             : "text-slate-800 hover:text-primary"
@@ -36,21 +37,13 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = (
       >
         {item.label}
         {item.submenu && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              d="m7 10l5 5l5-5"
-            />
-          </svg>
+          <Icon
+            icon="lucide:chevron-down"
+            width={18}
+            height={18}
+            aria-hidden="true"
+            className={`transition-transform duration-200 ${submenuOpen ? "rotate-180" : ""}`}
+          />
         )}
       </Link>
       {submenuOpen && item.submenu && (
@@ -59,7 +52,7 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem; onClick?: () => void }> = (
             <Link
               key={index}
               href={subItem.href}
-              className="block py-2 text-gray-500 hover:bg-gray-200"
+              className="block py-2 px-2 rounded-sm text-muted hover:bg-surface-tint hover:text-primary transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
             >
               {subItem.label}
             </Link>

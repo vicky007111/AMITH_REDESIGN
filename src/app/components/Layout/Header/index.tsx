@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Icon } from "@iconify/react";
 import { headerData } from "./Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "./Navigation/HeaderLink";
 import MobileHeaderLink from "./Navigation/MobileHeaderLink";
+import Button from "@/app/components/shared/Button";
 
 
 const Header: React.FC = () => {
@@ -56,8 +57,8 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 py-1 z-50 w-full bg-white border-b border-slate-100 transition-all duration-300 ${
-        sticky ? "shadow-md" : "shadow-sm"
+      className={`fixed top-0 py-1 z-50 w-full bg-white border-b border-line transition-all duration-300 ${
+        sticky ? "shadow-e1" : "shadow-none"
       }`}
     >
       <div
@@ -72,19 +73,20 @@ const Header: React.FC = () => {
           ))}
         </ul>
         <div className="flex items-center gap-4">
-
-          
-          <Link
+          <Button
             href="/contact"
-            className="hidden xl:block bg-primary hover:bg-primary/95 text-white px-5 py-2.5 rounded-xl hover:scale-[1.02] active:scale-[0.98] duration-200 text-sm font-bold transition-all shadow-lg shadow-primary/10 cursor-pointer"
+            size="sm"
+            className="hidden xl:inline-flex"
           >
             Get Consultation
-          </Link>
+          </Button>
 
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
-            className="block xl:hidden p-2 rounded-lg hover:bg-slate-50 transition-colors duration-200"
+            className="block xl:hidden p-2 rounded-lg hover:bg-surface-tint transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             aria-label="Toggle mobile menu"
+            aria-expanded={navbarOpen}
+            aria-controls="mobile-menu"
           >
             <span className="block w-6 h-0.5 bg-primary"></span>
             <span className="block w-6 h-0.5 bg-primary mt-1.5"></span>
@@ -97,32 +99,19 @@ const Header: React.FC = () => {
       )}
       <div
         ref={mobileMenuRef}
-        className={`xl:hidden fixed inset-y-0 right-0 h-screen w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs overflow-y-auto ${
+        id="mobile-menu"
+        className={`xl:hidden fixed inset-y-0 right-0 h-screen w-full bg-white shadow-e3 transform transition-transform duration-300 max-w-xs overflow-y-auto ${
           navbarOpen ? "translate-x-0" : "translate-x-full"
         } z-50`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-slate-100">
+        <div className="flex items-center justify-between p-4 border-b border-line">
           <Logo />
           <button
             onClick={() => setNavbarOpen(false)}
             aria-label="Close mobile menu"
-            className="text-slate-500"
+            className="p-2 rounded-lg text-muted hover:bg-surface-tint hover:text-primary transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <Icon icon="lucide:x" width={24} height={24} aria-hidden="true" />
           </button>
         </div>
         <nav className="flex flex-col items-start p-4 gap-4">
@@ -130,15 +119,13 @@ const Header: React.FC = () => {
             <MobileHeaderLink key={index} item={item} onClick={() => setNavbarOpen(false)} />
           ))}
           <div className="mt-4 w-full">
-            <Link
+            <Button
               href="/contact"
-              className="block w-full text-center bg-primary text-white px-4 py-2.5 rounded-xl hover:bg-opacity-95 text-sm font-bold transition-all"
-              onClick={() => {
-                setNavbarOpen(false);
-              }}
+              className="w-full"
+              onClick={() => setNavbarOpen(false)}
             >
               Get Consultation
-            </Link>
+            </Button>
           </div>
         </nav>
       </div>

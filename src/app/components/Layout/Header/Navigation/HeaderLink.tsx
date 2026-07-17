@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Icon } from "@iconify/react";
 import { HeaderItem } from "../../../../types/menu";
 
 const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
@@ -33,7 +34,7 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
     >
       <Link
         href={item.href}
-        className={`relative text-base flex items-center font-medium transition-colors duration-200 pb-1 ${
+        className={`relative text-base flex items-center font-medium transition-colors duration-200 pb-1 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
           isActive
             ? "text-primary font-semibold"
             : "text-slate-700 hover:text-primary"
@@ -41,33 +42,25 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
       >
         {item.label}
         {item.submenu && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1.5em"
-            height="1.5em"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="1.5"
-              d="m7 10l5 5l5-5"
-            />
-          </svg>
+          <Icon
+            icon="lucide:chevron-down"
+            width={16}
+            height={16}
+            aria-hidden="true"
+            className="ml-1"
+          />
         )}
         {isActive && (
-          <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary rounded-full animate-fadeIn" />
+          <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary rounded-full" />
         )}
       </Link>
       {submenuOpen && (
-        <ul className="absolute py-2 left-0 mt-0.5 w-60 bg-white shadow-lg rounded-lg">
+        <ul className="absolute py-2 left-0 mt-0.5 w-60 bg-white border border-line shadow-e2 rounded-card overflow-hidden">
           {item.submenu?.map((subItem, index) => (
             <li key={index}>
               <Link
                 href={subItem.href}
-                className="block px-4 py-2 text-black hover:bg-gray-200"
+                className="block px-4 py-2 text-ink hover:bg-surface-tint hover:text-primary transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
               >
                 {subItem.label}
               </Link>

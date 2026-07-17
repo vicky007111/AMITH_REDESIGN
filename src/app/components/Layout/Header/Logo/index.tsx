@@ -12,14 +12,6 @@ const Logo: React.FC = () => {
         className="h-14 w-auto object-contain"
         priority
       />
-      <Image
-        src="/logo-white.png"
-        alt="AMITH Civil Consultancy Logo"
-        width={160}
-        height={80}
-        className="h-14 w-auto object-contain hidden"
-        priority
-      />
     </Link>
   );
 };
