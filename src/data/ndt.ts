@@ -12,7 +12,7 @@ export const ndtTests: NdtTest[] = [
       "Verifies the surface hardness of concrete elements using elastic rebound principles to estimate immediate compressive strength.",
     anomalies:
       "Detects low surface hardness, uniformity issues, and potential weak skin concrete zones.",
-    image: "/images/services/rebound-hammer-testing.jpg",
+    image: "/images/Rebound Hammer.jpg",
   },
   {
     name: "Ultrasonic Pulse Velocity (UPV)",
@@ -28,9 +28,7 @@ export const ndtTests: NdtTest[] = [
       "Applies chemical indicators (phenolphthalein) to broken cores to examine chemical depth penetration and concrete pH levels.",
     anomalies:
       "Identifies loss of steel rebar alkaline protection, indicating high risks of premature internal rust.",
-    // No dedicated AMITH photograph available. The photo library contains no
-    // in-field phenolphthalein or broken-core chemical test images.
-    // Falls back to the generic NDT overview image defined in NdtPanel.
+    image: "/images/Chemical.jpg",
   },
   {
     name: "Concrete Core Drilling",
@@ -54,6 +52,6 @@ export const ndtTests: NdtTest[] = [
       "Performs qualitative chemical extractions on mortar/concrete dust to evaluate sulfate and chloride levels.",
     anomalies:
       "Detects internal chemical attack hazards, aggregate reactivity issues, and soil/water salt poisoning.",
-    image: "/images/services/concrete-ctm-testing.jpg",
+    image: "/images/Chemical Analysis.jpg",
   },
 ];

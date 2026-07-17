@@ -158,7 +158,7 @@ export const servicesData: Service[] = [
     description:
       "Advanced non-destructive concrete tests including UPV, rebound hammer, carbonation depth, and core compressions.",
     detail:
-      "A layered diagnostic sequence that verifies concrete homogeneity, strength, and corrosion risks without damage. In association with Tech-Civil testing lab (NABL Accredited), we move from broad ultrasonic screening through surface hardness readings, chemical profiling, and targeted core extraction to a single consolidated report.",
+      "A layered diagnostic sequence that verifies concrete homogeneity, strength, and corrosion risks without damage. In association with Civilone Research Center Pvt Ltd (NABL Accredited), we move from broad ultrasonic screening through surface hardness readings, chemical profiling, and targeted core extraction to a single consolidated report.",
     features: [
       {
         title: "Preliminary Screening (UPV)",
