@@ -17,6 +17,15 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
 /** Snappier ease-out for dense/quick reveals (tags, chips). */
 export const EASE_SNAPPY = [0.16, 1, 0.3, 1] as const;
 
+/** Canonical durations — fast: hover feedback · base: UI state · reveal: scroll entrances. */
+export const DUR = { fast: 0.2, base: 0.35, reveal: 0.6 } as const;
+
+/** The one hover lift for cards — use as `whileHover={HOVER_LIFT}`. */
+export const HOVER_LIFT = {
+  y: -4,
+  transition: { duration: DUR.fast, ease: EASE_SNAPPY },
+} as const;
+
 /** Shared viewport config — trigger once, ~25% of the element visible. */
 export const VIEWPORT = { once: true, amount: 0.25 } as const;
 

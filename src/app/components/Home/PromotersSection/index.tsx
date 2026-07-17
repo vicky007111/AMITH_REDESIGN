@@ -70,7 +70,7 @@ function PromoterCard({
         className="w-full bg-white border border-slate-100 hover:border-primary/30 rounded-3xl overflow-hidden shadow-[0_2px_10px_rgba(0,28,104,0.05)] hover:shadow-[0_18px_36px_rgba(0,28,104,0.16)] transition-[box-shadow,border-color] duration-300 flex flex-col group"
       >
         {/* Photo area */}
-        <div className="relative w-full aspect-[3/4] bg-cream overflow-hidden">
+        <div className="relative w-full aspect-[3/4] bg-surface-tint overflow-hidden">
           {/* Initials avatar — fallback shown behind the real photo */}
           <div
             className="absolute inset-0 flex items-center justify-center text-primary/30 font-black select-none"
@@ -145,7 +145,7 @@ export default function PromotersSection() {
           <p className="kicker-text">
             Our Promoters
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
             Meet Our Promoters
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />

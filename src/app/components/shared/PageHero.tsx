@@ -39,7 +39,7 @@ export default function PageHero({
   return (
     <section
       id="page-hero"
-      className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 bg-gradient-to-br from-darkmode via-[#001243] to-[#001c68] transition-colors duration-300"
+      className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 bg-brand-gradient transition-colors duration-300"
       aria-label={label ? `${label} page header` : "Page header"}
     >
       {/* Decorative geometric shapes */}
@@ -50,7 +50,7 @@ export default function PageHero({
         {/* Top-right glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         {/* Bottom-left glow */}
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         {/* Grid dots overlay */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -126,7 +126,7 @@ export default function PageHero({
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4 max-w-3xl"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4 max-w-3xl"
             >
               {title}
             </motion.h1>

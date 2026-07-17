@@ -61,7 +61,7 @@ const ServiceDetail = () => {
                             <p className="kicker-text">
                                 Service Overview
                             </p>
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
                                 What It <span className="text-primary">Does</span>
                             </h2>
                             <div className="w-12 h-1 bg-primary rounded-full mb-6" aria-hidden="true" />
@@ -80,7 +80,7 @@ const ServiceDetail = () => {
                         <p className="kicker-text">
                             Our Process
                         </p>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
                             Step-by-Step Methodology
                         </h2>
                         <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-12" aria-hidden="true" />

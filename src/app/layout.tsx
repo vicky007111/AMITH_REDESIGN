@@ -1,12 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Layout/Header";
 import Footer from "@/app/components/Layout/Footer";
 import ScrollToTop from "@/app/components/ScrollToTop";
+import MotionProvider from "@/app/components/shared/MotionProvider";
 import NextTopLoader from "nextjs-toploader";
 
-const manrope = Manrope({ subsets: ["latin"] });
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 const SITE_URL = "https://amith.in.net";
 const SITE_TITLE = "AMITH Civil & Allied Engineering Services | Structural Audit & QA/QC Consultancy";
@@ -68,12 +79,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={manrope.className}>
+      <body
+        className={`${manrope.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+      >
         <NextTopLoader color="#001C68" />
-        <Header />
-        {children}
-        <Footer />
-        <ScrollToTop />
+        <MotionProvider>
+          <Header />
+          {children}
+          <Footer />
+          <ScrollToTop />
+        </MotionProvider>
       </body>
     </html>
   );

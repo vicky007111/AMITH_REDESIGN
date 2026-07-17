@@ -72,7 +72,7 @@ export default function ApproachSection() {
           <p className="kicker-text">
             Our Methodology
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Our Approach
           </h2>
           <p className="text-sm sm:text-base text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
@@ -106,10 +106,10 @@ export default function ApproachSection() {
                   className="flex-1 flex flex-col items-center text-center px-3"
                 >
                   {/* Circle */}
-                  <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-sm mb-3 shadow-lg shadow-primary/20 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm mb-3 shadow-lg shadow-primary/20 shrink-0">
                     {step.step}
                   </div>
-                  <h3 className="text-lg font-extrabold text-slate-900 mb-1 leading-tight">
+                  <h3 className="text-lg font-bold text-slate-900 mb-1 leading-tight">
                     {step.label}
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
@@ -140,11 +140,11 @@ export default function ApproachSection() {
                   className="flex gap-4 items-start relative z-10"
                 >
                   {/* Circle */}
-                  <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-xs shrink-0 shadow-lg shadow-primary/20">
+                  <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-lg shadow-primary/20">
                     {step.step}
                   </div>
                   <div className="flex-1 pb-2">
-                    <h3 className="text-base font-extrabold text-slate-900 mb-1 leading-tight">
+                    <h3 className="text-base font-bold text-slate-900 mb-1 leading-tight">
                       {step.label}
                     </h3>
                     <p className="text-sm text-slate-500 font-medium leading-relaxed">

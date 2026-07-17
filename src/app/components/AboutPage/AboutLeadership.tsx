@@ -152,7 +152,7 @@ export default function AboutLeadership() {
           <p className="kicker-text">
             Elite Leadership Team
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mt-5 tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mt-5 tracking-tight leading-tight">
             Meet Our Board of Directors
           </h2>
           <div className="max-w-3xl mx-auto mt-5 px-4">
@@ -177,11 +177,11 @@ export default function AboutLeadership() {
               key={director.name}
               variants={directorCardVariants}
               custom={index}
-              className="w-full bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 hover:shadow-card-shadow hover:-translate-y-0.5 transition-all duration-300"
+              className="w-full bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 hover:shadow-e2 hover:-translate-y-0.5 transition-all duration-300"
             >
               <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
                 {/* Left Column: Avatar (Photo) */}
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-cream border-2 border-primary/20 shrink-0 shadow-sm overflow-hidden">
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-surface-tint border-2 border-primary/20 shrink-0 shadow-sm overflow-hidden">
                   {/* Initials fallback — shown behind the real photo */}
                   <div
                     className="absolute inset-0 flex items-center justify-center text-primary font-bold text-3xl lg:text-4xl select-none"
@@ -266,7 +266,7 @@ export default function AboutLeadership() {
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
                 {/* Modal Left Column: Photo/Avatar (33% width on Desktop) */}
                 <div className="md:col-span-4 flex flex-col items-center text-center md:text-left gap-4 pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-slate-100 md:pr-6 lg:pr-8 w-full shrink-0">
-                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-cream border-2 border-primary/20 shrink-0 shadow-sm overflow-hidden">
+                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-surface-tint border-2 border-primary/20 shrink-0 shadow-sm overflow-hidden">
                     {/* Initials fallback — shown behind the real photo */}
                     <div
                       className="absolute inset-0 flex items-center justify-center text-primary font-bold text-4xl select-none"
@@ -306,7 +306,7 @@ export default function AboutLeadership() {
                 <div className="md:col-span-8 flex flex-col gap-6 w-full">
                   {/* Detailed Bio Section */}
                   <div>
-                    <h4 className="text-xs font-extrabold uppercase text-slate-400 tracking-wider mb-2 flex items-center gap-2 pb-2 border-b border-slate-100">
+                    <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-2 flex items-center gap-2 pb-2 border-b border-slate-100">
                       <Icon icon="solar:user-bold" className="text-primary" width="16" height="16" />
                       Detailed Profile
                     </h4>
@@ -317,7 +317,7 @@ export default function AboutLeadership() {
 
                   {/* Credentials Section */}
                   <div className="bg-blue-50/10 border border-blue-100/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
-                    <h4 className="text-xs font-extrabold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-blue-100/10 pb-2">
+                    <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-blue-100/10 pb-2">
                       <Icon icon="solar:diploma-verified-bold" className="text-primary" width="16" height="16" />
                       Academic &amp; Operational Credentials
                     </h4>
@@ -333,7 +333,7 @@ export default function AboutLeadership() {
 
                   {/* Vetted Projects Section */}
                   <div className="bg-emerald-50/10 border border-emerald-100/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
-                    <h4 className="text-xs font-extrabold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-emerald-100/10 pb-2">
+                    <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-emerald-100/10 pb-2">
                       <Icon icon="solar:structure-bold" className="text-emerald-500" width="16" height="16" />
                       Key Projects &amp; Audits Vetted
                     </h4>

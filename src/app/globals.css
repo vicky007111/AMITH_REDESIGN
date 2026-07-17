@@ -1,31 +1,45 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
-
-
 @theme {
-  --shadow-card-shadow:
-    rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  /* ── Elevation scale — the only three shadows on the site ─────────────
+     e1 = resting card · e2 = hover / raised · e3 = hero media / overlays */
+  --shadow-e1: 0 1px 2px rgb(2 6 23 / 0.06), 0 2px 8px rgb(2 6 23 / 0.05);
+  --shadow-e2: 0 2px 6px rgb(2 6 23 / 0.05), 0 10px 28px rgb(0 28 104 / 0.1);
+  --shadow-e3: 0 24px 56px rgb(0 28 104 / 0.16);
 
-  --color-primary: #001c68;
-  --color-secondary: #ffffff;
-  --color-warning: #f59e0b;
-  --color-grey: #f9f9fb;
-  --color-dark: #141414;
-  --color-Dark-primary: #001c68;
-  --color-cream: #eff6ff;
-  --color-darkcream: #dbeafe;
-  --color-success: #10b981;
-  --color-Snowy-sky: #1d4ed8;
-  --color-lightyellow: #dbeafe;
-  --color-Smoke: #f1f5f9;
-  --color-darkmode: #081738;
-  --color-darklight: #000f30;
-  --color-midnight_text: #1e293b;
-  --color-Sky-mist-blue: #94a3b8;
-  --color-darkborder: #1e293b;
-  --color-border_color: #cbd5e1;
-  --color-blue: #2563eb;
+  /* ── Brand navy ramp — single source for every deep-blue surface ───── */
+  --color-navy-950: #000f30;
+  --color-navy-900: #001243;
+  --color-navy-800: #001c68;
+  --color-navy-700: #00227c;
+  --color-navy-600: #0033a0;
+  --color-navy-500: #0050d0;
+
+  /* ── Action blue — links, focus rings, small accents ───────────────── */
+  --color-accent: #2563eb;
+  --color-accent-strong: #1d4ed8;
+
+  /* ── Semantic aliases ──────────────────────────────────────────────── */
+  --color-primary: #001c68; /* = navy-800; keep this name — used site-wide */
+  --color-surface-soft: #f8fafc;
+  --color-surface-tint: #eff6ff;
+  --color-ink: #0f172a;
+  --color-body: #475569;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-line-strong: #cbd5e1;
+
+  /* ── Status colors — form feedback only, never decoration ──────────── */
+  --color-success: #059669;
+  --color-error: #dc2626;
+
+  /* ── Radius scale ───────────────────────────────────────────────────
+     buttons/fields = btn/field · cards/panels = card · imagery = media
+     pills/badges/avatars = rounded-full */
+  --radius-btn: 0.75rem;
+  --radius-field: 0.75rem;
+  --radius-card: 1rem;
+  --radius-media: 1.5rem;
 
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -34,104 +48,83 @@
   --breakpoint-2xl: 1400px;
   --breakpoint-3xl: 1920px;
 
-  --text-22: 1.375rem;
-  --text-22--line-height: 2rem;
-  --text-28: 1.75rem;
-  --text-28--line-height: 2.25rem;
-  --text-32: 2rem;
-  --text-32--line-height: 2.5rem;
-  --text-36: 2.25rem;
-  --text-36--line-height: 2.625rem;
-  --text-40: 2.5rem;
-  --text-40--line-height: 3rem;
-  --text-65: 4.063rem;
-  --text-65--line-height: 4.875rem;
-
+  /* Legacy spacing tokens — still referenced by Footer; pruned once its
+     rhythm is normalized. */
   --spacing-17: 4.375rem;
-  --spacing-50: 50rem;
-  --spacing-3_438: 3.438rem;
   --spacing-1_875: 1.875rem;
-  --spacing-1_563: 1.563rem;
   --spacing-2_188: 2.188rem;
   --spacing-2_375: 2.375rem;
-  --spacing-1_125: 1.125rem;
-  --spacing-9_375: 9.375rem;
-  --spacing-40\%: 40%;
-  --spacing-60\%: 60%;
-  --spacing-10_625: 10.625rem;
-  --spacing-11_563: 11.563rem;
-  --spacing-7_5: 7.5rem;
-  --spacing-3_125: 3.125rem;
 
   --z-index-1: 1;
   --z-index-999: 999;
+}
 
-  --inset-8\%: 8%;
-  --inset-12\%: 12%;
-  --inset-15\%: 15%;
-  --inset-20\%: 20%;
-  --inset-31\%: 31%;
-  --inset-38\%: 38%;
-  --inset-40\%: 40%;
-  --inset-42\%: 42%;
-  --inset-45\%: 45%;
-  --inset-48\%: 48%;
-  --inset-52\%: 52%;
-  --inset-63\%: 63%;
-  --inset-75\%: 75%;
+/* Fonts are injected by next/font as CSS variables on <body>. */
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-manrope), ui-sans-serif, sans-serif;
 }
 
 @layer base {
-
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-line);
   }
-}
 
-@layer components {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply text-base overflow-x-hidden font-normal;
+    @apply font-sans text-base font-normal overflow-x-hidden;
     -webkit-text-size-adjust: 100%;
   }
 
+  /* Headings match real site-wide usage: display face, bold (Space Grotesk
+     caps at 700), tight tracking, ink. Heroes set their own larger scale. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display font-bold tracking-tight text-ink;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .animate-pulse,
+    .animate-ping,
+    .animate-spin {
+      animation: none;
+    }
+  }
+}
+
+@layer components {
   textarea,
   input[type="text"],
   input[type="number"],
   input[type="email"],
   input[type="tel"],
   select {
-    @apply block outline-hidden text-base font-normal text-midnight_text m-0 rounded-lg w-full placeholder:text-[#668199]
-      border border-slate-200 bg-white px-4 py-3
-      focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary
+    @apply block outline-hidden text-base font-normal text-ink m-0 rounded-field w-full placeholder:text-slate-400
+      border border-line bg-white px-4 py-3
+      focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent
       transition-all duration-200;
-  }
-
-  h1 {
-    @apply md:text-65 text-28 font-bold text-white;
-  }
-
-  h2 {
-    @apply text-2xl sm:text-3xl md:text-4xl font-extrabold text-midnight_text;
-  }
-
-  h3 {
-    @apply md:text-28 text-lg font-bold text-white;
-  }
-
-  h4 {
-    @apply text-2xl font-bold text-midnight_text;
-  }
-
-  h5 {
-    @apply text-22 font-medium text-midnight_text;
   }
 
   /* Canonical section vertical rhythm — use on every top-level <section>. */
@@ -146,6 +139,26 @@
 
   /* Canonical eyebrow/kicker label above section headings. */
   .kicker-text {
-    @apply text-primary font-bold text-sm uppercase tracking-wider mb-3;
+    @apply text-accent font-bold text-sm uppercase tracking-[0.15em] mb-3;
+  }
+
+  /* The one navy gradient — every deep-navy hero/banner surface uses this. */
+  .bg-brand-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--color-navy-800) 0%,
+      var(--color-navy-900) 55%,
+      var(--color-navy-950) 100%
+    );
+  }
+
+  /* Canonical card shell + optional hover lift. Cards stay plain divs so
+     they compose with the shared stagger pattern (motion.div children). */
+  .card {
+    @apply bg-white border border-line rounded-card shadow-e1;
+  }
+
+  .card-hover {
+    @apply transition-[transform,box-shadow,border-color] duration-300 hover:shadow-e2 hover:-translate-y-1 hover:border-primary/20;
   }
 }

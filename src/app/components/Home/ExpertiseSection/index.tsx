@@ -88,7 +88,7 @@ function ServiceCard({
         className="w-full bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-[0_2px_8px_rgba(0,28,104,0.04)] hover:shadow-[0_16px_32px_rgba(0,28,104,0.14)] transition-shadow duration-200 ease-out group flex flex-col"
       >
         {/* Image or blueprint placeholder */}
-        <div className="relative w-full aspect-[2.2/1] overflow-hidden bg-cream">
+        <div className="relative w-full aspect-[2.2/1] overflow-hidden bg-surface-tint">
           {/* Attempt to load service image; fallback is the blueprint-style placeholder */}
           <ServiceImageWithFallback
             src={service.imagePath}
@@ -174,7 +174,7 @@ export default function ExpertiseSection() {
           <p className="kicker-text">
             Our Expertise
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
             What We Do
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />

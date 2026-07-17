@@ -57,7 +57,7 @@ export default function GalleryPreview() {
           <p className="kicker-text">
             Portfolio
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
             Our Gallery Images
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />

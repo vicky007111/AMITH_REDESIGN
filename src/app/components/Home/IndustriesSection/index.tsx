@@ -31,7 +31,7 @@ export default function IndustriesSection() {
           <p className="text-white/60 font-bold text-sm uppercase tracking-wider mb-3">
             Sectors We Support
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
             Industries We Serve
           </h2>
           <div className="w-12 h-1 bg-white/30 mx-auto mt-4 rounded-full" />
@@ -52,7 +52,7 @@ export default function IndustriesSection() {
               className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/10 border border-white/15 hover:bg-white/20 hover:border-white/30 transition-colors duration-200 group"
             >
               {/* Decorative dot */}
-              <span className="w-2 h-2 rounded-full bg-warning shrink-0 group-hover:scale-125 transition-transform duration-200" />
+              <span className="w-2 h-2 rounded-full bg-accent shrink-0 group-hover:scale-125 transition-transform duration-200" />
               <span className="text-sm sm:text-base font-semibold text-white leading-snug">
                 {industry}
               </span>

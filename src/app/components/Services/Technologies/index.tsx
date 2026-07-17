@@ -64,7 +64,7 @@ const UsedTech = () => {
         <p className="kicker-text">
           Engineering Stack
         </p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 lg:text-start text-center leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 lg:text-start text-center leading-tight">
           Tools, Software & <span className="text-primary">Compliance Standards</span>
         </h2>
         <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-10" aria-hidden="true" />
@@ -72,7 +72,7 @@ const UsedTech = () => {
           <Slider {...settings}>
             {technologies.map((item, index) => (
               <div key={index} className="px-3">
-                <div className="bg-grey rounded-2xl p-6 flex flex-col items-center text-center gap-4 border border-slate-100 shadow-sm h-48 justify-center">
+                <div className="bg-surface-soft rounded-2xl p-6 flex flex-col items-center text-center gap-4 border border-slate-100 shadow-sm h-48 justify-center">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                     <Icon
                       icon={item.icon}
@@ -81,7 +81,7 @@ const UsedTech = () => {
                     />
                   </div>
                   <div>
-                    <h5 className="text-md font-bold text-slate-800 mb-1">
+                    <h5 className="text-lg font-bold text-slate-800 mb-1">
                       {item.name}
                     </h5>
                     <p className="text-xs text-slate-500 font-medium">

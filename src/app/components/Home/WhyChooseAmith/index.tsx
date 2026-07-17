@@ -34,7 +34,7 @@ export default function WhyChooseAmith() {
           <p className="kicker-text">
             Why Amith?
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
             Why Choose Amith?
           </h2>
           <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />
@@ -63,7 +63,7 @@ export default function WhyChooseAmith() {
                   icon="solar:check-circle-bold"
                   width={22}
                   height={22}
-                  className="text-success"
+                  className="text-accent"
                 />
               </motion.span>
               <span className="text-sm sm:text-base font-semibold text-slate-800 leading-snug">

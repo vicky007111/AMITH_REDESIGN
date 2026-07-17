@@ -108,7 +108,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-          className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl"
+          className="text-white font-bold tracking-tight mb-4 sm:mb-5 max-w-3xl"
           style={{
             fontSize: "clamp(2.25rem, 6vw, 4.5rem)",
             lineHeight: 1.06,
@@ -117,7 +117,7 @@ export default function HeroBanner() {
         >
           Engineering Assurance
           <br />
-          for <span className="text-warning">Safer Infrastructure</span>
+          for <span className="text-sky-300">Safer Infrastructure</span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -209,7 +209,7 @@ export default function HeroBanner() {
             >
               {i === current && (
                 <motion.span
-                  className="absolute inset-y-0 left-0 bg-warning rounded-full"
+                  className="absolute inset-y-0 left-0 bg-white rounded-full"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}

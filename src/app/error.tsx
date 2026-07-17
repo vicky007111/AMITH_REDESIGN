@@ -17,7 +17,7 @@ export default function Error({
   return (
     <section className="section-py bg-white">
       <div className="section-container text-center max-w-xl">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
           Something Went Wrong
         </h1>
         <p className="text-base text-slate-500 font-medium mb-8 leading-relaxed">

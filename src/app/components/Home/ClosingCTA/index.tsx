@@ -62,7 +62,7 @@ export default function ClosingCTA() {
             <span className="text-primary font-bold text-xs sm:text-sm uppercase tracking-widest mb-3 bg-primary/10 px-3 py-1 rounded-full">
               Engineering Excellence
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
               Building Confidence Through Engineering Excellence
             </h2>
             <p className="text-base text-slate-600 font-medium leading-relaxed mb-0">
@@ -105,12 +105,12 @@ export default function ClosingCTA() {
 
         {/* Custom Premium CTA Banner */}
         <Reveal variants={fadeScale} amount={0.25}>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-[#00227c] to-[#081738] p-8 md:p-10 shadow-2xl shadow-primary/20 border border-white/10">
+          <div className="relative overflow-hidden rounded-3xl bg-brand-gradient p-8 md:p-10 shadow-e3 border border-white/10">
             {/* Glowing inner accent */}
             <div
               className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full pointer-events-none opacity-20"
               style={{
-                background: "radial-gradient(circle, #f59e0b 0%, transparent 70%)",
+                background: "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
               }}
               aria-hidden="true"
             />
@@ -134,7 +134,7 @@ export default function ClosingCTA() {
               >
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-warning hover:bg-[#e08e06] text-[#000f30] font-extrabold text-sm sm:text-base shadow-lg shadow-warning/20 transition-all duration-200 cursor-pointer whitespace-nowrap"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-surface-tint text-primary font-bold text-sm sm:text-base shadow-e2 transition-all duration-200 cursor-pointer whitespace-nowrap"
                 >
                   Get in Touch
                   <Icon icon="solar:arrow-right-bold" width="18" height="18" />

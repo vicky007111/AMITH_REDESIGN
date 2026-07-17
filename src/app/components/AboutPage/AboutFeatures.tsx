@@ -84,7 +84,7 @@ const AboutFeatures = () => {
   const showActivePin = sweepX >= 43;
 
   return (
-    <section id="about-features" className="bg-grey overflow-x-hidden section-py transition-colors duration-300">
+    <section id="about-features" className="bg-surface-soft overflow-x-hidden section-py transition-colors duration-300">
       <div className="section-container">
         <div className="grid grid-cols-12 gap-8 lg:gap-12 xl:gap-24 items-center">
 
@@ -170,13 +170,13 @@ const AboutFeatures = () => {
                   </span>
                   <div className="flex justify-between items-center gap-4">
                     <span className="text-[9px] font-mono text-slate-400">ELECTRODE V:</span>
-                    <span className="text-xs font-mono font-extrabold text-cyan-300 scale-105">
+                    <span className="text-xs font-mono font-bold text-cyan-300 scale-105">
                       {mV} mV
                     </span>
                   </div>
                   <div className="flex justify-between items-center gap-4">
                     <span className="text-[9px] font-mono text-slate-400">EST. RISK:</span>
-                    <span className={`text-[9.5px] font-mono font-extrabold ${color}`}>
+                    <span className={`text-[9.5px] font-mono font-bold ${color}`}>
                       {risk}
                     </span>
                   </div>
@@ -228,7 +228,7 @@ const AboutFeatures = () => {
               <p className="kicker-text">
                 Why Choose Us
               </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 pb-3 sm:pb-4 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 pb-3 sm:pb-4 leading-tight">
                 Engineering Integrity Backed by Academic &amp; Public Trust
               </h2>
               <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed mb-5">
@@ -240,7 +240,7 @@ const AboutFeatures = () => {
             <div className="space-y-3">
               {FEATURES.map((feature, i) => (
                 <Reveal key={i} variants={featureVariants} custom={2 + i}>
-                  <div className="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-card-shadow hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 flex gap-4 items-start">
+                  <div className="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-e2 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 flex gap-4 items-start">
                     <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary shrink-0 transition-all duration-300 group-hover:scale-105">
                       <Icon
                         icon={feature.icon}

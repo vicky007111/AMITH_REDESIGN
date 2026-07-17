@@ -37,7 +37,7 @@ export default function IntroSection() {
           {/* Heading */}
           <motion.h2
             variants={fadeUp}
-            className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight"
           >
             Trusted Engineering Partners for Infrastructure Owners
           </motion.h2>
@@ -72,7 +72,7 @@ export default function IntroSection() {
             aria-label="Company tagline"
           >
             <p
-              className="font-extrabold text-primary leading-snug tracking-tight"
+              className="font-bold text-primary leading-snug tracking-tight"
               style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", lineHeight: 1.35 }}
             >
               Reliable Engineering. Trusted Decisions.{" "}

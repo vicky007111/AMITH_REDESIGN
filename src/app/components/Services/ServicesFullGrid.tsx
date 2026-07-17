@@ -35,16 +35,16 @@ export default function ServicesFullGrid() {
             viewport={VIEWPORT_EARLY}
             className="col-span-12 md:col-span-6"
           >
-            <article className="h-full bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-card-shadow hover:-translate-y-1.5 hover:border-primary/20 transition-all duration-300 flex flex-col group">
+            <article className="h-full bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-e2 hover:-translate-y-1.5 hover:border-primary/20 transition-all duration-300 flex flex-col group">
               {/* Card header */}
               <div className="p-8 flex flex-col gap-5 flex-1">
                 <div className="flex items-start gap-5">
                   {/* Icon */}
                   <div
-                    className="w-14 h-14 rounded-2xl bg-cream flex items-center justify-center text-primary shrink-0 relative overflow-hidden"
+                    className="w-14 h-14 rounded-2xl bg-surface-tint flex items-center justify-center text-primary shrink-0 relative overflow-hidden"
                     aria-hidden="true"
                   >
-                    <div className="absolute inset-0 bg-darkcream rounded-2xl top-4 -left-4" />
+                    <div className="absolute inset-0 bg-blue-100 rounded-2xl top-4 -left-4" />
                     <span className="relative z-10">
                       <Icon icon={service.icon} width="28" height="28" className="text-primary transition-transform duration-300 group-hover:scale-110" />
                     </span>
@@ -69,7 +69,7 @@ export default function ServicesFullGrid() {
                         e.preventDefault();
                         document.getElementById("ndt-methods")?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-blue hover:text-primary transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-accent hover:text-primary transition-colors cursor-pointer"
                     >
                       <Icon icon="solar:round-alt-arrow-down-linear" width="16" height="16" />
                       Try Interactive NDT Explorer

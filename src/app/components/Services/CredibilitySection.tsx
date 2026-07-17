@@ -27,7 +27,7 @@ export default function CredibilitySection() {
   ];
 
   return (
-    <section className="bg-grey section-py border-y border-slate-100 transition-colors duration-300">
+    <section className="bg-surface-soft section-py border-y border-slate-100 transition-colors duration-300">
       <div className="section-container">
         <div className="grid grid-cols-12 gap-8 xl:gap-16 items-center">
           {/* Left Column: Text Content */}
@@ -36,7 +36,7 @@ export default function CredibilitySection() {
               <p className="kicker-text">
                 Technical Authority
               </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
                 Rigorous Auditing, Certified Compliance
               </h2>
               <div className="w-12 h-1 bg-primary mt-4 rounded-full" aria-hidden="true" />

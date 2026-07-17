@@ -59,7 +59,7 @@ export default function Contact() {
               <p className="kicker-text">
                 Get In Touch
               </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
                 Let&apos;s Discuss Your Infrastructure Project
               </h2>
               <div className="w-12 h-1 bg-primary mt-4 rounded-full"></div>
@@ -170,7 +170,7 @@ export default function Contact() {
                     height="56"
                     className="mx-auto mb-5 text-primary"
                   />
-                  <h4 className="text-2xl sm:text-3xl font-extrabold mb-3 text-slate-900">Thank You!</h4>
+                  <h4 className="text-2xl sm:text-3xl font-bold mb-3 text-slate-900">Thank You!</h4>
                   <p className="text-sm sm:text-base font-medium text-slate-500">
                     Thank you for considering AMITH. We will get back to you shortly.
                   </p>

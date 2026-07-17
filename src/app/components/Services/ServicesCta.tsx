@@ -34,17 +34,17 @@ export default function ServicesCta() {
   ];
 
   return (
-    <section className="bg-darkmode section-py transition-colors duration-300 relative overflow-hidden">
+    <section className="bg-navy-900 section-py transition-colors duration-300 relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true" />
 
       <div className="section-container relative z-10">
         <Reveal className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-blue font-bold text-sm uppercase tracking-wider mb-3">
+          <p className="text-accent font-bold text-sm uppercase tracking-wider mb-3">
             Engage Our Expertise
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
             Ready to Vet Your Next Project?
           </h2>
           <p className="text-base text-slate-200 font-medium mt-4 leading-relaxed">
@@ -78,7 +78,7 @@ export default function ServicesCta() {
                 <div className="mt-6 pt-4 border-t border-white/10">
                   <Link
                     href={action.link}
-                    className="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-blue transition-colors duration-200"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-accent transition-colors duration-200"
                   >
                     {action.ctaText}
                     <Icon icon="solar:alt-arrow-right-linear" width="16" height="16" />

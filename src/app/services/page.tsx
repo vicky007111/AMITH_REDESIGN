@@ -41,7 +41,7 @@ export default function ServicesPage() {
             <p className="kicker-text">
               What We Do
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
               Engineering &amp; Advisory Services
             </h2>
             <p className="text-base text-slate-500 font-medium max-w-2xl mx-auto mt-3">
