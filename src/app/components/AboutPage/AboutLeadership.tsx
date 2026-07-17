@@ -152,14 +152,14 @@ export default function AboutLeadership() {
           <p className="kicker-text">
             Elite Leadership Team
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mt-5 tracking-tight leading-tight">
+          <h2 className="mt-5 leading-tight">
             Meet Our Board of Directors
           </h2>
           <div className="max-w-3xl mx-auto mt-5 px-4">
-            <p className="text-slate-600 font-semibold text-sm sm:text-base leading-relaxed">
+            <p className="text-body font-semibold text-sm sm:text-base leading-relaxed">
               AMITH Civil &amp; Allied Engineering (ACAES) Pvt Ltd, is a start-up company established by a team of three dedicated Professionals with more than three decades of service in the field of Academic, Design, and construction Industries.
             </p>
-            <p className="text-slate-400 font-medium text-xs sm:text-sm mt-2">
+            <p className="text-muted font-medium text-xs sm:text-sm mt-2">
               Here are brief professional details about the directors of the company.
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function AboutLeadership() {
               key={director.name}
               variants={directorCardVariants}
               custom={index}
-              className="w-full bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 hover:shadow-e2 hover:-translate-y-0.5 transition-all duration-300"
+              className="w-full card card-hover p-6 sm:p-8"
             >
               <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
                 {/* Left Column: Avatar (Photo) */}
@@ -204,7 +204,7 @@ export default function AboutLeadership() {
                 {/* Right Column: Profile Summary & Button */}
                 <div className="flex-1 text-center md:text-left space-y-3 w-full">
                   <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 justify-center md:justify-start">
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
+                    <h3 className="text-xl sm:text-2xl leading-tight">
                       {director.name}
                     </h3>
                     <span className="inline-block self-center text-xs font-bold text-primary bg-primary/5 border border-primary/10 px-3 py-1 rounded-full whitespace-nowrap">
@@ -220,14 +220,14 @@ export default function AboutLeadership() {
                     </span>
                   </div>
 
-                  <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                  <p className="text-sm text-body font-medium leading-relaxed">
                     {director.bio}
                   </p>
 
                   <div className="pt-2 flex justify-center md:justify-start">
                     <button
                       onClick={() => setActiveDirector(director)}
-                      className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-primary/5 hover:bg-primary text-primary hover:text-white transition-all duration-300 border border-primary/10 hover:border-primary flex items-center gap-2 group cursor-pointer shadow-sm hover:shadow-md"
+                      className="px-5 py-2.5 rounded-btn text-xs sm:text-sm font-bold bg-primary/5 hover:bg-primary text-primary hover:text-white transition-colors duration-300 border border-primary/10 hover:border-primary flex items-center gap-2 group cursor-pointer shadow-e1 hover:shadow-e2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                     >
                       <span>View Full Profile &amp; Vetting History</span>
                       <Icon
@@ -246,18 +246,21 @@ export default function AboutLeadership() {
 
         {/* Credentials & Projects Modal Popup Overlay */}
         {activeDirector && (
-          <div 
-            className="fixed inset-0 bg-slate-900/65 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+          <div
+            className="fixed inset-0 bg-navy-950/65 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
             onClick={() => setActiveDirector(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${activeDirector.name} — full profile`}
           >
             <div 
-              className="w-full max-w-4xl bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl relative my-8 animate-fade-in max-h-[90vh] overflow-y-auto flex flex-col gap-6"
+              className="w-full max-w-4xl bg-white border border-line rounded-media p-6 sm:p-8 md:p-10 shadow-e3 relative my-8 max-h-[90vh] overflow-y-auto flex flex-col gap-6"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
                 onClick={() => setActiveDirector(null)}
-                className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center border border-slate-200/50 transition-colors duration-200 cursor-pointer"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-btn bg-slate-100 text-muted hover:text-ink flex items-center justify-center border border-line transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 aria-label="Close Credentials Modal"
               >
                 <Icon icon="lucide:x" width="24" height="24" />
@@ -287,7 +290,7 @@ export default function AboutLeadership() {
                   </div>
 
                   <div className="space-y-2 w-full">
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
+                    <h3 className="text-xl sm:text-2xl leading-tight">
                       {activeDirector.name}
                     </h3>
                     <span className="inline-block text-xs font-bold text-primary bg-primary/5 border border-primary/10 px-3 py-1 rounded-full">
@@ -310,20 +313,20 @@ export default function AboutLeadership() {
                       <Icon icon="lucide:user" className="text-primary" width="16" height="16" />
                       Detailed Profile
                     </h4>
-                    <p className="text-sm text-slate-600 font-medium leading-relaxed">
+                    <p className="text-sm text-body font-medium leading-relaxed">
                       {activeDirector.bio}
                     </p>
                   </div>
 
                   {/* Credentials Section */}
-                  <div className="bg-blue-50/10 border border-blue-100/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
-                    <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-blue-100/10 pb-2">
+                  <div className="bg-surface-tint/60 border border-blue-100 rounded-card p-5 sm:p-6 flex flex-col justify-start">
+                    <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-blue-100 pb-2">
                       <Icon icon="lucide:award" className="text-primary" width="16" height="16" />
                       Academic &amp; Operational Credentials
                     </h4>
                     <ul className="space-y-3">
                       {activeDirector.credentials.map((cred, i) => (
-                        <li key={i} className="flex gap-2.5 items-start text-xs text-slate-600 font-medium leading-relaxed">
+                        <li key={i} className="flex gap-2.5 items-start text-xs text-body font-medium leading-relaxed">
                           <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-1.5"></span>
                           <span>{cred}</span>
                         </li>
@@ -332,15 +335,15 @@ export default function AboutLeadership() {
                   </div>
 
                   {/* Vetted Projects Section */}
-                  <div className="bg-emerald-50/10 border border-emerald-100/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
-                    <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-emerald-100/10 pb-2">
-                      <Icon icon="lucide:landmark" className="text-emerald-500" width="16" height="16" />
+                  <div className="bg-surface-soft border border-line rounded-card p-5 sm:p-6 flex flex-col justify-start">
+                    <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-line pb-2">
+                      <Icon icon="lucide:landmark" className="text-primary" width="16" height="16" />
                       Key Projects &amp; Audits Vetted
                     </h4>
                     <ul className="space-y-3">
                       {activeDirector.keyProjects.map((proj, i) => (
-                        <li key={i} className="flex gap-2.5 items-start text-xs text-slate-600 font-medium leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"></span>
+                        <li key={i} className="flex gap-2.5 items-start text-xs text-body font-medium leading-relaxed">
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0 mt-1.5"></span>
                           <span>{proj}</span>
                         </li>
                       ))}

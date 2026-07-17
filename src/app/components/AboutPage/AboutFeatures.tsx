@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Icon } from "@iconify/react";
+import { useReducedMotion } from "motion/react";
 import Reveal from "@/app/components/shared/Reveal";
+import IconTile from "@/app/components/shared/IconTile";
 import { staggeredFadeUp } from "@/app/components/shared/anim";
 
 const featureVariants = staggeredFadeUp(0.1);
@@ -26,9 +27,16 @@ const FEATURES = [
 ];
 
 const AboutFeatures = () => {
-  const [sweepX, setSweepX] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
+  // Frozen on the crack position (43%) when the user prefers reduced motion.
+  const [sweepX, setSweepX] = useState(43);
 
   useEffect(() => {
+    if (prefersReducedMotion) {
+      setSweepX(43);
+      return;
+    }
+
     let start: number | null = null;
     let animFrame: number;
     const duration = 9000; // 9 seconds loop sweep (back and forth) for a slower, professional read
@@ -50,7 +58,7 @@ const AboutFeatures = () => {
 
     animFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animFrame);
-  }, []);
+  }, [prefersReducedMotion]);
 
   // ASTM C876 potential field classification
   const getAuditData = (x: number) => {
@@ -61,18 +69,18 @@ const AboutFeatures = () => {
       // Peak corrosion zone (37% to 49% sweep)
       // Voltages between -380mV and -430mV
       const mV = Math.round(-430 + distFromPeak * 8);
-      return { mV, risk: "CORROSION ACTIVE (>90% RISK)", color: "text-rose-400 border-rose-500/20 bg-rose-500/10 animate-pulse" };
+      return { mV, risk: "CORROSION ACTIVE (>90% RISK)", color: "text-white border-blue-400/30 bg-blue-500/20 animate-pulse" };
     } else if (distFromPeak <= 12) {
       // Uncertain transition zone (31% to 36%, 50% to 55%)
       // Voltages between -200mV and -350mV
       const mV = Math.round(-350 + (distFromPeak - 6) * 25);
-      return { mV, risk: "UNCERTAIN (50%)", color: "text-amber-400 border-amber-500/20 bg-amber-500/10" };
+      return { mV, risk: "UNCERTAIN (50%)", color: "text-blue-300 border-blue-400/20 bg-blue-500/10" };
     } else {
       // Safe zones (x < 31 or x > 55)
       // Voltages between -100mV and -190mV
       const baseVal = x < 31 ? -120 - (x * 2) : -170 + ((x - 55) * 1.5);
       const mV = Math.round(baseVal);
-      return { mV, risk: "SAFE (<10% RISK)", color: "text-emerald-400 border-emerald-500/20 bg-emerald-500/10" };
+      return { mV, risk: "SAFE (<10% RISK)", color: "text-sky-300 border-sky-400/20 bg-sky-500/10" };
     }
   };
 
@@ -91,7 +99,7 @@ const AboutFeatures = () => {
           {/* Half-Cell Potential Sweep Column (Left) */}
           <div className="lg:col-span-6 col-span-12 pb-8 lg:pb-0">
             <Reveal variants={featureVariants} custom={0}>
-              <div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden border border-slate-200 shadow-2xl bg-slate-900 group">
+              <div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-media overflow-hidden border border-line shadow-e3 bg-navy-950 group">
 
                 {/* Layer 1: Base Image (Field Inspection) */}
                 <Image
@@ -116,30 +124,30 @@ const AboutFeatures = () => {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
-                  {/* Contour Grid overlay - cyan tech grid */}
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(6,182,212,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(6,182,212,0.15)_1px,transparent_1px)] bg-[size:24px_24px] mix-blend-screen" />
+                  {/* Contour Grid overlay - blue tech grid */}
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(37,99,235,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(37,99,235,0.15)_1px,transparent_1px)] bg-[size:24px_24px] mix-blend-screen" />
                   
                   {/* Voltage Contour Color Gradient - strictly localized to crack area around ~43% */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/15 via-[35%] via-amber-500/25 via-[41%] via-rose-600/40 via-[43%] via-amber-500/25 via-[45%] to-cyan-500/15 mix-blend-overlay" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/15 via-[35%] via-blue-400/25 via-[41%] via-blue-200/50 via-[43%] via-blue-400/25 via-[45%] to-blue-500/15 mix-blend-overlay" />
                   
                   {/* Vivid Corrosion Hotspot centered on the crack/spall - dynamically lights up as scanner line passes */}
                   <div 
-                    className="absolute top-[50%] left-[43%] w-[120px] h-[120px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-rose-600/30 blur-xl transition-opacity duration-75 pointer-events-none" 
+                    className="absolute top-[50%] left-[43%] w-[120px] h-[120px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-300/40 blur-xl transition-opacity duration-75 pointer-events-none" 
                     style={{ opacity: detectionIntensity }}
                   />
                 </div>
 
                 {/* Layer 3: Vertical Electrode Sweep Line & Probe */}
                 <div
-                  className="absolute top-0 bottom-0 w-[2px] bg-cyan-400 shadow-[0_0_12px_#22d3ee,0_0_4px_#22d3ee] z-20 pointer-events-none"
+                  className="absolute top-0 bottom-0 w-[2px] bg-blue-400 shadow-[0_0_12px_var(--color-accent),0_0_4px_var(--color-accent)] z-20 pointer-events-none"
                   style={{ left: `${sweepX}%` }}
                 >
                   {/* Sweeping Electrode Probe Indicator - aligned with technician's hand vertical position (~58%) */}
-                  <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 border-cyan-400 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow shadow-cyan-300 animate-pulse" />
+                  <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 border-blue-400 bg-navy-950/80 backdrop-blur-sm flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shadow shadow-blue-300 animate-pulse" />
                     {/* Tick markers */}
-                    <div className="absolute w-8 h-[1px] bg-cyan-400/50" />
-                    <div className="absolute h-8 w-[1px] bg-cyan-400/50" />
+                    <div className="absolute w-8 h-[1px] bg-blue-400/50" />
+                    <div className="absolute h-8 w-[1px] bg-blue-400/50" />
                   </div>
                 </div>
 
@@ -149,28 +157,28 @@ const AboutFeatures = () => {
 
                 {/* Layer 5: HUD Diagnostics overlays */}
                 {/* HUD Top Left: Voltmeter Status */}
-                <div className="absolute top-4 left-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 flex items-center gap-2 z-20 pointer-events-none">
-                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                  <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest">
+                <div className="absolute top-4 left-4 bg-navy-950/85 backdrop-blur-md border border-blue-400/30 rounded-lg px-3 py-1.5 flex items-center gap-2 z-20 pointer-events-none">
+                  <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                  <span className="text-[10px] font-mono font-bold text-blue-300 uppercase tracking-widest">
                     HALF-CELL PROBE: SWEEPING
                   </span>
                 </div>
 
                 {/* HUD Top Right: ASTM C876 Calibration */}
-                <div className="absolute top-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 z-20 pointer-events-none">
-                  <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest">
+                <div className="absolute top-4 right-4 bg-navy-950/85 backdrop-blur-md border border-blue-400/30 rounded-lg px-3 py-1.5 z-20 pointer-events-none">
+                  <span className="text-[10px] font-mono font-bold text-blue-300 uppercase tracking-widest">
                     ASTM C876 STANDARD
                   </span>
                 </div>
 
                 {/* HUD Bottom Left: Voltage Odometer & Risk Evaluation */}
-                <div className="absolute bottom-4 left-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 z-20 pointer-events-none flex flex-col gap-1 min-w-[170px]">
+                <div className="absolute bottom-4 left-4 bg-navy-950/85 backdrop-blur-md border border-blue-400/30 rounded-lg px-3 py-1.5 z-20 pointer-events-none flex flex-col gap-1 min-w-[170px]">
                   <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-0.5 mb-0.5">
                     REAL-TIME VOLTAGE FEED
                   </span>
                   <div className="flex justify-between items-center gap-4">
                     <span className="text-[9px] font-mono text-slate-400">ELECTRODE V:</span>
-                    <span className="text-xs font-mono font-bold text-cyan-300 scale-105">
+                    <span className="text-xs font-mono font-bold text-blue-200 scale-105">
                       {mV} mV
                     </span>
                   </div>
@@ -183,20 +191,20 @@ const AboutFeatures = () => {
                 </div>
 
                 {/* HUD Bottom Right: ASTM Color Legend */}
-                <div className="absolute bottom-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-2.5 py-1.5 z-20 pointer-events-none flex flex-col gap-1 text-[7.5px] font-mono text-slate-400 min-w-[125px]">
+                <div className="absolute bottom-4 right-4 bg-navy-950/85 backdrop-blur-md border border-blue-400/30 rounded-lg px-2.5 py-1.5 z-20 pointer-events-none flex flex-col gap-1 text-[7.5px] font-mono text-slate-400 min-w-[125px]">
                   <span className="font-bold text-[8px] text-slate-300 border-b border-slate-800 pb-0.5 mb-0.5 uppercase">
                     ASTM C876 LEGEND
                   </span>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-300" />
                     <span>&gt;-200mV (Low Risk)</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-300" />
                     <span>-200 to -350mV (Uncertain)</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
                     <span>&lt;-350mV (Active Corr.)</span>
                   </div>
                 </div>
@@ -206,16 +214,16 @@ const AboutFeatures = () => {
                   className="absolute top-[35%] left-[20%] z-20 flex items-center gap-1.5 pointer-events-none transition-opacity duration-300"
                   style={{ opacity: showSafePin ? 1 : 0.1 }}
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow shadow-emerald-400/80 animate-ping" />
-                  <span className="text-[8px] font-mono font-bold text-emerald-400 bg-slate-950/60 px-1 rounded">-120mV (SAFE)</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-sky-300 shadow shadow-sky-300/80 animate-ping" />
+                  <span className="text-[8px] font-mono font-bold text-sky-300 bg-navy-950/60 px-1 rounded">-120mV (SAFE)</span>
                 </div>
 
                 <div 
                   className="absolute top-[50%] left-[43%] z-20 flex items-center gap-1.5 pointer-events-none transition-opacity duration-300"
                   style={{ opacity: showActivePin ? 1 : 0.1 }}
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500 shadow shadow-rose-500/80 animate-ping" />
-                  <span className="text-[8px] font-mono font-bold text-rose-400 bg-slate-950/60 px-1 rounded">-430mV (ACTIVE)</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-white shadow shadow-white/80 animate-ping" />
+                  <span className="text-[8px] font-mono font-bold text-white bg-navy-950/60 px-1 rounded">-430mV (ACTIVE)</span>
                 </div>
 
               </div>
@@ -228,10 +236,10 @@ const AboutFeatures = () => {
               <p className="kicker-text">
                 Why Choose Us
               </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 pb-3 sm:pb-4 leading-tight">
+              <h2 className="pb-3 sm:pb-4 leading-tight">
                 Engineering Integrity Backed by Academic &amp; Public Trust
               </h2>
-              <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed mb-5">
+              <p className="text-sm sm:text-base text-body font-medium leading-relaxed mb-5">
                 Not a construction contractor — we assess structural distress and deliver cost-effective repair and rehabilitation designs, upgraded to the latest code provisions, as your single-platform engineering partner.
               </p>
             </Reveal>
@@ -240,19 +248,16 @@ const AboutFeatures = () => {
             <div className="space-y-3">
               {FEATURES.map((feature, i) => (
                 <Reveal key={i} variants={featureVariants} custom={2 + i}>
-                  <div className="group bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:shadow-e2 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center text-primary shrink-0 transition-all duration-300 group-hover:scale-105">
-                      <Icon
-                        icon={feature.icon}
-                        width="24"
-                        height="24"
-                      />
-                    </div>
+                  <div className="group card card-hover p-4 flex gap-4 items-start">
+                    <IconTile
+                      icon={feature.icon}
+                      className="transition-transform duration-300 group-hover:scale-105"
+                    />
                     <div>
-                      <h4 className="text-base font-bold text-slate-800 group-hover:text-primary transition-colors duration-200">
+                      <h4 className="text-base group-hover:text-primary transition-colors duration-200">
                         {feature.title}
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium leading-relaxed">
+                      <p className="text-xs sm:text-sm text-body mt-1 font-medium leading-relaxed">
                         {feature.text}
                       </p>
                     </div>
