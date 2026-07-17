@@ -12,17 +12,17 @@ export default function CredibilitySection() {
     {
       title: "NABL-Associated Material Testing",
       desc: "Certified material verification covering concrete cube crushing, steel tensile bonds, and chemical profiling in associated NABL-accredited labs.",
-      icon: "solar:shield-check-linear",
+      icon: "lucide:shield-check",
     },
     {
       title: "BIS Code & Standards Compliance",
       desc: "Engineering audits and mix designs calibrated strictly to Bureau of Indian Standards guidelines, including IS 456 & IS 10262.",
-      icon: "solar:document-text-linear",
+      icon: "lucide:file-text",
     },
     {
       title: "Corporate & Government Vetted",
       desc: "Approved structural stability reports and visual damage mapping executed for military (MES), municipal, and industrial frameworks.",
-      icon: "solar:verified-check-linear",
+      icon: "lucide:badge-check",
     },
   ];
 

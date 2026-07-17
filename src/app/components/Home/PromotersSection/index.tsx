@@ -106,7 +106,7 @@ function PromoterCard({
             </div>
             <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
               <Icon
-                icon="solar:verified-check-bold"
+                icon="lucide:badge-check"
                 width={16}
                 height={16}
                 className="text-primary"
@@ -121,7 +121,7 @@ function PromoterCard({
           <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary mt-1">
             View Full Profile
             <Icon
-              icon="solar:arrow-right-linear"
+              icon="lucide:arrow-right"
               width={14}
               height={14}
               className="transition-transform duration-200 group-hover:translate-x-1"
@@ -179,7 +179,7 @@ export default function PromotersSection() {
             className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-primary hover:bg-opacity-90 text-white font-bold text-sm sm:text-base shadow-lg shadow-primary/20 transition-all duration-200"
           >
             Meet Our Board of Directors
-            <Icon icon="solar:arrow-right-bold" width={18} height={18} />
+            <Icon icon="lucide:arrow-right" width={18} height={18} />
           </Link>
         </Reveal>
       </div>

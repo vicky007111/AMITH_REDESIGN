@@ -9,27 +9,27 @@ import { fadeScale, EASE } from "@/app/components/shared/anim";
 const PILLARS = [
   {
     text: "Independent Engineering Consultancy",
-    icon: "solar:shield-check-bold-duotone",
+    icon: "lucide:shield-check",
   },
   {
     text: "Experienced Civil & Structural Engineers",
-    icon: "solar:users-group-rounded-bold-duotone",
+    icon: "lucide:users",
   },
   {
     text: "Scientific Investigation & NDT-Based Assessment",
-    icon: "solar:atom-bold-duotone",
+    icon: "lucide:atom",
   },
   {
     text: "Code-Compliant Engineering Solutions",
-    icon: "solar:document-text-bold-duotone",
+    icon: "lucide:file-text",
   },
   {
     text: "Practical & Cost-Effective Recommendations",
-    icon: "solar:wallet-money-bold-duotone",
+    icon: "lucide:wallet",
   },
   {
     text: "Commitment to Safety, Quality & Sustainability",
-    icon: "solar:leaf-bold-duotone",
+    icon: "lucide:leaf",
   },
 ] as const;
 
@@ -137,7 +137,7 @@ export default function ClosingCTA() {
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-surface-tint text-primary font-bold text-sm sm:text-base shadow-e2 transition-all duration-200 cursor-pointer whitespace-nowrap"
                 >
                   Get in Touch
-                  <Icon icon="solar:arrow-right-bold" width="18" height="18" />
+                  <Icon icon="lucide:arrow-right" width="18" height="18" />
                 </Link>
               </motion.div>
             </div>

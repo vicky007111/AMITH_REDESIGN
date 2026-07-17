@@ -15,7 +15,7 @@ export interface Service {
 
 export const servicesData: Service[] = [
   {
-    icon: "solar:checklist-linear",
+    icon: "lucide:clipboard-check",
     title: "Quality Audit & TPQM",
     slug: "quality-audit-tpqm",
     image: "/images/services/whatsapp-quality-audit.jpg",
@@ -51,7 +51,7 @@ export const servicesData: Service[] = [
     ],
   },
   {
-    icon: "solar:buildings-linear",
+    icon: "lucide:building-2",
     title: "Structural Auditing & Stability",
     slug: "structural-auditing-stability",
     image: "/images/services/whatsapp-structural-audit.jpeg",
@@ -87,7 +87,7 @@ export const servicesData: Service[] = [
     ],
   },
   {
-    icon: "solar:magnifer-linear",
+    icon: "lucide:search",
     title: "Condition Assessment",
     slug: "condition-assessment",
     image: "/images/services/scaffolding_inspection.png",
@@ -115,7 +115,7 @@ export const servicesData: Service[] = [
     ],
   },
   {
-    icon: "solar:shield-linear",
+    icon: "lucide:shield",
     title: "Restoration & Rehabilitation",
     slug: "restoration-rehabilitation",
     image: "/images/services/cfrp-rehabilitation.jpg",
@@ -151,7 +151,7 @@ export const servicesData: Service[] = [
     ],
   },
   {
-    icon: "solar:health-linear",
+    icon: "lucide:heart-pulse",
     title: "NDT Diagnostics",
     slug: "ndt-diagnostics",
     image: "/images/services/upv-testing.jpg",
@@ -183,7 +183,7 @@ export const servicesData: Service[] = [
     ],
   },
   {
-    icon: "solar:case-linear",
+    icon: "lucide:briefcase",
     title: "Testing of Building Materials",
     slug: "testing-building-materials",
     image: "/images/services/concrete-ctm-testing.jpg",

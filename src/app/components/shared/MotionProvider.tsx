@@ -1,6 +1,7 @@
 "use client";
 
 import { MotionConfig } from "motion/react";
+import "./icons";
 
 /**
  * Site-wide motion configuration. `reducedMotion="user"` disables transform

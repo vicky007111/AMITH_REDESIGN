@@ -22,7 +22,7 @@ const SERVICES = [
     description:
       "From initial planning to the end of the project, we ensure construction quality through systematic inspections, compliance verification, material evaluation and quality assurance practices.",
     imagePath: "/images/services/service-1.jpg",
-    icon: "solar:clipboard-check-bold",
+    icon: "lucide:clipboard-check",
     imageAlt: "Quality audit and inspection process on construction site",
     href: "/services/quality-audit-tpqm",
   },
@@ -32,7 +32,7 @@ const SERVICES = [
     description:
       "Comprehensive structural health evaluation of buildings and infrastructure to assess safety, serviceability, residual life and compliance with applicable engineering standards.",
     imagePath: "/images/services/service-2.jpg",
-    icon: "solar:buildings-3-bold",
+    icon: "lucide:building",
     imageAlt: "Structural stability audit of an existing building",
     href: "/services/structural-auditing-stability",
   },
@@ -42,7 +42,7 @@ const SERVICES = [
     description:
       "Advanced condition assessment using visual inspection, Non-Destructive Testing (NDT), structural investigations and engineering diagnostics to identify deterioration, defects and performance issues.",
     imagePath: "/images/services/service-3.jpg",
-    icon: "solar:magnifer-bold",
+    icon: "lucide:search",
     imageAlt: "NDT-based condition assessment equipment in use",
     href: "/services/condition-assessment",
   },
@@ -52,7 +52,7 @@ const SERVICES = [
     description:
       "Designing sustainable repair, strengthening and providing rehabilitation solutions that enhance structural integrity, extend service life and optimize lifecycle costs.",
     imagePath: "/images/services/service-4.jpg",
-    icon: "solar:settings-bold",
+    icon: "lucide:settings",
     imageAlt: "Concrete restoration and structural rehabilitation work",
     href: "/services/restoration-rehabilitation",
   },
@@ -62,7 +62,7 @@ const SERVICES = [
     description:
       "Providing independent technical advice, due diligence, forensic engineering, expert opinions, risk assessment and asset management solutions for infrastructure projects.",
     imagePath: "/images/services/scaffolding_inspection.png",
-    icon: "solar:document-bold",
+    icon: "lucide:file-search",
     imageAlt: "Engineering consultancy and technical advisory meeting",
     href: "/services",
   },

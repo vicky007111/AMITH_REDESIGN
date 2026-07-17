@@ -8,27 +8,27 @@ import "slick-carousel/slick/slick-theme.css";
 const UsedTech = () => {
   const technologies = [
     {
-      icon: "solar:calculator-minimalistic-linear",
+      icon: "lucide:calculator",
       name: "STAAD.Pro & ETABS",
       desc: "Structural Analysis & Load Design"
     },
     {
-      icon: "solar:ruler-pen-linear",
+      icon: "lucide:pencil-ruler",
       name: "AutoCAD & Revit",
       desc: "CAD Detailing & Rebar Drawings"
     },
     {
-      icon: "solar:document-text-linear",
+      icon: "lucide:file-text",
       name: "IS 10262 & IS 456",
       desc: "BIS Code & Concrete Compliance"
     },
     {
-      icon: "solar:shield-check-linear",
+      icon: "lucide:shield-check",
       name: "NABL Lab Testing",
       desc: "Certified Material Diagnostics"
     },
     {
-      icon: "solar:soundwave-linear",
+      icon: "lucide:audio-waveform",
       name: "NDT Diagnostics",
       desc: "UPV & Homogeneity Sensors"
     }

@@ -71,7 +71,7 @@ export default function ServicesFullGrid() {
                       }}
                       className="inline-flex items-center gap-1 text-xs font-bold text-accent hover:text-primary transition-colors cursor-pointer"
                     >
-                      <Icon icon="solar:round-alt-arrow-down-linear" width="16" height="16" />
+                      <Icon icon="lucide:chevron-down" width="16" height="16" />
                       Try Interactive NDT Explorer
                     </button>
                   </div>
@@ -127,8 +127,8 @@ export default function ServicesFullGrid() {
                   <Icon
                     icon={
                       isExpanded
-                        ? "solar:alt-arrow-up-linear"
-                        : "solar:alt-arrow-down-linear"
+                        ? "lucide:chevron-up"
+                        : "lucide:chevron-down"
                     }
                     width="16"
                     height="16"
@@ -142,7 +142,7 @@ export default function ServicesFullGrid() {
                 >
                   Read More
                   <Icon
-                    icon="solar:alt-arrow-right-linear"
+                    icon="lucide:chevron-right"
                     width="16"
                     height="16"
                     className="transition-transform duration-200 group-hover/cta:translate-x-0.5"

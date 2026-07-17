@@ -15,21 +15,21 @@ export default function ServicesCta() {
       desc: "Visual inspections, crack mapping, and load stability certifications matching corporation bylaws.",
       link: "/contact?type=audit",
       ctaText: "Request Audit",
-      icon: "solar:buildings-linear",
+      icon: "lucide:building-2",
     },
     {
       title: "Schedule a Site Visit",
       desc: "Arrange for senior engineers to audit concrete pouring, formwork layout, or reinforcement covers on site.",
       link: "/contact?type=visit",
       ctaText: "Schedule Visit",
-      icon: "solar:calendar-date-linear",
+      icon: "lucide:calendar-days",
     },
     {
       title: "Speak to an Engineer",
       desc: "Consult on concrete mix designs, restoration schemes, carbon wrapping, or material laboratory testing.",
       link: "/contact?type=consult",
       ctaText: "Consult Now",
-      icon: "solar:user-speak-linear",
+      icon: "lucide:headset",
     },
   ];
 
@@ -81,7 +81,7 @@ export default function ServicesCta() {
                     className="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-accent transition-colors duration-200"
                   >
                     {action.ctaText}
-                    <Icon icon="solar:alt-arrow-right-linear" width="16" height="16" />
+                    <Icon icon="lucide:chevron-right" width="16" height="16" />
                   </Link>
                 </div>
               </div>

@@ -94,7 +94,7 @@ export default function GalleryPreview() {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-opacity-90 text-white font-bold text-sm sm:text-base shadow-lg shadow-primary/20 transition-all duration-200"
           >
             View Full Gallery
-            <Icon icon="solar:arrow-right-bold" width={18} height={18} />
+            <Icon icon="lucide:arrow-right" width={18} height={18} />
           </Link>
         </Reveal>
       </div>

@@ -20,6 +20,9 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@iconify-json/ic": "^1.2.4",
+    "@iconify-json/lucide": "^1.2.117",
+    "@iconify/utils": "^3.1.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

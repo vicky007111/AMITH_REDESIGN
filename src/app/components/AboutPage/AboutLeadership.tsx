@@ -231,7 +231,7 @@ export default function AboutLeadership() {
                     >
                       <span>View Full Profile &amp; Vetting History</span>
                       <Icon
-                        icon="solar:arrow-right-linear"
+                        icon="lucide:arrow-right"
                         className="transition-transform duration-300 group-hover:translate-x-1"
                         width="16"
                         height="16"
@@ -260,7 +260,7 @@ export default function AboutLeadership() {
                 className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center border border-slate-200/50 transition-colors duration-200 cursor-pointer"
                 aria-label="Close Credentials Modal"
               >
-                <Icon icon="solar:close-circle-bold" width="24" height="24" />
+                <Icon icon="lucide:x" width="24" height="24" />
               </button>
 
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
@@ -307,7 +307,7 @@ export default function AboutLeadership() {
                   {/* Detailed Bio Section */}
                   <div>
                     <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-2 flex items-center gap-2 pb-2 border-b border-slate-100">
-                      <Icon icon="solar:user-bold" className="text-primary" width="16" height="16" />
+                      <Icon icon="lucide:user" className="text-primary" width="16" height="16" />
                       Detailed Profile
                     </h4>
                     <p className="text-sm text-slate-600 font-medium leading-relaxed">
@@ -318,7 +318,7 @@ export default function AboutLeadership() {
                   {/* Credentials Section */}
                   <div className="bg-blue-50/10 border border-blue-100/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
                     <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-blue-100/10 pb-2">
-                      <Icon icon="solar:diploma-verified-bold" className="text-primary" width="16" height="16" />
+                      <Icon icon="lucide:award" className="text-primary" width="16" height="16" />
                       Academic &amp; Operational Credentials
                     </h4>
                     <ul className="space-y-3">
@@ -334,7 +334,7 @@ export default function AboutLeadership() {
                   {/* Vetted Projects Section */}
                   <div className="bg-emerald-50/10 border border-emerald-100/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-start">
                     <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4 flex items-center gap-2 border-b border-emerald-100/10 pb-2">
-                      <Icon icon="solar:structure-bold" className="text-emerald-500" width="16" height="16" />
+                      <Icon icon="lucide:landmark" className="text-emerald-500" width="16" height="16" />
                       Key Projects &amp; Audits Vetted
                     </h4>
                     <ul className="space-y-3">

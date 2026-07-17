@@ -60,7 +60,7 @@ export default function WhyChooseAmith() {
                 custom={i}
               >
                 <Icon
-                  icon="solar:check-circle-bold"
+                  icon="lucide:circle-check"
                   width={22}
                   height={22}
                   className="text-accent"

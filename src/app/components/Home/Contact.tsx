@@ -76,7 +76,7 @@ export default function Contact() {
               {/* Address */}
               <div className="flex gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-white border border-slate-200 flex items-center justify-center text-primary shrink-0 shadow-sm">
-                  <Icon icon="solar:map-point-linear" width="20" height="20" className="sm:w-6 sm:h-6" />
+                  <Icon icon="lucide:map-pin" width="20" height="20" className="sm:w-6 sm:h-6" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -92,7 +92,7 @@ export default function Contact() {
               {/* Phone */}
               <div className="flex gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-white border border-slate-200 flex items-center justify-center text-primary shrink-0 shadow-sm">
-                  <Icon icon="solar:phone-linear" width="20" height="20" className="sm:w-6 sm:h-6" />
+                  <Icon icon="lucide:phone" width="20" height="20" className="sm:w-6 sm:h-6" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -110,7 +110,7 @@ export default function Contact() {
               {/* Email */}
               <div className="flex gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-white border border-slate-200 flex items-center justify-center text-primary shrink-0 shadow-sm">
-                  <Icon icon="solar:letter-linear" width="20" height="20" className="sm:w-6 sm:h-6" />
+                  <Icon icon="lucide:mail" width="20" height="20" className="sm:w-6 sm:h-6" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest">
@@ -165,7 +165,7 @@ export default function Contact() {
               {submitSuccess ? (
                 <div className="bg-primary/5 border border-primary/20 text-primary rounded-2xl p-8 sm:p-10 text-center">
                   <Icon
-                    icon="solar:check-circle-bold"
+                    icon="lucide:circle-check"
                     width="56"
                     height="56"
                     className="mx-auto mb-5 text-primary"
@@ -257,7 +257,7 @@ export default function Contact() {
                     type="submit"
                     className="w-full py-3.5 sm:py-4 rounded-xl font-bold bg-primary hover:bg-opacity-95 text-white transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer border-none text-sm sm:text-base"
                   >
-                    <Icon icon="logos:whatsapp-icon" width="20" height="20" />
+                    <Icon icon="ic:baseline-whatsapp" width="20" height="20" />
                     Send via WhatsApp
                   </button>
 
@@ -272,7 +272,7 @@ export default function Contact() {
                         rel="noopener noreferrer"
                         className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 hover:border-green-500 hover:bg-green-50 transition-all duration-200 group no-underline"
                       >
-                        <Icon icon="logos:whatsapp-icon" width="20" height="20" />
+                        <Icon icon="ic:baseline-whatsapp" width="20" height="20" />
                         <span className="text-sm font-bold text-slate-600 group-hover:text-green-600">WhatsApp</span>
                       </a>
 
@@ -281,7 +281,7 @@ export default function Contact() {
                         href="tel:+919940548833"
                         className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group no-underline"
                       >
-                        <Icon icon="solar:phone-bold" width="20" height="20" className="text-primary" />
+                        <Icon icon="lucide:phone" width="20" height="20" className="text-primary" />
                         <span className="text-sm font-bold text-slate-600 group-hover:text-primary">Call Us</span>
                       </a>
 
@@ -290,7 +290,7 @@ export default function Contact() {
                         href="mailto:amithcivilengineering@gmail.com,sales@amith.in.net,admin@amith.in.net"
                         className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-slate-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group no-underline"
                       >
-                        <Icon icon="solar:letter-bold" width="20" height="20" className="text-primary" />
+                        <Icon icon="lucide:mail" width="20" height="20" className="text-primary" />
                         <span className="text-sm font-bold text-slate-600 group-hover:text-primary">Email Us</span>
                       </a>
                     </div>

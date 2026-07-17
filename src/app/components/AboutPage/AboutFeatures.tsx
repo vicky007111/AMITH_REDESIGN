@@ -9,17 +9,17 @@ const featureVariants = staggeredFadeUp(0.1);
 
 const FEATURES = [
   {
-    icon: "solar:diploma-verified-bold-duotone",
+    icon: "lucide:award",
     title: "NABL Laboratory Association",
     text: "Formal MoU with Civilone Research Center Pvt Ltd, Chennai, to carry out specialized non-destructive and partial destructive concrete testing to assess distress and material quality.",
   },
   {
-    icon: "solar:users-group-rounded-bold-duotone",
+    icon: "lucide:users",
     title: "Distinguished Board & Credentials",
     text: "Directed by a former Vice Chancellor, retired military officers, and senior public works consultants.",
   },
   {
-    icon: "solar:structure-bold-duotone",
+    icon: "lucide:building-2",
     title: "Heavy Infrastructure Footprint",
     text: "Vetted over 100+ design specifications and supervised runways, sumps, and multi-storey townships.",
   },
