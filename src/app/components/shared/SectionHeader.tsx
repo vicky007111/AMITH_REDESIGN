@@ -31,11 +31,13 @@ export default function SectionHeader({
   className,
 }: SectionHeaderProps) {
   const centered = align === "center";
+  // Default rhythm below the header — consumers override by passing any mb-*.
+  const hasOwnMargin = /(^|\s)(sm:|md:|lg:)?mb-/.test(className ?? "");
   return (
     <Reveal
       className={[
         centered ? "flex flex-col items-center text-center" : "",
-        "mb-10 lg:mb-12",
+        hasOwnMargin ? "" : "mb-10 lg:mb-12",
         className,
       ]
         .filter(Boolean)

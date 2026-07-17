@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { Icon } from "@iconify/react";
 
 export interface BreadcrumbItem {
   label: string;
@@ -79,7 +80,7 @@ export default function PageHero({
                   {crumb.href ? (
                     <Link
                       href={crumb.href}
-                      className="hover:text-primary transition-colors duration-200"
+                      className="hover:text-white transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {crumb.label}
                     </Link>
@@ -89,37 +90,17 @@ export default function PageHero({
                     </span>
                   )}
                   {index < breadcrumb.length - 1 && (
-                    <svg
-                      className="w-3 h-3 text-slate-600 shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      viewBox="0 0 24 24"
+                    <Icon
+                      icon="lucide:chevron-right"
+                      width={12}
+                      height={12}
+                      className="text-slate-500 shrink-0"
                       aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                      />
-                    </svg>
+                    />
                   )}
                 </span>
               ))}
             </motion.nav>
-
-            {/* Kicker label — only rendered when label prop is provided */}
-            {/* {label && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 text-primary font-bold text-xs uppercase tracking-wider mb-5"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" aria-hidden="true" />
-                {label}
-              </motion.div>
-            )} */}
 
             {/* Heading */}
             <motion.h1
@@ -151,7 +132,7 @@ export default function PageHero({
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="relative w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 shadow-2xl"
+                className="relative w-full max-w-md aspect-[4/3] rounded-media overflow-hidden border border-white/10 shadow-e3"
               >
                 <Image
                   src={image}

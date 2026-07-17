@@ -5,7 +5,9 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { motion } from "motion/react";
 import Reveal from "@/app/components/shared/Reveal";
-import { staggeredFadeUp, EASE, VIEWPORT_EARLY } from "@/app/components/shared/anim";
+import SectionHeader from "@/app/components/shared/SectionHeader";
+import Button from "@/app/components/shared/Button";
+import { staggeredFadeUp, HOVER_LIFT, VIEWPORT_EARLY } from "@/app/components/shared/anim";
 
 const promoterCardVariants = staggeredFadeUp(0.1);
 
@@ -62,12 +64,11 @@ function PromoterCard({
       className="flex"
       variants={promoterCardVariants}
       custom={index}
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.2, ease: EASE }}
+      whileHover={HOVER_LIFT}
     >
       <Link
         href={`/about?director=${promoter.slug}#leadership`}
-        className="w-full bg-white border border-slate-100 hover:border-primary/30 rounded-3xl overflow-hidden shadow-[0_2px_10px_rgba(0,28,104,0.05)] hover:shadow-[0_18px_36px_rgba(0,28,104,0.16)] transition-[box-shadow,border-color] duration-300 flex flex-col group"
+        className="w-full card overflow-hidden hover:shadow-e2 hover:border-primary/20 transition-[box-shadow,border-color] duration-300 flex flex-col group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {/* Photo area */}
         <div className="relative w-full aspect-[3/4] bg-surface-tint overflow-hidden">
@@ -97,7 +98,7 @@ function PromoterCard({
           {/* Verified badge + name */}
           <div className="flex items-start gap-2">
             <div className="flex flex-col gap-1 flex-1">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+              <h3 className="text-base sm:text-lg leading-snug">
                 {promoter.name}
               </h3>
               <span className="text-xs font-bold text-primary uppercase tracking-wide">
@@ -114,7 +115,7 @@ function PromoterCard({
             </div>
           </div>
 
-          <p className="text-sm text-slate-500 font-medium leading-relaxed flex-1">
+          <p className="text-sm text-body font-medium leading-relaxed flex-1">
             {promoter.bio}
           </p>
 
@@ -141,15 +142,7 @@ export default function PromotersSection() {
     >
       <div className="section-container">
         {/* Section heading */}
-        <Reveal className="text-center mb-10 sm:mb-14">
-          <p className="kicker-text">
-            Our Promoters
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
-            Meet Our Promoters
-          </h2>
-          <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />
-        </Reveal>
+        <SectionHeader kicker="Our Promoters" title="Meet Our Promoters" />
 
         {/* 3-column card grid — reveal parent drives the staggered fade-up */}
         <motion.div
@@ -174,13 +167,13 @@ export default function PromotersSection() {
             sustainable engineering solutions.
           </p>
 
-          <Link
+          <Button
             href="/about#leadership"
-            className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl bg-primary hover:bg-opacity-90 text-white font-bold text-sm sm:text-base shadow-lg shadow-primary/20 transition-all duration-200"
+            icon="lucide:arrow-right"
+            className="mt-6"
           >
             Meet Our Board of Directors
-            <Icon icon="lucide:arrow-right" width={18} height={18} />
-          </Link>
+          </Button>
         </Reveal>
       </div>
     </section>

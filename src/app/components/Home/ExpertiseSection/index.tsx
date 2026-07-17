@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { motion } from "motion/react";
-import Reveal from "@/app/components/shared/Reveal";
-import { staggeredFadeUp, EASE, VIEWPORT_EARLY } from "@/app/components/shared/anim";
+import SectionHeader from "@/app/components/shared/SectionHeader";
+import IconTile from "@/app/components/shared/IconTile";
+import { staggeredFadeUp, HOVER_LIFT, VIEWPORT_EARLY } from "@/app/components/shared/anim";
 
 // Continuous 80ms stagger across both rows (indices 0–4), reduced-motion aware
 // via the page-level MotionConfig.
@@ -80,12 +81,11 @@ function ServiceCard({
       className="flex"
       variants={cardVariants}
       custom={index}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2, ease: EASE }}
+      whileHover={HOVER_LIFT}
     >
       <Link
         href={service.href}
-        className="w-full bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-[0_2px_8px_rgba(0,28,104,0.04)] hover:shadow-[0_16px_32px_rgba(0,28,104,0.14)] transition-shadow duration-200 ease-out group flex flex-col"
+        className="w-full card overflow-hidden hover:shadow-e2 hover:border-primary/20 transition-[box-shadow,border-color] duration-300 group flex flex-col focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {/* Image or blueprint placeholder */}
         <div className="relative w-full aspect-[2.2/1] overflow-hidden bg-surface-tint">
@@ -101,14 +101,16 @@ function ServiceCard({
         <div className="p-5 sm:p-6 flex flex-col gap-3 flex-1">
           {/* Icon + title row */}
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110">
-              <Icon icon={service.icon} width={22} height={22} />
-            </div>
-            <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+            <IconTile
+              icon={service.icon}
+              size="sm"
+              className="mt-0.5 transition-transform duration-300 group-hover:scale-110"
+            />
+            <h3 className="text-base sm:text-lg leading-snug">
               {service.title}
             </h3>
           </div>
-          <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed">
+          <p className="text-sm sm:text-base text-body font-medium leading-relaxed">
             {service.description}
           </p>
         </div>
@@ -134,10 +136,8 @@ function ServiceImageWithFallback({
         className="absolute inset-0 flex flex-col items-center justify-center gap-3"
         aria-hidden="true"
         style={{
-          background:
-            "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)",
           backgroundImage:
-            "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%), repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(0,28,104,0.04) 29px, rgba(0,28,104,0.04) 30px), repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(0,28,104,0.04) 29px, rgba(0,28,104,0.04) 30px)",
+            "linear-gradient(135deg, var(--color-surface-tint) 0%, var(--color-blue-100) 100%), repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(0,28,104,0.04) 29px, rgba(0,28,104,0.04) 30px), repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(0,28,104,0.04) 29px, rgba(0,28,104,0.04) 30px)",
         }}
       >
         <Icon icon={icon} width={48} height={48} className="text-primary/30" />
@@ -170,15 +170,7 @@ export default function ExpertiseSection() {
     >
       <div className="section-container">
         {/* Section heading */}
-        <Reveal className="text-center mb-8 sm:mb-10">
-          <p className="kicker-text">
-            Our Expertise
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
-            What We Do
-          </h2>
-          <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />
-        </Reveal>
+        <SectionHeader kicker="Our Expertise" title="What We Do" />
 
         {/* Single reveal parent so the 80ms stagger stays continuous across
             both rows; each card reads its global index via `custom`. */}

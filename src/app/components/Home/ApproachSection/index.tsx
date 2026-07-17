@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import type { Variants } from "motion/react";
-import Reveal from "@/app/components/shared/Reveal";
+import SectionHeader from "@/app/components/shared/SectionHeader";
 import { EASE } from "@/app/components/shared/anim";
 
 const STEPS = [
@@ -68,20 +68,13 @@ export default function ApproachSection() {
     >
       <div className="section-container">
         {/* Heading */}
-        <Reveal className="text-center mb-8 sm:mb-10">
-          <p className="kicker-text">
-            Our Methodology
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Our Approach
-          </h2>
-          <p className="text-sm sm:text-base text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            A systematic engineering methodology that transforms field
+        <SectionHeader
+          kicker="Our Methodology"
+          title="Our Approach"
+          lead="A systematic engineering methodology that transforms field
             observations into practical, reliable and sustainable engineering
-            solutions.
-          </p>
-          <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />
-        </Reveal>
+            solutions."
+        />
 
         {/* One reveal parent so the line draw and step reveals stay in sync */}
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
@@ -89,7 +82,7 @@ export default function ApproachSection() {
           <div className="hidden lg:block relative">
             {/* Connector line spans the circle centres (10% → 90% of the row) */}
             <div className="absolute top-6 left-[10%] right-[10%] h-0.5 -translate-y-1/2 z-0">
-              <div className="absolute inset-0 rounded-full bg-primary/15" />
+              <div className="absolute inset-0 rounded-full bg-line" />
               <motion.div
                 variants={lineDrawX}
                 className="absolute inset-0 rounded-full bg-primary origin-left"
@@ -106,13 +99,13 @@ export default function ApproachSection() {
                   className="flex-1 flex flex-col items-center text-center px-3"
                 >
                   {/* Circle */}
-                  <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm mb-3 shadow-lg shadow-primary/20 shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-display font-bold text-sm mb-3 shadow-e2 shrink-0">
                     {step.step}
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-1 leading-tight">
+                  <h3 className="text-lg mb-1 leading-tight">
                     {step.label}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted font-medium leading-relaxed">
                     {step.description}
                   </p>
                 </motion.div>
@@ -124,7 +117,7 @@ export default function ApproachSection() {
           <div className="lg:hidden relative">
             {/* Vertical connector: static track + drawing progress line */}
             <div className="absolute left-5 top-5 bottom-5 w-0.5 z-0">
-              <div className="absolute inset-0 rounded-full bg-primary/15" />
+              <div className="absolute inset-0 rounded-full bg-line" />
               <motion.div
                 variants={lineDrawY}
                 className="absolute inset-0 rounded-full bg-primary origin-top"
@@ -140,14 +133,14 @@ export default function ApproachSection() {
                   className="flex gap-4 items-start relative z-10"
                 >
                   {/* Circle */}
-                  <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-lg shadow-primary/20">
+                  <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-display font-bold text-xs shrink-0 shadow-e2">
                     {step.step}
                   </div>
                   <div className="flex-1 pb-2">
-                    <h3 className="text-base font-bold text-slate-900 mb-1 leading-tight">
+                    <h3 className="text-base mb-1 leading-tight">
                       {step.label}
                     </h3>
-                    <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                    <p className="text-sm text-muted font-medium leading-relaxed">
                       {step.description}
                     </p>
                   </div>

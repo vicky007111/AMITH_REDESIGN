@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
-import { Icon } from "@iconify/react";
 import Reveal from "@/app/components/shared/Reveal";
-import { fadeScale, EASE } from "@/app/components/shared/anim";
+import Button from "@/app/components/shared/Button";
+import IconTile from "@/app/components/shared/IconTile";
+import { fadeScale, EASE, HOVER_LIFT } from "@/app/components/shared/anim";
 
 const PILLARS = [
   {
@@ -59,13 +59,13 @@ export default function ClosingCTA() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-12 lg:mb-16">
           {/* Left Column: Heading + Paragraph */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <span className="text-primary font-bold text-xs sm:text-sm uppercase tracking-widest mb-3 bg-primary/10 px-3 py-1 rounded-full">
+            <span className="text-accent font-bold text-xs sm:text-sm uppercase tracking-[0.15em] mb-3 bg-surface-tint px-3 py-1 rounded-full">
               Engineering Excellence
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+            <h2 className="mb-6 leading-tight">
               Building Confidence Through Engineering Excellence
             </h2>
-            <p className="text-base text-slate-600 font-medium leading-relaxed mb-0">
+            <p className="text-base text-body font-medium leading-relaxed mb-0">
               Every structure tells a story. Our responsibility is to understand its
               condition, evaluate its performance and provide technically sound
               recommendations that ensure safety, reliability and extend the
@@ -83,17 +83,10 @@ export default function ClosingCTA() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.4, delay: index * 0.05, ease: EASE }}
-                  whileHover={{ y: -3, scale: 1.01 }}
-                  className="flex items-center gap-3.5 bg-white border border-slate-100 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
+                  whileHover={HOVER_LIFT}
+                  className="flex items-center gap-3.5 card p-4 hover:shadow-e2 transition-shadow duration-300"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center shrink-0">
-                    <Icon
-                      icon={pillar.icon}
-                      className="text-primary"
-                      width="24"
-                      height="24"
-                    />
-                  </div>
+                  <IconTile icon={pillar.icon} size="sm" />
                   <span className="text-xs sm:text-sm font-semibold text-slate-700 leading-snug">
                     {pillar.text}
                   </span>
@@ -105,7 +98,7 @@ export default function ClosingCTA() {
 
         {/* Custom Premium CTA Banner */}
         <Reveal variants={fadeScale} amount={0.25}>
-          <div className="relative overflow-hidden rounded-3xl bg-brand-gradient p-8 md:p-10 shadow-e3 border border-white/10">
+          <div className="relative overflow-hidden rounded-media bg-brand-gradient p-8 md:p-10 shadow-e3 border border-white/10">
             {/* Glowing inner accent */}
             <div
               className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full pointer-events-none opacity-20"
@@ -125,21 +118,15 @@ export default function ClosingCTA() {
                 </p>
               </div>
 
-              {/* Custom Styled Button in Golden Yellow */}
-              <motion.div
-                whileHover={{ scale: 1.025 }}
-                whileTap={{ scale: 0.975 }}
-                transition={{ duration: 0.2, ease: EASE }}
+              <Button
+                href="/contact"
+                variant="inverse"
+                size="lg"
+                icon="lucide:arrow-right"
                 className="shrink-0"
               >
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-surface-tint text-primary font-bold text-sm sm:text-base shadow-e2 transition-all duration-200 cursor-pointer whitespace-nowrap"
-                >
-                  Get in Touch
-                  <Icon icon="lucide:arrow-right" width="18" height="18" />
-                </Link>
-              </motion.div>
+                Get in Touch
+              </Button>
             </div>
           </div>
         </Reveal>

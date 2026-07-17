@@ -37,7 +37,7 @@ export default function IntroSection() {
           {/* Heading */}
           <motion.h2
             variants={fadeUp}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight"
+            className="mb-4 leading-tight"
           >
             Trusted Engineering Partners for Infrastructure Owners
           </motion.h2>
@@ -45,7 +45,7 @@ export default function IntroSection() {
           {/* Paragraph 1 */}
           <motion.p
             variants={fadeUp}
-            className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed mb-4"
+            className="text-base sm:text-lg text-body font-medium leading-relaxed mb-4"
           >
             We help owners, developers, industries, institutions and public
             agencies maximize the safety, durability and performance of their
@@ -56,7 +56,7 @@ export default function IntroSection() {
           {/* Paragraph 2 */}
           <motion.p
             variants={fadeUp}
-            className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed mb-6"
+            className="text-base sm:text-lg text-body font-medium leading-relaxed mb-6"
           >
             From quality audits during construction to structural stability
             evaluations &amp; condition assessment during the service period,

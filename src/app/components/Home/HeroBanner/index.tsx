@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { EASE } from "@/app/components/shared/anim";
+import Button from "@/app/components/shared/Button";
 
 // ---------------------------------------------------------------------------
 // HERO SLIDESHOW IMAGES
@@ -108,7 +108,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-          className="text-white font-bold tracking-tight mb-4 sm:mb-5 max-w-3xl"
+          className="font-display text-white font-bold tracking-tight mb-4 sm:mb-5 max-w-3xl"
           style={{
             fontSize: "clamp(2.25rem, 6vw, 4.5rem)",
             lineHeight: 1.06,
@@ -140,61 +140,18 @@ export default function HeroBanner() {
           className="flex flex-wrap gap-3 sm:gap-4 items-center"
         >
           {/* Explore Our Services */}
-          <Link
-            href="/services"
-            className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm overflow-hidden transition-all duration-300 cursor-pointer"
-            style={{
-              background: "linear-gradient(135deg, #001c68 0%, #0033a0 100%)",
-              color: "#fff",
-              boxShadow: "0 4px 20px rgba(0, 28, 104, 0.35)",
-            }}
-          >
-            <span className="relative z-10">Explore Our Services</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
-            >
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-            {/* Hover glow layer */}
-            <span
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{
-                background: "linear-gradient(135deg, #0033a0 0%, #0050d0 100%)",
-              }}
-            />
-          </Link>
+          <Button href="/services" icon="lucide:arrow-right">
+            Explore Our Services
+          </Button>
 
           {/* Contact Us */}
-          <Link
+          <Button
             href="/contact"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
+            variant="outline-inverse"
+            icon="lucide:chevron-right"
           >
             Contact Us
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </Link>
+          </Button>
         </motion.div>
 
         {/* ── Slide indicators ── */}
@@ -204,7 +161,7 @@ export default function HeroBanner() {
               key={i}
               onClick={() => setCurrent(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className="relative h-1 rounded-full overflow-hidden bg-white/20 transition-all duration-300 cursor-pointer"
+              className="relative h-1 rounded-full overflow-hidden bg-white/20 transition-all duration-300 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               style={{ width: i === current ? "2.5rem" : "1rem" }}
             >
               {i === current && (

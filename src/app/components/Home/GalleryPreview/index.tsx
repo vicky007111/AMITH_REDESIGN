@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
 import { motion } from "motion/react";
 import Reveal from "@/app/components/shared/Reveal";
+import SectionHeader from "@/app/components/shared/SectionHeader";
+import Button from "@/app/components/shared/Button";
 import { staggeredFadeUp, VIEWPORT_EARLY } from "@/app/components/shared/anim";
 
 // Curated sample spanning the gallery's categories — links through to the
@@ -53,15 +54,20 @@ export default function GalleryPreview() {
       className="bg-white transition-colors duration-300 section-py"
     >
       <div className="section-container">
-        <Reveal className="text-center mb-8 sm:mb-10">
-          <p className="kicker-text">
-            Portfolio
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
-            Our Gallery Images
-          </h2>
-          <div className="w-12 h-1 bg-primary mx-auto mt-4 rounded-full" />
-        </Reveal>
+        {/* Header row: left-aligned heading with the gallery CTA on the right */}
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-8 sm:mb-10">
+          <SectionHeader
+            kicker="Portfolio"
+            title="Our Gallery Images"
+            align="left"
+            className="mb-0 lg:mb-0"
+          />
+          <Reveal className="pb-1">
+            <Button href="/gallery" variant="ghost" icon="lucide:arrow-right">
+              View Full Gallery
+            </Button>
+          </Reveal>
+        </div>
 
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
@@ -73,7 +79,7 @@ export default function GalleryPreview() {
             <motion.div key={img.src} variants={tileVariants} custom={i}>
               <Link
                 href="/gallery"
-                className="group relative block aspect-square w-full overflow-hidden rounded-2xl bg-slate-100"
+                className="group relative block aspect-square w-full overflow-hidden rounded-card bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 <Image
                   src={img.src}
@@ -88,15 +94,6 @@ export default function GalleryPreview() {
           ))}
         </motion.div>
 
-        <Reveal className="text-center mt-10">
-          <Link
-            href="/gallery"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-opacity-90 text-white font-bold text-sm sm:text-base shadow-lg shadow-primary/20 transition-all duration-200"
-          >
-            View Full Gallery
-            <Icon icon="lucide:arrow-right" width={18} height={18} />
-          </Link>
-        </Reveal>
       </div>
     </section>
   );

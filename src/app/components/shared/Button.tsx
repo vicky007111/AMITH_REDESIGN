@@ -4,7 +4,12 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import type { MouseEventHandler, ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "inverse";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "inverse"
+  | "outline-inverse";
 type ButtonSize = "sm" | "md" | "lg";
 
 export interface ButtonProps {
@@ -40,6 +45,8 @@ const VARIANTS: Record<ButtonVariant, string> = {
   ghost: "text-primary hover:bg-surface-tint focus-visible:outline-accent",
   inverse:
     "bg-white text-primary hover:bg-surface-tint shadow-e2 focus-visible:outline-white",
+  "outline-inverse":
+    "border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white focus-visible:outline-white",
 };
 
 const SIZES: Record<ButtonSize, { classes: string; icon: number }> = {
