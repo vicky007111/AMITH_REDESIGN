@@ -12,7 +12,7 @@ export const ndtTests: NdtTest[] = [
       "Verifies the surface hardness of concrete elements using elastic rebound principles to estimate immediate compressive strength.",
     anomalies:
       "Detects low surface hardness, uniformity issues, and potential weak skin concrete zones.",
-    image: "/images/Rebound Hammer.jpg",
+    image: "/images/Rebound Hammer.jpeg",
   },
   {
     name: "Ultrasonic Pulse Velocity (UPV)",
@@ -28,7 +28,7 @@ export const ndtTests: NdtTest[] = [
       "Applies chemical indicators (phenolphthalein) to broken cores to examine chemical depth penetration and concrete pH levels.",
     anomalies:
       "Identifies loss of steel rebar alkaline protection, indicating high risks of premature internal rust.",
-    image: "/images/Chemical.jpg",
+    image: "/images/Chemical.png",
   },
   {
     name: "Concrete Core Drilling",

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/app/components/Layout/Header";
 import Footer from "@/app/components/Layout/Footer";
 import ScrollToTop from "@/app/components/ScrollToTop";
+import ScrollToTopOnNavigate from "@/app/components/ScrollToTopOnNavigate";
 import NextTopLoader from "nextjs-toploader";
 
 const manrope = Manrope({ subsets: ["latin"] });
@@ -70,6 +71,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={manrope.className}>
         <NextTopLoader color="#001C68" />
+        <ScrollToTopOnNavigate />
         <Header />
         {children}
         <Footer />

@@ -110,14 +110,15 @@ export default function HeroBanner() {
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
           className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl"
           style={{
-            fontSize: "clamp(1.75rem, 5.5vw, 4.5rem)",
-            lineHeight: 1.1,
+            fontSize: "clamp(1.15rem, 4.6vw, 4.5rem)",
+            lineHeight: 1.15,
             textShadow: "0 2px 24px rgba(0, 8, 28, 0.35)",
           }}
         >
-          Engineering Assurance
-          <br />
-          for <span className="text-warning">Safer Infrastructure</span>
+          <span className="block whitespace-nowrap">Engineering Assurance</span>
+          <span className="block whitespace-nowrap">
+            for <span className="text-warning">Safer Infrastructure</span>
+          </span>
         </motion.h1>
 
         {/* Subheadline */}
@@ -137,7 +138,7 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5, ease: EASE }}
-          className="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 items-stretch xs:items-center"
+          className="flex flex-row flex-wrap gap-3 sm:gap-4 items-center"
         >
           {/* Explore Our Services */}
           <Link
