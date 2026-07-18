@@ -88,7 +88,7 @@ function ServiceCard({
         className="w-full bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-[0_2px_8px_rgba(0,28,104,0.04)] hover:shadow-[0_16px_32px_rgba(0,28,104,0.14)] transition-shadow duration-200 ease-out group flex flex-col"
       >
         {/* Image or blueprint placeholder */}
-        <div className="relative w-full aspect-[2.2/1] overflow-hidden bg-cream">
+        <div className="relative w-full overflow-hidden bg-cream" style={{ aspectRatio: "2.2/1" }}>
           {/* Attempt to load service image; fallback is the blueprint-style placeholder */}
           <ServiceImageWithFallback
             src={service.imagePath}
@@ -188,14 +188,14 @@ export default function ExpertiseSection() {
           viewport={VIEWPORT_EARLY}
         >
           {/* Row 1: 3 cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-4">
             {SERVICES.slice(0, 3).map((service, i) => (
               <ServiceCard key={service.id} service={service} index={i} />
             ))}
           </div>
 
           {/* Row 2: 2 cards, centered */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:max-w-[calc(66.666%+1.5rem)] lg:mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:max-w-[calc(66.666%+1.5rem)] lg:mx-auto">
             {SERVICES.slice(3).map((service, i) => (
               <ServiceCard key={service.id} service={service} index={i + 3} />
             ))}
