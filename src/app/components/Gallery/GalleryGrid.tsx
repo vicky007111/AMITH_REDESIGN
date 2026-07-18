@@ -1,32 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { galleryItems, galleryFilters, GalleryFilter } from "@/data/gallery";
 import Reveal from "@/app/components/shared/Reveal";
-import { staggeredFadeUp, VIEWPORT_EARLY } from "@/app/components/shared/anim";
+import { EASE } from "@/app/components/shared/anim";
 
-const tileVariants = staggeredFadeUp(0.04);
-
+/** Short badge labels shown in the top-left corner of each tile */
 const CATEGORY_LABEL: Record<GalleryFilter, string> = {
   All: "All",
-  "Structural Audits": "Audit",
-  "Condition Assessment": "Condition",
-  "QA/QC & TPQM": "QA/QC",
+  "Quality Audit & TPQM": "QA & TPQM",
+  "Structural Stability Auditing & Condition Assessment": "Structural",
   "Restoration & Rehabilitation": "Restoration",
+};
+
+/** Shortened button text for the filter strip */
+const FILTER_LABEL: Record<GalleryFilter, string> = {
+  All: "All",
+  "Quality Audit & TPQM": "Quality Audit & TPQM",
+  "Structural Stability Auditing & Condition Assessment":
+    "Structural Stability & Condition",
+  "Restoration & Rehabilitation": "Restoration & Rehab",
 };
 
 /**
  * GalleryGrid — filterable grid of project site photographs.
  *
- * Imports typed data from /src/data/gallery.ts.
- * Supports "All" + 4 category filters. Tiles are plain images with just a
- * category label in the top-left corner — no title/location card chrome.
+ * Uses AnimatePresence + animate (not whileInView) so images always
+ * appear immediately on mount / filter change, regardless of scroll position.
  */
 export default function GalleryGrid() {
-  const [selectedFilter, setSelectedFilter] =
-    useState<GalleryFilter>("All");
+  const [selectedFilter, setSelectedFilter] = useState<GalleryFilter>("All");
 
   const filteredItems =
     selectedFilter === "All"
@@ -45,7 +49,11 @@ export default function GalleryGrid() {
           className="flex flex-wrap justify-center gap-2 mb-12"
           amount={0.4}
         >
-          <div role="group" aria-label="Filter gallery by category" className="contents">
+          <div
+            role="group"
+            aria-label="Filter gallery by category"
+            className="contents"
+          >
             {galleryFilters.map((filter) => (
               <button
                 key={filter}
@@ -57,43 +65,62 @@ export default function GalleryGrid() {
                     : "bg-slate-50 border border-slate-200 text-slate-600 hover:border-primary hover:text-primary"
                 }`}
               >
-                {filter === "Restoration & Rehabilitation"
-                  ? "Restoration & Rehab"
-                  : filter}
+                {FILTER_LABEL[filter]}
               </button>
             ))}
           </div>
         </Reveal>
 
-        {/* Image grid — plain tiles, category label only */}
-        <motion.div
-          key={selectedFilter}
-          className="grid grid-cols-12 gap-6 md:gap-8"
-          initial="hidden"
-          whileInView="show"
-          viewport={VIEWPORT_EARLY}
-        >
-          {filteredItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              variants={tileVariants}
-              custom={index}
-              className="col-span-12 md:col-span-6 lg:col-span-4 group relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100"
-            >
-              <Image
-                src={item.imageUrl}
-                alt={item.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              {/* Category label */}
-              <span className="absolute top-4 left-4 px-2.5 py-1 rounded bg-primary text-[10px] font-bold text-white uppercase tracking-wider">
-                {CATEGORY_LABEL[item.category]}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Image grid — AnimatePresence drives enter/exit, no whileInView */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedFilter}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: EASE }}
+            className="grid grid-cols-12 gap-6 md:gap-8"
+          >
+            {filteredItems.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  ease: EASE,
+                  delay: Math.min(index * 0.04, 0.6), // cap delay at 0.6s so later items don't wait forever
+                }}
+                className="col-span-12 md:col-span-6 lg:col-span-4 group relative overflow-hidden rounded-2xl bg-slate-100"
+                style={{ aspectRatio: "16/9" }}
+              >
+                {/* Native img — avoids Next.js optimisation pipeline issues with local static images */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.5s ease",
+                  }}
+                  className="group-hover:scale-105"
+                />
+                {/* Category badge */}
+                <span
+                  className="absolute top-4 left-4 px-2.5 py-1 rounded bg-primary text-white uppercase tracking-wider"
+                  style={{ fontSize: "10px", fontWeight: 700 }}
+                >
+                  {CATEGORY_LABEL[item.category]}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Empty state */}
         {filteredItems.length === 0 && (

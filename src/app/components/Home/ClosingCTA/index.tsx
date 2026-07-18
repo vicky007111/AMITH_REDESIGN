@@ -105,7 +105,7 @@ export default function ClosingCTA() {
 
         {/* Custom Premium CTA Banner */}
         <Reveal variants={fadeScale} amount={0.25}>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-[#00227c] to-[#081738] p-8 md:p-10 shadow-2xl shadow-primary/20 border border-white/10">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary via-[#00227c] to-[#081738] p-6 sm:p-8 md:p-10 shadow-2xl shadow-primary/20 border border-white/10">
             {/* Glowing inner accent */}
             <div
               className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full pointer-events-none opacity-20"
@@ -115,7 +115,7 @@ export default function ClosingCTA() {
               aria-hidden="true"
             />
 
-            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
+            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6 text-center lg:text-left">
               <div className="max-w-2xl">
                 <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight mb-2">
                   Let&apos;s Build Safer and More Resilient Infrastructure Together.

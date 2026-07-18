@@ -69,8 +69,14 @@ function PromoterCard({
         href={`/about?director=${promoter.slug}#leadership`}
         className="w-full bg-white border border-slate-100 hover:border-primary/30 rounded-3xl overflow-hidden shadow-[0_2px_10px_rgba(0,28,104,0.05)] hover:shadow-[0_18px_36px_rgba(0,28,104,0.16)] transition-[box-shadow,border-color] duration-300 flex flex-col group"
       >
-        {/* Photo area */}
-        <div className="relative w-full aspect-[3/4] bg-cream overflow-hidden">
+        {/* Photo area — portrait container so full headshots are visible */}
+        <div
+          className="relative w-full overflow-hidden"
+          style={{
+            aspectRatio: "4/3",
+            background: "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)",
+          }}
+        >
           {/* Initials avatar — fallback shown behind the real photo */}
           <div
             className="absolute inset-0 flex items-center justify-center text-primary/30 font-black select-none"
@@ -79,13 +85,13 @@ function PromoterCard({
           >
             {promoter.avatarInitials}
           </div>
-          {/* Real promoter photo */}
+          {/* Real promoter photo — object-contain so the full face is always shown */}
           <Image
             src={promoter.imagePath}
             alt={promoter.imageAlt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover object-top group-hover:scale-105 transition-transform duration-500 relative z-10"
+            className="object-contain group-hover:scale-105 transition-transform duration-500 relative z-10"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).style.display = "none";
             }}
@@ -93,7 +99,7 @@ function PromoterCard({
         </div>
 
         {/* Text body */}
-        <div className="p-6 sm:p-8 flex flex-col gap-3 flex-1">
+        <div className="p-4 sm:p-6 md:p-8 flex flex-col gap-2 sm:gap-3 flex-1">
           {/* Verified badge + name */}
           <div className="flex items-start gap-2">
             <div className="flex flex-col gap-1 flex-1">
@@ -153,7 +159,7 @@ export default function PromotersSection() {
 
         {/* 3-column card grid — reveal parent drives the staggered fade-up */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 sm:mb-14"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-14"
           initial="hidden"
           whileInView="show"
           viewport={VIEWPORT_EARLY}

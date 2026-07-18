@@ -123,7 +123,7 @@ export default function ApproachSection() {
           {/* Mobile (< lg): vertical timeline with a drawing connector line */}
           <div className="lg:hidden relative">
             {/* Vertical connector: static track + drawing progress line */}
-            <div className="absolute left-5 top-5 bottom-5 w-0.5 z-0">
+            <div className="absolute left-4 top-5 bottom-5 w-0.5 z-0">
               <div className="absolute inset-0 rounded-full bg-primary/15" />
               <motion.div
                 variants={lineDrawY}
@@ -131,13 +131,13 @@ export default function ApproachSection() {
                 aria-hidden="true"
               />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-5">
               {STEPS.map((step, i) => (
                 <motion.div
                   key={step.step}
                   variants={stepVariant}
                   custom={i}
-                  className="flex gap-4 items-start relative z-10"
+                  className="flex gap-3 items-start relative z-10"
                 >
                   {/* Circle */}
                   <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-extrabold text-xs shrink-0 shadow-lg shadow-primary/20">

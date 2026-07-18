@@ -102,7 +102,7 @@ export default function HeroBanner() {
       />
 
       {/* ── Content container (stays static during slideshow) ── */}
-      <div className="relative z-20 container mx-auto max-w-7xl px-6 md:px-12">
+      <div className="relative z-20 container mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
@@ -110,8 +110,8 @@ export default function HeroBanner() {
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
           className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl"
           style={{
-            fontSize: "clamp(2.25rem, 6vw, 4.5rem)",
-            lineHeight: 1.06,
+            fontSize: "clamp(1.75rem, 5.5vw, 4.5rem)",
+            lineHeight: 1.1,
             textShadow: "0 2px 24px rgba(0, 8, 28, 0.35)",
           }}
         >
@@ -125,8 +125,8 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
-          className="text-white/90 font-medium leading-relaxed max-w-xl mb-8 sm:mb-10"
-          style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)" }}
+          className="text-white/90 font-medium leading-relaxed max-w-xl mb-6 sm:mb-10"
+          style={{ fontSize: "clamp(0.875rem, 1.8vw, 1.15rem)" }}
         >
           Amith is an Independent Engineering Consultancy firm for Quality,
           Stability &amp; Asset Performance.
@@ -137,12 +137,12 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5, ease: EASE }}
-          className="flex flex-wrap gap-3 sm:gap-4 items-center"
+          className="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 items-stretch xs:items-center"
         >
           {/* Explore Our Services */}
           <Link
             href="/services"
-            className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm overflow-hidden transition-all duration-300 cursor-pointer"
+            className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm overflow-hidden transition-all duration-300 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #001c68 0%, #0033a0 100%)",
               color: "#fff",
@@ -177,7 +177,7 @@ export default function HeroBanner() {
           {/* Contact Us */}
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
+            className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
           >
             Contact Us
             <svg
