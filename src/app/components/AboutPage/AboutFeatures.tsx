@@ -149,7 +149,7 @@ const AboutFeatures = () => {
 
                 {/* Layer 5: HUD Diagnostics overlays */}
                 {/* HUD Top Left: Voltmeter Status */}
-                <div className="absolute top-4 left-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 flex items-center gap-2 z-20 pointer-events-none">
+                <div className="absolute top-4 left-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 hidden sm:flex items-center gap-2 z-20 pointer-events-none">
                   <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                   <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest">
                     HALF-CELL PROBE: SWEEPING
@@ -157,14 +157,14 @@ const AboutFeatures = () => {
                 </div>
 
                 {/* HUD Top Right: ASTM C876 Calibration */}
-                <div className="absolute top-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 z-20 pointer-events-none">
+                <div className="absolute top-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 hidden sm:block z-20 pointer-events-none">
                   <span className="text-[10px] font-mono font-bold text-cyan-400 uppercase tracking-widest">
                     ASTM C876 STANDARD
                   </span>
                 </div>
 
                 {/* HUD Bottom Left: Voltage Odometer & Risk Evaluation */}
-                <div className="absolute bottom-4 left-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 z-20 pointer-events-none flex flex-col gap-1 min-w-[170px]">
+                <div className="absolute bottom-4 left-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-3 py-1.5 z-20 pointer-events-none hidden sm:flex flex-col gap-1 min-w-[170px] sm:min-w-[150px] lg:min-w-[170px]">
                   <span className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-0.5 mb-0.5">
                     REAL-TIME VOLTAGE FEED
                   </span>
@@ -183,7 +183,7 @@ const AboutFeatures = () => {
                 </div>
 
                 {/* HUD Bottom Right: ASTM Color Legend */}
-                <div className="absolute bottom-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-2.5 py-1.5 z-20 pointer-events-none flex flex-col gap-1 text-[7.5px] font-mono text-slate-400 min-w-[125px]">
+                <div className="absolute bottom-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/30 rounded-lg px-2.5 py-1.5 z-20 pointer-events-none hidden sm:flex flex-col gap-1 text-[7.5px] font-mono text-slate-400 min-w-[125px] sm:min-w-[105px] lg:min-w-[125px]">
                   <span className="font-bold text-[8px] text-slate-300 border-b border-slate-800 pb-0.5 mb-0.5 uppercase">
                     ASTM C876 LEGEND
                   </span>

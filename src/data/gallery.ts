@@ -556,10 +556,10 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 78,
-    title: "Restoration & Rehabilitation 8",
-    category: "Restoration & Rehabilitation",
-    imageUrl: "/gallery/restoration-rehabilitation/08_image78.jpeg",
-    location: "Repair Site",
+    title: "Quality Audit – Site Inspection 6",
+    category: "Quality Audit & TPQM",
+    imageUrl: "/gallery/quality-audit-tpqm/14_image78.jpeg",
+    location: "Project Site",
   },
   {
     id: 79,

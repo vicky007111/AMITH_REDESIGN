@@ -95,11 +95,14 @@
 @layer components {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   body {
     @apply text-base overflow-x-hidden font-normal;
     -webkit-text-size-adjust: 100%;
+    width: 100%;
   }
 
   textarea,

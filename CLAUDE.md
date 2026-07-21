@@ -83,10 +83,32 @@ elsewhere) — a WhatsApp-first form (`wa.me` deep link) with quick links for Wh
 phone, and email. There is no server-side form submission / third-party form endpoint
 in this codebase.
 
+## Mobile/tablet layout
+
+The custom breakpoints (`sm:576px md:768px lg:992px xl:1200px`) mean "mobile" here is
+everything under `sm` and "tablet" is `sm`–`lg`; the header switches from the hamburger
+menu to the desktop nav at `xl` (1200px), so tablets in landscape still get the mobile
+menu — intentional. `html`/`body` in `globals.css` both set `overflow-x: hidden` and
+`width: 100%` — this is load-bearing: `position: fixed` elements (e.g. the mobile nav
+panel, which is `w-full max-w-xs` and slides fully off-canvas via `translate-x-full`
+when closed) can otherwise widen the layout viewport past the visual viewport, which
+shows up as uncovered blank space on the right edge when a mobile browser is
+pinch-zoomed out. If you add a new `fixed` element that can sit or translate outside
+the viewport bounds, this is the mechanism that keeps it from doing that — don't remove
+either `overflow-x: hidden` rule.
+
+Any decorative/HUD-style absolutely-positioned overlay (see `AboutFeatures.tsx`'s
+half-cell sweep visualization) needs explicit `hidden sm:flex`/`sm:block` (or similar)
+treatment below `sm` rather than relying on `min-w-[Npx]` badges to just fit — narrow
+phone widths (320–375px) don't have room for multiple corner-anchored fixed-width
+badges without overlap.
+
+`react-slick`'s `responsive` breakpoint values are its own concept (max-width, in raw
+px) and are independent of this project's Tailwind breakpoint scale — when adding or
+adjusting a carousel, set its `responsive` breakpoints to match the custom scale
+(576/992/1200) rather than react-slick's defaults (480/768/1024), or the carousel's
+"mobile" bucket will trigger at the wrong width relative to the rest of the page.
+
 ## Known gaps (flagged, not fixed — need a business decision, not an engineering one)
 
-- `public/images/banner-candidates/` has several unused draft images
-  (`image1.jpg`…`image7.jpeg` minus the two actually used by `HeroBanner`) that were
-  intentionally left in place rather than deleted — safe to remove once someone
-  confirms they're not needed.
 - No automated test suite exists.

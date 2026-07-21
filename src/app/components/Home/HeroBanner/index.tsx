@@ -10,28 +10,41 @@ import { EASE } from "@/app/components/shared/anim";
 // HERO SLIDESHOW IMAGES
 // Add or remove images here. The slideshow auto-cycles through them.
 // ---------------------------------------------------------------------------
-const HERO_SLIDES = [
+type HeroSlide = {
+  src: string;
+  mobileSrc?: string;
+  alt: string;
+  position: string;
+};
+
+const HERO_SLIDES: HeroSlide[] = [
   {
-    src: "/images/banner-candidates/hero-wide.jpg",
+    src: "/images/banner-candidates/1-banner.jpg",
+    mobileSrc: "/images/banner-candidates/HeroWide-M.png",
     alt: "AMITH engineer conducting a concrete core drilling inspection on a structural column",
     position: "center 25%",
   },
   {
-    src: "/gallery/structural-testing/corrosion-mapping-industrial-structure.jpg",
+    src: "/images/banner-candidates/2-banner.png",
+    alt: "AMITH engineering project at Amaravati",
+    position: "center 25%",
+  },
+  {
+    src: "/images/banner-candidates/3-banner.jpg",
     alt: "AMITH engineers performing corrosion mapping on an industrial structure",
     position: "center 25%",
   },
   {
-    src: "/gallery/structural-repair/structural-strengthening-site.jpg",
+    src: "/images/banner-candidates/4-banner.jpg",
     alt: "Engineers inspecting structural strengthening at an industrial facility",
     position: "center 15%",
   },
   {
-    src: "/images/banner-candidates/image6.jpeg",
+    src: "/images/banner-candidates/5-banner.jpg",
     alt: "Quality audit engineer with clipboard on construction site",
     position: "center 10%",
   },
-] as const;
+];
 
 const SLIDE_DURATION = 5000; // ms per slide
 
@@ -51,7 +64,7 @@ export default function HeroBanner() {
   return (
     <section
       id="hero"
-      className="relative w-full overflow-hidden flex flex-col justify-end pb-16 sm:pb-20"
+      className="relative w-full overflow-hidden flex flex-col justify-end pb-16 sm:pb-20 bg-[#000a23]"
       style={{ height: "100svh", minHeight: "600px" }}
       aria-label="Hero banner"
     >
@@ -65,6 +78,18 @@ export default function HeroBanner() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.4, ease: EASE }}
         >
+          {HERO_SLIDES[current].mobileSrc && (
+            <Image
+              src={HERO_SLIDES[current].mobileSrc as string}
+              alt={HERO_SLIDES[current].alt}
+              fill
+              priority={current === 0}
+              quality={90}
+              sizes="100vw"
+              className="object-cover md:hidden"
+              style={{ objectPosition: HERO_SLIDES[current].position }}
+            />
+          )}
           <Image
             src={HERO_SLIDES[current].src}
             alt={HERO_SLIDES[current].alt}
@@ -72,7 +97,7 @@ export default function HeroBanner() {
             priority={current === 0}
             quality={90}
             sizes="100vw"
-            className="object-cover"
+            className={`object-cover ${HERO_SLIDES[current].mobileSrc ? "hidden md:block" : ""}`}
             style={{ objectPosition: HERO_SLIDES[current].position }}
           />
           {/* Slow continuous Ken Burns drift while the slide is showing */}
@@ -110,13 +135,13 @@ export default function HeroBanner() {
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
           className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl"
           style={{
-            fontSize: "clamp(1.15rem, 4.6vw, 4.5rem)",
+            fontSize: "clamp(2rem, 7vw, 4.5rem)",
             lineHeight: 1.15,
             textShadow: "0 2px 24px rgba(0, 8, 28, 0.35)",
           }}
         >
-          <span className="block whitespace-nowrap">Engineering Assurance</span>
-          <span className="block whitespace-nowrap">
+          <span className="block">Engineering Assurance</span>
+          <span className="block">
             for <span className="text-warning">Safer Infrastructure</span>
           </span>
         </motion.h1>
@@ -127,7 +152,7 @@ export default function HeroBanner() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
           className="text-white/90 font-medium leading-relaxed max-w-xl mb-6 sm:mb-10"
-          style={{ fontSize: "clamp(0.875rem, 1.8vw, 1.15rem)" }}
+          style={{ fontSize: "clamp(1rem, 2.6vw, 1.15rem)" }}
         >
           Amith is an Independent Engineering Consultancy firm for Quality,
           Stability &amp; Asset Performance.
@@ -143,7 +168,7 @@ export default function HeroBanner() {
           {/* Explore Our Services */}
           <Link
             href="/services"
-            className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm overflow-hidden transition-all duration-300 cursor-pointer"
+            className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm overflow-hidden transition-all duration-300 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #001c68 0%, #0033a0 100%)",
               color: "#fff",
@@ -178,7 +203,7 @@ export default function HeroBanner() {
           {/* Contact Us */}
           <Link
             href="/contact"
-            className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-xs sm:text-sm border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
+            className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm border-2 border-white/40 text-white backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-all duration-300 cursor-pointer"
           >
             Contact Us
             <svg
@@ -205,18 +230,22 @@ export default function HeroBanner() {
               key={i}
               onClick={() => setCurrent(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className="relative h-1 rounded-full overflow-hidden bg-white/20 transition-all duration-300 cursor-pointer"
-              style={{ width: i === current ? "2.5rem" : "1rem" }}
+              className="relative flex items-center p-2 -m-2 cursor-pointer"
             >
-              {i === current && (
-                <motion.span
-                  className="absolute inset-y-0 left-0 bg-warning rounded-full"
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
-                  key={`progress-${current}`}
-                />
-              )}
+              <span
+                className="relative block h-1 rounded-full overflow-hidden bg-white/20 transition-all duration-300"
+                style={{ width: i === current ? "2.5rem" : "1rem" }}
+              >
+                {i === current && (
+                  <motion.span
+                    className="absolute inset-y-0 left-0 bg-warning rounded-full"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
+                    key={`progress-${current}`}
+                  />
+                )}
+              </span>
             </button>
           ))}
         </div>

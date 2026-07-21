@@ -214,7 +214,7 @@ export default function GalleryGrid() {
             {/* Image + caption */}
             <motion.div
               key={filteredItems[lightboxIndex].id}
-              className="relative w-full h-full flex flex-col items-center justify-center px-4 sm:px-16 py-16"
+              className="relative w-full h-full flex flex-col items-center justify-center px-14 sm:px-20 py-16"
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}

@@ -44,27 +44,27 @@ const UsedTech = () => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 992,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 576,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
     ],
   };
 
   return (
-    <section className="section-py">
+    <section className="section-py hidden sm:block">
       <div className="section-container">
         <p className="kicker-text">
           Engineering Stack
         </p>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 lg:text-start text-center leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 text-start leading-tight">
           Tools, Software & <span className="text-primary">Compliance Standards</span>
         </h2>
         <div className="w-12 h-1 bg-primary rounded-full mt-4 mb-10" aria-hidden="true" />
@@ -72,7 +72,7 @@ const UsedTech = () => {
           <Slider {...settings}>
             {technologies.map((item, index) => (
               <div key={index} className="px-3">
-                <div className="bg-grey rounded-2xl p-6 flex flex-col items-center text-center gap-4 border border-slate-100 shadow-sm h-48 justify-center">
+                <div className="bg-grey rounded-2xl p-6 flex flex-col items-center text-center gap-4 border border-slate-100 shadow-sm min-h-48 justify-center">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                     <Icon
                       icon={item.icon}
