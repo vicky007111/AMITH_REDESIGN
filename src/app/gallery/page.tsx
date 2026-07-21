@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     "NDT Testing Site Photos",
     "Civil Engineering Project Gallery",
   ],
+  alternates: {
+    canonical: "/gallery",
+  },
 };
 
 export default function GalleryPage() {

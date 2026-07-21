@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     "AMITH Velachery Chennai",
     "Engineering Consultancy Contact",
   ],
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

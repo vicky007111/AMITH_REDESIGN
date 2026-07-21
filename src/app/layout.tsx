@@ -21,8 +21,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: SITE_TITLE,
+  title: {
+    default: SITE_TITLE,
+    template: "%s",
+  },
   description: SITE_DESCRIPTION,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
   keywords: [
     "Structural Audit Consultants Chennai",
     "Quality Audit Services Chennai",
@@ -62,6 +74,33 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#organization`,
+  name: "AMITH Civil & Allied Engineering Services Pvt Ltd",
+  alternateName: "AMITH Civil Engineering",
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo-white.png`,
+  image: `${SITE_URL}/images/og/og-image.png`,
+  telephone: "+91-9940548833",
+  email: "amithcivilengineering@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "No.35/F3, Sai Krupa Apartment, Ramagirinagar, Taramani Link Road, Velachery",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    postalCode: "600042",
+    addressCountry: "IN",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
+  priceRange: "$$",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,6 +109,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={manrope.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <NextTopLoader color="#001C68" />
         <ScrollToTopOnNavigate />
         <Header />

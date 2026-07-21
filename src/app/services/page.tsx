@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "Condition Assessment Survey",
     "Civil Engineering Consultancy Services",
   ],
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 export default function ServicesPage() {

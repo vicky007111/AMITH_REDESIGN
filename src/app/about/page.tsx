@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "Prof Devadas Manoharan",
     "AMITH Directors",
   ],
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 export default function AboutPage() {

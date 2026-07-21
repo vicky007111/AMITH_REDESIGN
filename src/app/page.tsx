@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "AMITH Civil & Allied Engineering Services | Structural Audit & QA/QC Consultancy",
   description:
     "AMITH Civil & Allied Engineering Services Pvt Ltd — independent civil and structural engineering consultancy for quality assurance, structural stability auditing, condition assessment, NDT testing, restoration and rehabilitation in Chennai.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function HomePage() {
