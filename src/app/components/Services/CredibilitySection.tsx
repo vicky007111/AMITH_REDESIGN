@@ -52,7 +52,7 @@ export default function CredibilitySection() {
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-1" aria-hidden="true">
                     <Icon icon={point.icon} width="20" height="20" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <h4 className="text-sm font-bold text-slate-800">
                       {point.title}
                     </h4>

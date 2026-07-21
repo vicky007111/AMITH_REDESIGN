@@ -248,7 +248,7 @@ const AboutFeatures = () => {
                         height="24"
                       />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="text-base font-bold text-slate-800 group-hover:text-primary transition-colors duration-200">
                         {feature.title}
                       </h4>

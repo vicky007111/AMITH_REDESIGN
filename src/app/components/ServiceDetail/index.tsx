@@ -108,7 +108,7 @@ const ServiceDetail = () => {
                                     </div>
 
                                     {/* Content */}
-                                    <div className="bg-white rounded-2xl p-6 flex-1 border border-slate-100 shadow-sm hover:shadow-[0_16px_32px_rgba(0,28,104,0.10)] hover:-translate-y-1 transition-all duration-300">
+                                    <div className="bg-white rounded-2xl p-6 flex-1 min-w-0 border border-slate-100 shadow-sm hover:shadow-[0_16px_32px_rgba(0,28,104,0.10)] hover:-translate-y-1 transition-all duration-300">
                                         <h3 className="text-base font-bold text-slate-800 leading-snug">
                                             {feature.title}
                                         </h3>

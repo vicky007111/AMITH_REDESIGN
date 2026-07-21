@@ -51,7 +51,7 @@ export default function ServicesFullGrid() {
                   </div>
 
                   {/* Title */}
-                  <div>
+                  <div className="min-w-0">
                     <h3 className="text-lg font-bold text-slate-900 leading-tight">
                       {service.title}
                     </h3>

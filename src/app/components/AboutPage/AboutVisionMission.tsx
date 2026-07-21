@@ -105,7 +105,7 @@ export default function AboutVisionMission() {
                       <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary/10 to-primary/5 border border-primary/10 text-primary font-bold text-sm flex items-center justify-center shrink-0 transition-all duration-300 group-hover/item:scale-105">
                         {mission.id}
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed pt-0.5 group-hover/item:text-slate-800 transition-colors duration-200">
+                      <p className="min-w-0 text-xs sm:text-sm text-slate-500 font-medium leading-relaxed pt-0.5 group-hover/item:text-slate-800 transition-colors duration-200">
                         {mission.text}
                       </p>
                     </div>
