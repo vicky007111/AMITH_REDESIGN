@@ -133,15 +133,15 @@ export default function HeroBanner() {
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
-          className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl"
+          className="text-white font-extrabold tracking-tight mb-4 sm:mb-5 max-w-3xl lg:max-w-none"
           style={{
-            fontSize: "clamp(2rem, 7vw, 4.5rem)",
+            fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
             lineHeight: 1.15,
             textShadow: "0 2px 24px rgba(0, 8, 28, 0.35)",
           }}
         >
-          <span className="block">Engineering Assurance</span>
-          <span className="block">
+          <span className="block lg:whitespace-nowrap">Engineering Assurance</span>
+          <span className="block lg:whitespace-nowrap">
             for <span className="text-warning">Safer Infrastructure</span>
           </span>
         </motion.h1>
